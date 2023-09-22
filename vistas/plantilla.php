@@ -1,7 +1,7 @@
 <?php
-
+/**esto sale de ruta.controlador.php en controladores */
 $ruta = ControladorRuta::ctrRuta();
-
+$servidor = ControladorRuta::ctrServidor();
 ?>
 
 <!DOCTYPE html>

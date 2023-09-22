@@ -1,3 +1,8 @@
+<?php
+/*esto viene de planes.controlador.php que se encuentra en la carpeta controladores */
+	$planes = ControladorPlanes::mostrarPlanes();
+?>
+
 <!--=====================================
 PLANES
 ======================================-->
@@ -10,61 +15,32 @@ PLANES
 			
 			<div class="grid-item">
 				
-				<h1 class="text-center py-3 py-lg-5 tituloPlan" tituloPlan="BIENVENIDO">BIENVENIDO</h1>
+				<h1 class="text-center py-3 py-lg-5 tituloPlan" tituloPlan="Bienvenidos">Bienvenidos</h1>
 
-				<p class="text-muted text-left px-4 descripcionPlan" descripcionPlan="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure deleniti quidem minus voluptatibus repellendus error, excepturi quam, iste vitae tenetur fugiat possimus in. In iure cum facilis, saepe, libero accusantium.">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure deleniti quidem minus voluptatibus repellendus error, excepturi quam, iste vitae tenetur fugiat possimus in. In iure cum facilis, saepe, libero accusantium.</p>
+				<p class="text-muted text-left px-4 descripcionPlan" descripcionPlan="En el corazón de la hermosa Máncora, donde el sol brilla eternamente y el océano Pacífico susurra su eterna canción, te damos la bienvenida a una experiencia única en nuestro exclusivo Hotel [Nombre de tu Hotel].
+
+				Ubicado en una de las playas más deslumbrantes del norte de Perú, nuestro hotel es un refugio de serenidad y comodidad, diseñado para hacer que cada momento de tu estancia sea inolvidable. Con un entorno natural de belleza incomparable y una atención personalizada, nuestro hotel se ha convertido en un destino favorito para aquellos que buscan escapar de la rutina y relajarse en un paraíso costero.">En el corazón de la hermosa Máncora, donde el sol brilla eternamente y el océano Pacífico susurra su eterna canción, te damos la bienvenida a una experiencia única en nuestro exclusivo Hotel [Nombre de tu Hotel].
+
+				Ubicado en una de las playas más deslumbrantes del norte de Perú, nuestro hotel es un refugio de serenidad y comodidad, diseñado para hacer que cada momento de tu estancia sea inolvidable. Con un entorno natural de belleza incomparable y una atención personalizada, nuestro hotel se ha convertido en un destino favorito para aquellos que buscan escapar de la rutina y relajarse en un paraíso costero.</p>
 
 			</div>
 
+			<?php foreach ($planes as $key => $value): ?>
+					
 			<div class="grid-item d-none d-lg-block" data-toggle="modal" data-target="#modalPlanes">
 				
 				<figure class="text-center">
 					
-					<h1 descripcion="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas suscipit quis eligendi voluptatibus dolore libero quasi delectus odit impedit optio eius corporis cumque numquam aliquid repudiandae quisquam dolor explicabo, totam.">PLAN ROMÁNTICO</h1>
+					<h1 descripcion="<?php echo $value["descripcion"]; ?>">Plan <?php echo $value["tipo"]; ?></h1>
 
 				</figure>
 
-				<img src="img/plan-romantico.png" class="img-fluid" width="100%">
-
-
-			</div>
-
-			<div class="grid-item d-none d-lg-block" data-toggle="modal" data-target="#modalPlanes">
-				
-				<figure class="text-center">
-					
-					<h1 descripcion="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat dicta fugiat nihil amet officiis, atque molestiae velit, quod repudiandae asperiores illum accusantium ullam, necessitatibus excepturi inventore, mollitia est vitae impedit.">PLAN LUNA DE MIEL</h1>
-
-				</figure>
-
-				<img src="img/luna-de-miel.png" class="img-fluid" width="100%">
-
+				<img src="<?php echo $servidor.$value["img"]; ?>" class="img-fluid" width="100%">
 
 			</div>
 
-			<div class="grid-item d-none d-lg-block" data-toggle="modal" data-target="#modalPlanes">
-				
-				<figure class="text-center">
-					
-					<h1 descripcion="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt blanditiis nulla expedita nostrum vero. Laborum repudiandae numquam mollitia earum natus ut delectus quas, iste unde doloribus suscipit qui, voluptate perspiciatis.">PLAN AVENTURA</h1>
+				<?php endforeach ?>
 
-				</figure>
-
-				<img src="img/plan-aventura.png" class="img-fluid" width="100%">
-
-			</div>
-
-			<div class="grid-item d-none d-lg-block" data-toggle="modal" data-target="#modalPlanes">
-				
-				<figure class="text-center">
-					
-					<h1 descripcion="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam quibusdam magni atque provident, quaerat libero harum possimus. Illum iure magni voluptate, quos amet! Ipsam, sit, sapiente. Cumque est officiis in!">PLAN SPA</h1>
-
-				</figure>
-
-				<img src="img/plan-spa.png" class="img-fluid" width="100%">
-
-			</div>
 			
 		</div>
 
