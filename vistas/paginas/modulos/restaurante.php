@@ -1,3 +1,9 @@
+<?php
+
+$restaurante = ControladorRestaurante::ctrMostrarRestaurante();
+
+?>
+
 <!--=====================================
 RESTAURANTE
 ======================================-->
@@ -16,54 +22,19 @@ RESTAURANTE
 			<div class="grid-item carta">
 				
 				<div class="row p-1 p-lg-5">
-					
+
+					<?php foreach ($restaurante as $key => $value): ?>
+	
 					<div class="col-6 col-md-4 text-center p-1">
 						
-						<img src="img/plato01.png" class="img-fluid w-50 rounded-circle">
+						<img src="<?php echo $servidor.$value["img"]; ?>" class="img-fluid w-50 rounded-circle">
 
-						<p class="py-2">Lorem ipsum dolor sit amet consectetur</p>
+						<p class="py-2"><?php echo $value["descripcion"]; ?></p>
 
 					</div>
 
-					<div class="col-6 col-md-4 text-center p-1">
-						
-						<img src="img/plato02.png" class="img-fluid w-50 rounded-circle">
+					<?php endforeach ?>
 
-						<p class="py-2">Lorem ipsum dolor sit amet consectetur</p>
-
-					</div>
-
-					<div class="col-6 col-md-4 text-center p-1">
-						
-						<img src="img/plato03.png" class="img-fluid w-50 rounded-circle">
-
-						<p class="py-2">Lorem ipsum dolor sit amet consectetur</p>	
-
-					</div>
-
-					<div class="col-6 col-md-4 text-center p-1">
-						
-						<img src="img/plato04.png" class="img-fluid w-50 rounded-circle">
-
-						<p class="py-2">Lorem ipsum dolor sit amet consectetur</p>			
-
-					</div>
-
-					<div class="col-6 col-md-4 text-center p-1">
-						
-						<img src="img/plato05.png" class="img-fluid w-50 rounded-circle">
-
-						<p class="py-2">Lorem ipsum dolor sit amet consectetur</p>
-
-					</div>
-
-					<div class="col-6 col-md-4 text-center p-1">
-						
-						<img src="img/plato06.png" class="img-fluid w-50 rounded-circle">
-
-						<p class="py-2">Lorem ipsum dolor sit amet consectetur</p>			
-
-					</div>
 
 					<div class="col-12 text-center d-block d-lg-none">
 					
