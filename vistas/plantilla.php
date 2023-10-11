@@ -99,21 +99,25 @@ PÁGINAS
 
 if(isset($_GET["pagina"])){
 
+	$rutasCategorias = ControladorCategorias::ctrMostrarCategorias();
+	foreach ($rutasCategorias as $key => $value) {
+		if($_GET["pagina"] == $value["ruta"]){
+
+			include "paginas/habitaciones.php";
+	
+		}
+		
+	}
+
 	if($_GET["pagina"] == "habitaciones"){
 
 		include "paginas/habitaciones.php";
 
 	}
 
-	if($_GET["pagina"] == "reservas"){
+	if($_GET["pagina"] == "reservas" || $_GET["pagina"] == "perfil" ){
 
-		include "paginas/reservas.php";
-		
-	}
-
-	if($_GET["pagina"] == "perfil"){
-
-		include "paginas/perfil.php";
+		include "paginas/".$_GET["pagina"].".php";
 		
 	}
 
@@ -135,10 +139,16 @@ include "paginas/modulos/modal.php";
 
 ?>
 
+<input type="hidden" value="<?php echo $ruta; ?>" id="urlPrincipal">
+<input type="hidden" value="<?php echo $servidor; ?>" id="urlServidor">
+
+
 <script src="js/plantilla.js"></script>
 <script src="js/menu.js"></script>
 <script src="js/idiomas.js"></script>
+<script src="js/habitaciones.js"></script>
 <script src="js/reservas.js"></script>
+
 	
 </body>
 </html>

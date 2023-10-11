@@ -1,3 +1,7 @@
+var urlPrincipal = $("#urlPrincipal").val();
+var urlServidor = $("#urlServidor").val();
+
+
 /*=============================================
 ANIMACIONES CON EL SCROLL
 =============================================*/
