@@ -34,6 +34,16 @@ $(".cabeceraHabitacion ul.nav li.nav-item a").click(function(e){
     $(enlacesHabitaciones[orden]).html('<i class="fas fa-chevron-right"></i>'+tituloBtn[orden]);
 
 
+    var listaSlide = $(".slideHabitaciones .slide-inner .slide-area li");
+    var alturaSlide = $(".slideHabitaciones .slide-inner .slide-area").height();
+
+    for(var i = 0; i < listaSlide.length; i++){
+
+        $(".slideHabitaciones .slide-inner .slide-area").css({"height":alturaSlide+"px"})
+        $(listaSlide[i]).html("");
+    }
+
+
     var datos = new FormData();
     datos.append("ruta", ruta);
 
@@ -46,8 +56,31 @@ $(".cabeceraHabitacion ul.nav li.nav-item a").click(function(e){
     processData: false,
     dataType:"json",
     success:function(respuesta)
-    {console.log("respuesta", respuesta);}
-    })
+    {
+
+        var galeria =JASON.parse(respuesta["galeria"]);
+        
+        for(var i = 0; i < galeria.length; i++){
+
+            $(listaSlide[0]).html('<img class="img-fluid" src="'+urlServidor+galeria[galeria.length-1]+'">')
+
+            $(listaSlide[i+1]).html('<img class="img-fluid" src="'+urlServidor+galeria[i]+'">')
+
+            $(listaSlide[galeria.length+1]).html('<img class="img-fluid" src="'+urlServidor+galeria[0]+'">')
+
+        }
+
+        $(".videoHabitaciones iframe").attr("src", "https://www.youtube.com/embed/"+respuesta["video"]);
+
+        $("#myPano").attr("back", urlServidor+respuesta["recorrido_virtual"]);
+
+        $(".descripcionHabitacion h1").html(respuesta["estilo"]+""+respuesta["tipo"]);
+
+        $(".d-habitacion").html(respuesta["descripcion_h"])
+        
+    }
+    
+})
 
 
 })

@@ -100,10 +100,13 @@ PÁGINAS
 if(isset($_GET["pagina"])){
 
 	$rutasCategorias = ControladorCategorias::ctrMostrarCategorias();
+
+	$validarRuta="";
+
 	foreach ($rutasCategorias as $key => $value) {
 		if($_GET["pagina"] == $value["ruta"]){
 
-			include "paginas/habitaciones.php";
+			$validarRuta == "habitaciones"; 
 	
 		}
 		
@@ -119,6 +122,16 @@ if(isset($_GET["pagina"])){
 
 		include "paginas/".$_GET["pagina"].".php";
 		
+	}else if($validarRuta != ""){
+
+		include "paginas/habitaciones.php";
+
+	}else{
+		echo '<script>
+		
+		window.location="'.$ruta.'";
+
+		</script>';
 	}
 
 }else{
