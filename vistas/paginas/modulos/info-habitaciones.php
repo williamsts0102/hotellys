@@ -126,7 +126,7 @@ INFO HABITACIÓN
 
 				<section class="mb-3 my-lg-3 360Habitaciones d-none">
 
-					<div id="myPano" class="pano" back="<?php echo $servidor.$habitaciones[0]["recorrido_virtual"]; ?>"">
+					<div id="myPano" class="pano" back="<?php echo $servidor.$habitaciones[0]["recorrido_virtual"]; ?>">
 
 						<div class="controls">
 							<a href="#" class="left">&laquo;</a>
@@ -224,7 +224,7 @@ INFO HABITACIÓN
 						$incluye = json_decode($habitaciones[0]["incluye"], true);
 					?>
 
-					<?php foreach ($variable as $key => $value): ?>
+					<?php foreach ($incluye as $key => $value): ?>
 
 						
 					<li>

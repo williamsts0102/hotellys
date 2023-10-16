@@ -106,7 +106,7 @@ if(isset($_GET["pagina"])){
 	foreach ($rutasCategorias as $key => $value) {
 		if($_GET["pagina"] == $value["ruta"]){
 
-			$validarRuta == "habitaciones"; 
+			$validarRuta = "habitaciones"; 
 	
 		}
 		
@@ -131,7 +131,7 @@ if(isset($_GET["pagina"])){
 		
 		window.location="'.$ruta.'";
 
-		</script>';
+		</script>'; 
 	}
 
 }else{
