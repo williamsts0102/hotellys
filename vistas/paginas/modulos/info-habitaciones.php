@@ -45,7 +45,7 @@ INFO HABITACIÓN
 
 						<li class="nav-item">
 
-							<a class="nav-link text-white" orden="<?php echo $key; ?>"ruta=" <?php echo $_GET["pagina"]; ?>href="#">
+							<a class="nav-link text-white" orden="<?php echo $key; ?>" ruta=" <?php echo $_GET["pagina"]; ?>" href="#">
 							<?php echo $value["estilo"]; ?>
 							</a>
 
@@ -143,7 +143,7 @@ INFO HABITACIÓN
 
 				<div class="descripcionHabitacion px-3">
 					
-					<h1 class="colorTitulos float-left"><?php echo $habitaciones[1]["estilo"]." ".$habitaciones[1]["tipo"] ?></h1>
+					<h1 class="colorTitulos float-left"><?php echo $habitaciones[0]["estilo"]." ".$habitaciones[0]["tipo"] ?></h1>
 
 					<div class="float-right pt-2">
 						
@@ -251,8 +251,7 @@ INFO HABITACIÓN
 
 							$categorias = ControladorCategorias::ctrMostrarCategorias();
 						?>
-
-						
+				
 
 
 						<?php foreach($categorias as $key => $value): ?>

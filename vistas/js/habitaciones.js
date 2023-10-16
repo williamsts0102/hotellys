@@ -58,7 +58,7 @@ $(".cabeceraHabitacion ul.nav li.nav-item a").click(function(e){
     success:function(respuesta)
     {
 
-        var galeria =JASON.parse(respuesta["galeria"]);
+        var galeria =JASON.parse(respuesta[orden]["galeria"]);
         
         for(var i = 0; i < galeria.length; i++){
 
@@ -70,13 +70,13 @@ $(".cabeceraHabitacion ul.nav li.nav-item a").click(function(e){
 
         }
 
-        $(".videoHabitaciones iframe").attr("src", "https://www.youtube.com/embed/"+respuesta["video"]);
+        $(".videoHabitaciones iframe").attr("src", "https://www.youtube.com/embed/"+respuesta[orden]["video"]);
 
-        $("#myPano").attr("back", urlServidor+respuesta["recorrido_virtual"]);
+        $("#myPano").attr("back", urlServidor+respuesta[orden]["recorrido_virtual"]);
 
-        $(".descripcionHabitacion h1").html(respuesta["estilo"]+""+respuesta["tipo"]);
+        $(".descripcionHabitacion h1").html(respuesta[orden]["estilo"]+""+respuesta["tipo"]);
 
-        $(".d-habitacion").html(respuesta["descripcion_h"])
+        $(".d-habitacion").html(respuesta[orden]["descripcion_h"])
         
     }
     
