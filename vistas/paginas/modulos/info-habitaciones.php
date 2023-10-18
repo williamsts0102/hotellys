@@ -1,4 +1,5 @@
 <?php
+/*la variable pagina viene de plantilla.php */
 $valor = $_GET["pagina"];
 
 $habitaciones = ControladorHabitaciones::ctrMostrarHabitaciones($valor);
@@ -29,23 +30,23 @@ INFO HABITACIÓN
 				
 				<div class="pt-4 cabeceraHabitacion">
 
+				<!-- php echo $ruta;  ?> significa que cuando le de click regresará al inicio -->
 					<a href="<?php echo $ruta;  ?>" class="float-left lead text-white pt-1 px-3">
 						<h5><i class="fas fa-chevron-left"></i> Regresar</h5>
 					</a>
-
-					<h2 class="float-right text-white px-3 categoria text-uppercase"><?php echo $habitaciones[0]["tipo"]; ?></h2>
+					<!-- aparecen los titulos por ejemplo Suite, Standar, Especial-->
+					<h2 class="float-right text-white px-3 categoria text-uppercase">
+						<?php echo $habitaciones[0]["tipo"]; ?>
+					</h2>
 
 					<div class="clearfix"></div>
 
 					<ul class="nav nav-justified mt-lg-4">	
-
-						
-
 					<?php foreach ($habitaciones as $key => $value): ?>
 
 						<li class="nav-item">
 
-							<a class="nav-link text-white" orden="<?php echo $key; ?>" ruta=" <?php echo $_GET["pagina"]; ?>" href="#">
+							<a class="nav-link text-white" orden="<?php echo $key; ?>" ruta="<?php echo $_GET["pagina"]; ?>" href="#">
 							<?php echo $value["estilo"]; ?>
 							</a>
 
@@ -69,7 +70,7 @@ INFO HABITACIÓN
 						<?php
 
 						$galeria = json_decode($habitaciones[0]["galeria"], true);
-
+						
 						?>
 
 						<?php foreach ($galeria as $key => $value):  ?>
@@ -80,20 +81,8 @@ INFO HABITACIÓN
 
 							</li>
 
-						<?php endforeach	?>
-
-							<li>	
-
-								<img src="img/oriental.png" class="img-fluid">
-
-							</li>
-
-							<li>	
-
-								<img src="img/oriental.png" class="img-fluid">
-
-							</li>							
-
+						<?php endforeach ?>
+	
 						</ul>
 
 					</div>
@@ -159,8 +148,6 @@ INFO HABITACIÓN
 
 					<div class="d-habitacion">
 						<?php echo $habitaciones[0]["descripcion_h"]; ?>
-
-
 					</div>
 
 					

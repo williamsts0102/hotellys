@@ -1,9 +1,7 @@
 <?php
 
-
 require_once "../controladores/habitaciones.controlador.php";
 require_once "../modelos/habitaciones.modelo.php";
-
 
 class AjaxHabitaciones{
     public $ruta;

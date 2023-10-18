@@ -1,6 +1,6 @@
 <?php
 
-class ControladorHabitaciones{
+Class ControladorHabitaciones{
 
     static public function ctrMostrarHabitaciones($valor){
 
