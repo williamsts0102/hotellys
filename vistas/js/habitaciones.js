@@ -35,7 +35,7 @@ for(var i= 0; i < enlacesHabitaciones.length; i++){
      $(enlacesHabitaciones[orden]).addClass("active");
      $(enlacesHabitaciones[orden]).html('<i class="fas fa-chevron-right"></i>' + tituloBtn[orden]);
 
-//    var listaSlide = $(".slideHabitaciones .slide-inner .slide-area li");
+    var listaSlide = $(".slideHabitaciones .slide-inner .slide-area li");
 //     var alturaSlide = $(".slideHabitaciones .slide-inner .slide-area").height();
 
 //     for(var i = 0; i < listaSlide.length; i++){
@@ -57,9 +57,18 @@ for(var i= 0; i < enlacesHabitaciones.length; i++){
       processData: false,
       dataType:"json",
       success:function(respuesta)
-     {
-        var galeria = JASON.parse(respuesta[orden]["galeria"]);
-        console.log("galeria", galeria);
+     
+      {
+        var galeria = JSON.parse(respuesta[orden]["galeria"]);
+        
+               for(var i = 0; i < galeria.length; i++){
+
+             $(listaSlide[0]).html('<img class="img-fluid" src="'+urlServidor+galeria[galeria.length-1]+'">')
+
+             $(listaSlide[i+1]).html('<img class="img-fluid" src="'+urlServidor+galeria[i]+'">')
+
+             $(listaSlide[galeria.length+1]).html('<img class="img-fluid" src="'+urlServidor+galeria[0]+'">')
+         }
 
         $(".videoHabitaciones iframe").attr("src", "https://www.youtube.com/embed/"+respuesta[orden]["video"]);
         $("#myPano").attr("back", urlServidor+respuesta[orden]["recorrido_virtual"]);
