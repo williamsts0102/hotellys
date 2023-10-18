@@ -7,7 +7,7 @@ class AjaxHabitaciones{
     public $ruta;
     public function ajaxTraerHabitacion(){
         $valor = $this->ruta;
-        $respuesta = ControladorHabitaciones::ctrMostarHabitaciones($valor);
+        $respuesta = ControladorHabitaciones::ctrMostrarHabitaciones($valor);
         echo json_encode($respuesta);
 
     }

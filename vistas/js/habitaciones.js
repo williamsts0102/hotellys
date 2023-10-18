@@ -58,7 +58,13 @@ for(var i= 0; i < enlacesHabitaciones.length; i++){
       dataType:"json",
       success:function(respuesta)
      {
-        console.log("respuesta",respuesta)
+        var galeria = JASON.parse(respuesta[orden]["galeria"]);
+        console.log("galeria", galeria);
+
+        $(".videoHabitaciones iframe").attr("src", "https://www.youtube.com/embed/"+respuesta[orden]["video"]);
+        $("#myPano").attr("back", urlServidor+respuesta[orden]["recorrido_virtual"]);
+        $(".descripcionHabitacion h1").html(respuesta[orden]["estilo"]+" "+respuesta[orden]["tipo"]);
+        $(".d-habitacion").html(respuesta[orden]["descripcion_h"])
      }
 //         var galeria =JASON.parse(respuesta[orden]["galeria"]);
         
