@@ -107,9 +107,7 @@ if(isset($_GET["pagina"])){
 		if($_GET["pagina"] == $value["ruta"]){
 
 			$validarRuta = "habitaciones"; 
-	
 		}
-		
 	}
 
 	if($_GET["pagina"] == "habitaciones"){

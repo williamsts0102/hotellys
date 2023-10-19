@@ -207,13 +207,13 @@ INFO HABITACIÓN
 				<ul>
 
 					<?php
-
+						//convertir el json a una cadena
 						$incluye = json_decode($habitaciones[0]["incluye"], true);
+						//echo '<pre>'; print_r($incluye); echo '</pre>'
 					?>
 
 					<?php foreach ($incluye as $key => $value): ?>
-
-						
+				
 					<li>
 						<h5>
 							<i class="<?php echo $value["icono"]; ?> w-25 colorTitulos"></i> 
@@ -230,58 +230,57 @@ INFO HABITACIÓN
 
 				<div class="habitaciones" id="habitaciones">
 
-					<div class="container">
+<div class="container">
 
-						<div class="row">
-
-						<?php
-
-							$categorias = ControladorCategorias::ctrMostrarCategorias();
-						?>
-				
+	<div class="row">
 
 
-						<?php foreach($categorias as $key => $value): ?>
+	<?php
 
+		$categorias = ControladorCategorias::ctrMostrarCategorias();
 
-							<?php if ($_GET["pagina"] != $value["ruta"]): ?>
-							
-							<div class="col-12 col-lg-4 pb-3 px-0 px-lg-3">
+	?>
 
-							<a href="<?php echo $ruta.$value["ruta"];  ?>">
-	
-							<figure class="text-center">
-		
-								<img src="<?php echo $servidor.$value["img"]; ?>" class="img-fluid" width="100%">
+	<?php foreach ($categorias as $key => $value): ?>
 
-								<p class="small py-4 mb-0"><?php echo $value["descripcion"]; ?></p>
+		<?php if ($_GET["pagina"] != $value["ruta"]): ?>
 
-								<h3 class="py-2 text-gray-dark mb-0">DESDE $<?php echo number_format($value["continental_baja"]); ?> COP</h3>
+		<div class="col-12 pb-3 px-0 px-lg-3">
 
-								<h5 class="py-2 text-gray-dark border">Ver detalles <i class="fas fa-chevron-right ml-2"></i></h5>
-		
-								<h1 class="text-white p-3 mx-auto w-50 lead text-uppercase" style="background:<?php echo $value["color"]; ?>"><?php echo $value["tipo"]; ?></h1>
+				<a href="<?php echo $ruta.$value["ruta"];  ?>">
 
-							</figure>
+				<figure class="text-center">
+					
+					<img src="<?php echo $servidor.$value["img"]; ?>" class="img-fluid" width="100%">
 
-							</a>
+					<p class="small py-4 mb-0"><?php echo $value["descripcion"]; ?></p>
 
-							</div>
+					<h3 class="py-2 text-gray-dark mb-0">DESDE $<?php echo number_format($value["continental_baja"]); ?> COP</h3>
 
-						<?php endif ?>
+					<h5 class="py-2 text-gray-dark border">Ver detalles <i class="fas fa-chevron-right ml-2"></i></h5>
+					
+					<h1 class="text-white p-3 mx-auto w-50 lead text-uppercase" style="background:<?php echo $value["color"]; ?>"><?php echo $value["tipo"]; ?></h1>
 
-					<?php endforeach ?>
+				</figure>
 
-						</div>
-
-					</div>
-
-				</div>
-
-			</div>
+			</a>
 
 		</div>
 
+		<?php endif ?>		
+		
+	<?php endforeach ?>						
+
 	</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
 
 </div>

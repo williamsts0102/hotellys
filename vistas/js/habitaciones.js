@@ -36,13 +36,16 @@ for(var i= 0; i < enlacesHabitaciones.length; i++){
      $(enlacesHabitaciones[orden]).html('<i class="fas fa-chevron-right"></i>' + tituloBtn[orden]);
 
     var listaSlide = $(".slideHabitaciones .slide-inner .slide-area li");
-//     var alturaSlide = $(".slideHabitaciones .slide-inner .slide-area").height();
 
-//     for(var i = 0; i < listaSlide.length; i++){
+    //calcular la altura del slide
+     var alturaSlide = $(".slideHabitaciones .slide-inner .slide-area").height();
 
-//         $(".slideHabitaciones .slide-inner .slide-area").css({"height":alturaSlide+"px"})
-//         $(listaSlide[i]).html("");
-//     }
+     for(var i = 0; i < listaSlide.length; i++){
+
+        //la altura del area sea la que se captura en "alturaSlide"
+         $(".slideHabitaciones .slide-inner .slide-area").css({"height":alturaSlide+"px"})
+         $(listaSlide[i]).html("");
+     }
 
    /*AJAX HABITACIONES*/
      var datos = new FormData();
@@ -67,7 +70,7 @@ for(var i= 0; i < enlacesHabitaciones.length; i++){
 
              $(listaSlide[i+1]).html('<img class="img-fluid" src="'+urlServidor+galeria[i]+'">')
 
-             $(listaSlide[galeria.length+1]).html('<img class="img-fluid" src="'+urlServidor+galeria[0]+'">')
+              $(listaSlide[galeria.length+1]).html('<img class="img-fluid" src="'+urlServidor+galeria[0]+'">')
          }
 
         $(".videoHabitaciones iframe").attr("src", "https://www.youtube.com/embed/"+respuesta[orden]["video"]);
