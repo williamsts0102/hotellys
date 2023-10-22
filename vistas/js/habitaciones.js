@@ -76,7 +76,8 @@ for(var i= 0; i < enlacesHabitaciones.length; i++){
         $(".videoHabitaciones iframe").attr("src", "https://www.youtube.com/embed/"+respuesta[orden]["video"]);
         $("#myPano").attr("back", urlServidor+respuesta[orden]["recorrido_virtual"]);
         $(".descripcionHabitacion h1").html(respuesta[orden]["estilo"]+" "+respuesta[orden]["tipo"]);
-        $(".d-habitacion").html(respuesta[orden]["descripcion_h"])
+        $(".d-habitacion").html(respuesta[orden]["descripcion_h"]);
+        $('input[name="id-habitacion"]').val(respuesta[orden]["id_h"]);
      }
 //         var galeria =JASON.parse(respuesta[orden]["galeria"]);
         
