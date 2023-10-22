@@ -22,7 +22,12 @@ $('.datepicker.entrada').change(function(){
 /*=============================================
 SELECTS ANIDADOS
 =============================================*/
+$(".selectTipoHabitacion").change(function(){
+  var ruta = $(this).val();
+  console.log("ruta", ruta);
 
+})
+   
 
 /*=============================================
 CALENDARIO

@@ -1,10 +1,8 @@
 <?php
+
 $categorias = ControladorCategorias::ctrMostrarCategorias();
 
-
-
 ?>
-
 
 
 <!--=====================================
@@ -55,12 +53,10 @@ HEADER
 						<option>Tipo de habitación</option>
 
 						<?php foreach ($categorias as $key => $value): ?>
-
-						<option $value="<?php echo $value["ruta"]; ?>"><?php echo $value["tipo"]; ?></option>
 							
-						<?php endforeach ?>
-
-
+							<option value="<?php echo $value["ruta"]; ?>"><?php echo $value["tipo"]; ?></option>
+						
+							<?php endforeach ?>
 							
 						</select>
 					</div>
@@ -69,10 +65,12 @@ HEADER
 						<select class="form-control form-control-lg selectTemaHabitacion" required>
 							<option>Temática de habitación</option>
 							<option>Oriental</option>
-							<option>Contemporánea</option>
-							<option>Africana</option>
-							<option>Clásica</option>
-							<option>Retro</option>
+                            <option>Contemporánea</option>
+                            <option>Africana</option>
+                            <option>Clásica</option>
+                            <option>Retro</option>
+
+							
 						</select>
 					</div>
 
