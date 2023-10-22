@@ -1,9 +1,9 @@
 <?php
 if(isset($_POST["id-habitacion"])){
 
-	echo '<pre class="bg-white">'; print_r($POST["id-habitacion"]); echo '</pre>';
-	echo '<pre class="bg-white">'; print_r($POST["fecha-ingreso"]); echo '</pre>';
-	echo '<pre class="bg-white">'; print_r($POST["fecha-salida"]); echo '</pre>';
+	echo '<pre class="bg.white">'; print_r($_POST["id-habitacion"]); echo '</pre>';
+	echo '<pre class="bg.white">'; print_r($_POST["fecha-ingreso"]); echo '</pre>';
+	echo '<pre class="bg.white">'; print_r($_POST["fecha-salida"]); echo '</pre>';
 
 }else{
 

@@ -1,3 +1,12 @@
+<?php
+$categorias = ControladorCategorias::ctrMostrarCategorias();
+
+
+
+?>
+
+
+
 <!--=====================================
 HEADER
 ======================================-->
@@ -41,16 +50,23 @@ HEADER
 				<div class="formReservas py-1 py-lg-2 px-4">
 					
 					<div class="form-group my-4">
-						<select class="form-control form-control-lg">
-							<option>Tipo de habitación</option>
-							<option>Suite</option>
-							<option>Especial</option>
-							<option>Standar</option>
+						<select class="form-control form-control-lg selectTipoHabitacion" required>
+
+						<option>Tipo de habitación</option>
+
+						<?php foreach ($categorias as $key => $value): ?>
+
+						<option $value="<?php echo $value["ruta"]; ?>"><?php echo $value["tipo"]; ?></option>
+							
+						<?php endforeach ?>
+
+
+							
 						</select>
 					</div>
 
 					<div class="form-group my-4">
-						<select class="form-control form-control-lg">
+						<select class="form-control form-control-lg selectTemaHabitacion" required>
 							<option>Temática de habitación</option>
 							<option>Oriental</option>
 							<option>Contemporánea</option>
