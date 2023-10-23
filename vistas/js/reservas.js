@@ -3,18 +3,20 @@ FECHAS RESERVA
 =============================================*/
 $('.datepicker.entrada').datepicker({
 	startDate: '0d',
-	format: 'dd-mm-yyyy',
+	format: 'yyyy-mm-dd',
 	todayHighlight:true
 });
 
 $('.datepicker.entrada').change(function(){
 
+  $('.datepicker.salida').attr("readonly", false);
+  
 	var fechaEntrada = $(this).val();
 
 	$('.datepicker.salida').datepicker({
 		startDate: fechaEntrada,
 		datesDisabled: fechaEntrada,
-		format: 'dd-mm-yyyy'
+		format: 'yyyy-mm-dd'
 	});
 
 })

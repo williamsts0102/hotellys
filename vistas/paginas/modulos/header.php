@@ -76,7 +76,7 @@ HEADER
 						
 						 <div class="col-6 input-group input-group-lg pr-1">
 						
-							<input type="text" class="form-control datepicker entrada" placeholder="Entrada" name="fecha-ingreso" required>
+							<input type="text" class="form-control datepicker entrada" autocomplete="off" placeholder="Entrada" name="fecha-ingreso" required>
 
 							<div class="input-group-append">
 								
@@ -90,7 +90,7 @@ HEADER
 
 						<div class="col-6 input-group input-group-lg pl-1">
 						
-							<input type="text" class="form-control datepicker salida" placeholder="Salida" name="fecha-salida" required>
+							<input type="text" class="form-control datepicker salida" autocomplete="off" placeholder="Salida" name="fecha-salida" readonly required>
 
 							<div class="input-group-append">
 								

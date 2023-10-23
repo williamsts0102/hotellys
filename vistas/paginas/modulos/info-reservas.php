@@ -101,7 +101,7 @@ INFO RESERVAS
 
 							 <div class="col-6 col-md-3 input-group pr-1">
 							
-							 <input type="text" class="form-control datepicker entrada" placeholder="Entrada" name="fecha-ingreso" required>
+							 <input type="text" class="form-control datepicker entrada" autocomplete="off" placeholder="Entrada" name="fecha-ingreso" value="<?php echo $_POST["fecha-ingreso"]; ?>" required>
 
 								<div class="input-group-append">
 									
@@ -113,7 +113,7 @@ INFO RESERVAS
 
 						 	<div class="col-6 col-md-3 input-group pl-1">
 							
-							 <input type="text" class="form-control datepicker salida" placeholder="Salida" name="fecha-salida" required>
+							 <input type="text" class="form-control datepicker salida" placeholder="Salida" autocomplete="off" name="fecha-salida" value="<?php echo $_POST["fecha-salida"]; ?>" required>
 
 								<div class="input-group-append">
 									
