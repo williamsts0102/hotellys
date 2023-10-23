@@ -45,12 +45,14 @@ HEADER
 				FORMULARIO DE RESERVAS
 				======================================-->
 
+				<form action="<?php echo $ruta; ?>reservas" method="post">
+
 				<div class="formReservas py-1 py-lg-2 px-4">
 					
 					<div class="form-group my-4">
 						<select class="form-control form-control-lg selectTipoHabitacion" required>
 
-						<option>Tipo de habitación</option>
+						<option value="Tipo de habitación">Tipo de habitación</option>
 
 						<?php foreach ($categorias as $key => $value): ?>
 							
@@ -62,13 +64,9 @@ HEADER
 					</div>
 
 					<div class="form-group my-4">
-						<select class="form-control form-control-lg selectTemaHabitacion" required>
+						<select class="form-control form-control-lg selectTemaHabitacion" name="id-habitacion" required>
 							<option>Temática de habitación</option>
-							<option>Oriental</option>
-                            <option>Contemporánea</option>
-                            <option>Africana</option>
-                            <option>Clásica</option>
-                            <option>Retro</option>
+							
 
 							
 						</select>
@@ -78,7 +76,7 @@ HEADER
 						
 						 <div class="col-6 input-group input-group-lg pr-1">
 						
-							<input type="text" class="form-control datepicker entrada" placeholder="Entrada">
+							<input type="text" class="form-control datepicker entrada" placeholder="Entrada" name="fecha-ingreso" required>
 
 							<div class="input-group-append">
 								
@@ -92,7 +90,7 @@ HEADER
 
 						<div class="col-6 input-group input-group-lg pl-1">
 						
-							<input type="text" class="form-control datepicker salida" placeholder="Salida">
+							<input type="text" class="form-control datepicker salida" placeholder="Salida" name="fecha-salida" required>
 
 							<div class="input-group-append">
 								
@@ -106,10 +104,12 @@ HEADER
 
 					</div>
 
-					<input type="button" class="btn btn-block btn-lg my-4 text-white" value="Ver disponibilidad">
+					<input type="submit" class="btn btn-block btn-lg my-4 text-white" value="Ver disponibilidad">
 					
 
 				</div>
+
+				</form>
 
 			</div>
 
