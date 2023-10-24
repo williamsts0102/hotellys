@@ -1,9 +1,13 @@
 <?php
 if(isset($_POST["id-habitacion"])){
 
-	echo '<pre class="bg.white">'; print_r($_POST["id-habitacion"]); echo '</pre>';
-	echo '<pre class="bg.white">'; print_r($_POST["fecha-ingreso"]); echo '</pre>';
-	echo '<pre class="bg.white">'; print_r($_POST["fecha-salida"]); echo '</pre>';
+	echo '<pre class="bg-white">'; print_r($_POST["id-habitacion"]); echo '</pre>';
+	echo '<pre class="bg-white">'; print_r($_POST["fecha-ingreso"]); echo '</pre>';
+	echo '<pre class="bg-white">'; print_r($_POST["fecha-salida"]); echo '</pre>';
+
+	$valor = $_POST["id-habitacion"];
+	$reservas = ControladorReservas::ctrMostrarReservas($valor);
+	echo '<pre class="bg-white">'; print_r($reservas); echo '</pre>';
 
 }else{
 
