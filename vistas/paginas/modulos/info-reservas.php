@@ -8,6 +8,7 @@ if(isset($_POST["id-habitacion"])){
 	$valor = $_POST["id-habitacion"];
 	$reservas = ControladorReservas::ctrMostrarReservas($valor);
 	echo '<pre class="bg-white">'; print_r($reservas); echo '</pre>';
+	
 
 }else{
 
@@ -67,13 +68,11 @@ INFO RESERVAS
 
 					<h1 class="pb-5 float-left">¡Está Disponible!</h1>
 
-					<?php else: ?>
+				<?php else: ?>
 
 					<div class="infoDisponibilidad"></did>
 
-					<?php endif ?>
-
-					
+				<?php endif ?>
 
 					<div class="float-right pb-3">
 							
