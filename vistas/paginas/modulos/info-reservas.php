@@ -63,7 +63,17 @@ INFO RESERVAS
 
 				<div class="bg-white p-4 calendarioReservas">
 
+				<?php if (!$reservas): ?>
+
 					<h1 class="pb-5 float-left">¡Está Disponible!</h1>
+
+					<?php else: ?>
+
+					<div class="infoDisponibilidad"></did>
+
+					<?php endif ?>
+
+					
 
 					<div class="float-right pb-3">
 							
