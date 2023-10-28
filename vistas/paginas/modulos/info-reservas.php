@@ -209,7 +209,7 @@ INFO RESERVAS
 
 					<div class="col-12 col-lg-6 col-xl-7 text-center text-lg-left">
 						
-						<h1>$300 USD</h1>
+						<h1>S/.300 SO</h1>
 
 					</div>
 					
