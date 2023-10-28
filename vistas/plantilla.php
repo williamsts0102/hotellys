@@ -11,7 +11,7 @@ $servidor = ControladorRuta::ctrServidor();
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">	
 
-	<title>Hotel Portobelo</title>
+	<title>Hotellys</title>
 
 	<base href="vistas/">
 

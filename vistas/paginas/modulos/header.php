@@ -21,7 +21,7 @@ HEADER
 
 				<a href="<?php echo $ruta;  ?>">
 				
-					<img src="img/logoPortobelo.png" class="img-fluid">
+					<img src="img/logo.jpg" class="img-fluid">
 
 				</a>
 

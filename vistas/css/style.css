@@ -160,6 +160,11 @@ BANNER
 /*=============================================
 PLANES
 =============================================*/
+.textoAgregado{
+	margin-bottom: 1px;
+}
+
+
 .planes .grid-container{
 	display:grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
