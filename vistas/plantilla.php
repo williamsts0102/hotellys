@@ -118,8 +118,7 @@ if(isset($_GET["pagina"])){
 
 	if($_GET["pagina"] == "reservas" || $_GET["pagina"] == "perfil" ){
 
-		include "paginas/".$_GET["pagina"].".php"
-		;
+		include "paginas/".$_GET["pagina"].".php";
 		
 	}else if($validarRuta != ""){
 
