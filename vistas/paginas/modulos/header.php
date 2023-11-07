@@ -52,7 +52,7 @@ HEADER
 					<div class="form-group my-4">
 						<select class="form-control form-control-lg selectTipoHabitacion" required>
 
-						<option value="Tipo de habitación">Tipo de habitación</option>
+						<option value="">Tipo de habitación</option>
 
 						<?php foreach ($categorias as $key => $value): ?>
 							
@@ -65,7 +65,7 @@ HEADER
 
 					<div class="form-group my-4">
 						<select class="form-control form-control-lg selectTemaHabitacion" name="id-habitacion" required>
-							<option>Temática de habitación</option>
+							<option value="">Temática de habitación</option>
 							
 
 							

@@ -7,7 +7,6 @@ if(isset($_POST["id-habitacion"])){
 
 	$valor = $_POST["id-habitacion"];
 	$reservas = ControladorReservas::ctrMostrarReservas($valor);
-	echo '<pre class="bg-white">'; print_r($reservas); echo '</pre>';
 	
 
 }else{
@@ -21,7 +20,8 @@ if(isset($_POST["id-habitacion"])){
 INFO RESERVAS
 ======================================-->
 
-<div class="infoReservas container-fluid bg-white p-0 pb-5">
+<div class="infoReservas container-fluid bg-white p-0 pb-5"
+idHabitacion="<?php echo $_POST["id-habitacion"]; ?>" fechaIngreso="<?php echo $_POST["fecha-ingreso"]; ?>" fechaSalida="<?php echo $_POST["fecha-salida"]; ?>" >
 	
 	<div class="container">
 		
@@ -70,7 +70,7 @@ INFO RESERVAS
 
 				<?php else: ?>
 
-					<div class="infoDisponibilidad"></did>
+					<div class="infoDisponibilidad"></div>
 
 				<?php endif ?>
 
