@@ -68,6 +68,8 @@ var idHabitacion = $(".infoReservas").attr("idHabitacion");
 var fechaIngreso = $(".infoReservas").attr("fechaIngreso");
 var fechaSalida = $(".infoReservas").attr("fechaSalida");
 
+var totalEventos = [];
+
 var datos = new FormData();
 datos.append("idHabitacion", idHabitacion);
 
@@ -99,28 +101,29 @@ $.ajax({
         }
         else {
           for (var i=0; i<respuesta.length; i++){
-              $('#calendar').fullCalendar({
-                header: {
-                    left: 'prev',
-                    center: 'title',
-                    right: 'next'
-                },
-                events: [
-                  {
-                    start: fechaIngreso,
-                    end: fechaSalida,
-                    rendering: 'background',
-                    color: '#FFCC29'
-                  },
-                  {
-                    start: respuesta[i]["fecha_ingreso"],
-                    end: respuesta[i]["fecha_salida"],
-                    rendering: 'background',
-                    color: '#847059'
-                  }
-                ]
-              });  
+             
             }
+            $('#calendar').fullCalendar({
+              header: {
+                  left: 'prev',
+                  center: 'title',
+                  right: 'next'
+              },
+              events: [
+                {
+                  start: fechaIngreso,
+                  end: fechaSalida,
+                  rendering: 'background',
+                  color: '#FFCC29'
+                },
+                {
+                  start: respuesta[i]["fecha_ingreso"],
+                  end: respuesta[i]["fecha_salida"],
+                  rendering: 'background',
+                  color: '#847059'
+                }
+              ]
+            });  
         } 
     }
 })
