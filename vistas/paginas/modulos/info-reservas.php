@@ -1,10 +1,6 @@
 <?php
 if(isset($_POST["id-habitacion"])){
 
-	echo '<pre class="bg-white">'; print_r($_POST["id-habitacion"]); echo '</pre>';
-	echo '<pre class="bg-white">'; print_r($_POST["fecha-ingreso"]); echo '</pre>';
-	echo '<pre class="bg-white">'; print_r($_POST["fecha-salida"]); echo '</pre>';
-
 	$valor = $_POST["id-habitacion"];
 	$reservas = ControladorReservas::ctrMostrarReservas($valor);
 	
@@ -156,10 +152,10 @@ idHabitacion="<?php echo $_POST["id-habitacion"]; ?>" fechaIngreso="<?php echo $
 			BLOQUE DER
 			======================================-->
 
-			<div class="col-12 col-lg-4 colDerReservas">
+			<div class="col-12 col-lg-4 colDerReservas" style="display:none">
 
 				<h4 class="mt-lg-5">Código de la Reserva:</h4>
-				<h2 class="colorTitulos"><strong>K2DRESF34</strong></h2>
+				<h2 class="colorTitulos"><strong class="codigoReserva"></strong></h2>
 
 				<div class="form-group">
 				  <label>Ingreso:</label>

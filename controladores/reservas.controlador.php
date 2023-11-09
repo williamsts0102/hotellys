@@ -14,4 +14,13 @@ Class ControladorReservas{
 
         return $respuesta;
     }
+
+    static public function ctrMostrarCodigoReserva($valor){
+      ;
+        $tabla = "reservas";
+
+        $respuesta = ModeloReservas::mdlMostrarCodigoReserva($tabla, $valor);
+
+        return $respuesta;
+    }
 }
