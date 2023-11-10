@@ -46,6 +46,7 @@ $(".selectTipoHabitacion").change(function(){
     processData: false,
     dataType:"json",
     success:function(respuesta){
+      $("input[name='ruta']").val(respuesta[0]["ruta"]);
 
       for(var i = 0; i <respuesta.length; i++){
         $(".selectTemaHabitacion").append('<option value="'+respuesta[i]["id_h"]+'">'+respuesta[i]["estilo"]+'</option>')

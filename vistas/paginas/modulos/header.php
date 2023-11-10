@@ -66,11 +66,10 @@ HEADER
 					<div class="form-group my-4">
 						<select class="form-control form-control-lg selectTemaHabitacion" name="id-habitacion" required>
 							<option value="">Temática de habitación</option>
-							
-
-							
 						</select>
 					</div>
+
+					<input type="hidden" id="ruta" name="ruta">
 
 					<div class="row">
 						
@@ -241,30 +240,32 @@ MENÚ MÓVIL
 	<div class="formReservas py-1 py-lg-2 px-4">
 					
 		<div class="form-group my-4">
-			<select class="form-control form-control-lg">
-				<option>Tipo de habitación</option>
-				<option>Suite</option>
-				<option>Especial</option>
-				<option>Standar</option>
-			</select>
+		<select class="form-control form-control-lg selectTipoHabitacion" required>
+
+			<option value="">Tipo de habitación</option>
+
+			<?php foreach ($categorias as $key => $value): ?>
+				
+				<option value="<?php echo $value["ruta"]; ?>"><?php echo $value["tipo"]; ?></option>
+
+				<?php endforeach ?>			
+	</select>
 		</div>
 
 		<div class="form-group my-4">
-			<select class="form-control form-control-lg">
-				<option>Temática de habitación</option>
-				<option>Oriental</option>
-				<option>Contemporánea</option>
-				<option>Africana</option>
-				<option>Clásica</option>
-				<option>Retro</option>
-			</select>
+		<select class="form-control form-control-lg selectTemaHabitacion" 		name="id-habitacion" required>
+				<option value="">Temática de habitación</option>
+		</select>
 		</div>
+
+		<input type="hidden" id="ruta" name="ruta">
+
 
 		<div class="row">
 			
 			 <div class="col-6 input-group input-group-lg pr-1">
 			
-				<input type="text" class="form-control datepicker entrada" placeholder="Entrada">
+				<input type="text" class="form-control datepicker entrada" placeholder="Entrada" autocomplete="off" required>
 
 				<div class="input-group-append">
 					
@@ -278,7 +279,7 @@ MENÚ MÓVIL
 
 			<div class="col-6 input-group input-group-lg pl-1">
 			
-				<input type="text" class="form-control datepicker salida" placeholder="Salida">
+				<input type="text" class="form-control datepicker salida" placeholder="Salida" autocomplete="off" readonly required>
 
 				<div class="input-group-append">
 					

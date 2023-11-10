@@ -152,8 +152,8 @@ INFO HABITACIÓN
 
 					<form action="<?php echo $ruta; ?>reservas" method="post">
 
-
-					<input type="hidden" name="id-habitacion" value="<?php echo $habitaciones[0]["id_h"]; ?>">
+						<input type="hidden" name="id-habitacion" value="<?php echo $habitaciones[0]["id_h"]; ?>">
+						<input type="hidden" name="ruta" value="<?php echo $habitaciones[0]["ruta"]; ?>">
 					<div class="container">
 
 						<div class="row py-2" style="background:#509CC3">

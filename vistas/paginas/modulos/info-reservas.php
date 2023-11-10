@@ -2,8 +2,25 @@
 if(isset($_POST["id-habitacion"])){
 
 	$valor = $_POST["id-habitacion"];
-	$reservas = ControladorReservas::ctrMostrarReservas($valor);
 	$indice = 0;
+	$reservas = ControladorReservas::ctrMostrarReservas($valor);
+	if(!$reservas){
+
+		$valor = $_POST["ruta"];
+
+		$reservas = ControladorHabitaciones::ctrMostrarHabitaciones($valor);
+
+		foreach ($reservas as $key => $value) {
+			
+			if($value["id_h"] == $_POST["id-habitacion"]){
+
+				$indice = $key;
+
+			}
+		}
+	}
+
+	
 	$planes = ControladorPlanes::ctrMostrarPlanes();
 	$hoy = getdate();
 
@@ -102,7 +119,7 @@ idHabitacion="<?php echo $_POST["id-habitacion"]; ?>" fechaIngreso="<?php echo $
 
 				<div class="bg-white p-4 calendarioReservas">
 
-				<?php if (!$reservas): ?>
+				<?php if ($valor == $_POST["ruta"]): ?>
 
 					<h1 class="pb-5 float-left">¡Está Disponible!</h1>
 
@@ -111,6 +128,7 @@ idHabitacion="<?php echo $_POST["id-habitacion"]; ?>" fechaIngreso="<?php echo $
 					<div class="infoDisponibilidad"></div>
 
 				<?php endif ?>
+
 
 					<div class="float-right pb-3">
 							
@@ -144,6 +162,7 @@ idHabitacion="<?php echo $_POST["id-habitacion"]; ?>" fechaIngreso="<?php echo $
 
 					<input type="hidden" name="id-habitacion" value="<?php echo $_POST["id-habitacion"]; ?>">
 
+					<input type="hidden" name="ruta" value="<?php echo $_POST["ruta"]; ?>">
 
 
 					<div class="container mb-3">
