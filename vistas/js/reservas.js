@@ -67,6 +67,8 @@ if($(".infoReservas").html() != undefined){
 var idHabitacion = $(".infoReservas").attr("idHabitacion");
 var fechaIngreso = $(".infoReservas").attr("fechaIngreso");
 var fechaSalida = $(".infoReservas").attr("fechaSalida");
+var dias = $(".infoReservas").attr("dias");
+
 
 var totalEventos = [];
 var opcion1 = [];
@@ -225,9 +227,59 @@ function colDerReservas(){
       }else{
         $(".codigoReserva").html(codigoReserva+codigoAleatorio(chars, 3));
       }
-      console.log("respuesta", respuesta);
+       /*=============================================
+        CAMBIO DE PLAN
+        =============================================*/
+
+        $(".elegirPlan").change(function(){
+          cambioPlanesPersonas();
+        })
+
+        /*=============================================
+        CAMBIO DE PERSONAS
+        =============================================*/
+
+        $(".cantidadPersonas").change(function(){
+         cambioPlanesPersonas();
+        })
+
     }
   })
 
-  //console.log("codigoReserva", codigoReserva);
+}
+
+function cambioPlanesPersonas(){
+
+  switch($(".cantidadPersonas").val()){
+            
+    case "2":
+
+       $(".precioReserva span").html($(".elegirPlan").val().split(",")[0]*dias);
+       $(".precioReserva span").number(true);
+
+    break;
+
+    case "3":
+
+     $(".precioReserva span").html(  Number($(".elegirPlan").val().split(",")[0]*0.25) + Number($(".elegirPlan").val().split(",")[0])*dias);
+     $(".precioReserva span").number(true);
+
+    break;
+
+    case "4":
+
+     $(".precioReserva span").html(  Number($(".elegirPlan").val().split(",")[0]*0.50) + Number($(".elegirPlan").val().split(",")[0])*dias);
+     $(".precioReserva span").number(true);
+
+    break;
+
+    case "5":
+
+     $(".precioReserva span").html(  Number($(".elegirPlan").val().split(",")[0]*0.75) + Number($(".elegirPlan").val().split(",")[0])*dias);
+     $(".precioReserva span").number(true);
+
+    break;
+
+  }
+
 }

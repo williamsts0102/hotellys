@@ -1,6 +1,6 @@
 <?php
 /*esto viene de planes.controlador.php que se encuentra en la carpeta controladores */
-	$planes = ControladorPlanes::mostrarPlanes();
+	$planes = ControladorPlanes::ctrMostrarPlanes();
 ?>
 
 <!--=====================================
