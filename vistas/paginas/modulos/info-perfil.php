@@ -152,6 +152,48 @@ INFO PERFIL
 
 					</div>
 
+					<!--MecadoPago-->
+					<div class="col-12">
+						<form action="<?php echo $ruta.'perfil'; ?>" method="POST">
+							<script
+								src="https://www.mercadopago.com.pe/integrations/v1/web-tokenize-checkout.js"
+								data-public-key="TEST-738e82f4-4102-4316-a627-0b0b618fcfbd"
+								data-transaction-amount="3000.00">
+							</script>
+						</form>
+
+						<?php 
+							if(isset($_REQUEST['token'])){
+								$token = $_REQUEST['token'];
+								echo '<pre>'; print_r($token); echo '</pre>';
+								$payment_method_id = $_REQUEST['payment_method_id'];
+								echo '<pre>'; print_r($payment_method_id); echo '</pre>';
+								$installments = $_REQUEST['installments'];
+								echo '<pre>'; print_r($installments); echo '</pre>';
+								$issuer_id = $_REQUEST['issuer_id'];
+								echo '<pre>'; print_r($issuer_id); echo '</pre>';
+
+								MercadoPago\SDK::setAccessToken("TEST-1361260950072766-061703-2e27aa6b74f1996ab07dbdf6b416bf39-1400892339");
+								$payment = new MercadoPago\Payment();
+								$payment->transaction_amount = 3000;
+								$payment->token = $token;
+								$payment->description = "Hotel";
+								$payment->installments = $installments;
+								$payment->payment_method_id = $payment_method_id;
+								$payment->issuer_id = $issuer_id;
+								$payment->payer = array(
+									"email" => ""
+								);
+
+								$payment->save();
+								echo '<pre>'; print_r($payment); echo '</pre>';
+
+								echo $payment->status;
+								
+							}
+						?>
+					</div>
+
 					<div class="col-6 d-none d-lg-block"></div>
 
 					<div class="col-12 mt-3">
