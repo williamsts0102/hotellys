@@ -182,13 +182,14 @@ INFO PERFIL
 								$payment->payment_method_id = $payment_method_id;
 								$payment->issuer_id = $issuer_id;
 								$payment->payer = array(
-									"email" => ""
+									"email" => "correo@ejemplo.com" // Proporciona un correo electrónico válido
 								);
-
+							
 								$payment->save();
-								echo '<pre>'; print_r($payment); echo '</pre>';
 
-								echo $payment->status;
+								if($payment->status == "approved"){
+
+								}
 								
 							}
 						?>
