@@ -66,10 +66,13 @@ CALENDARIO
 if($(".infoReservas").html() != undefined){
 
 var idHabitacion = $(".infoReservas").attr("idHabitacion");
-console.log("idHabitacion", idHabitacion);
+var arrayHabitacion = JSON.parse("["+idHabitacion +"]");
+console.log("arrayHabitacion", arrayHabitacion);
 var fechaIngreso = $(".infoReservas").attr("fechaIngreso");
 var fechaSalida = $(".infoReservas").attr("fechaSalida");
 var dias = $(".infoReservas").attr("dias");
+
+for (var i = 0; i < arrayHabitacion.length; i++) {
 
 
 var totalEventos = [];
@@ -79,7 +82,7 @@ var opcion3 = [];
 var validarDisponibilidad = false;
 
 var datos = new FormData();
-datos.append("idHabitacion", idHabitacion);
+datos.append("idHabitacion", arrayHabitacion[i]);
 
 $.ajax({
   url:urlPrincipal+"ajax/reservas.ajax.php",
@@ -130,16 +133,17 @@ $.ajax({
               opcion3[i] = true;
             }
 
-            //console.log("opcion1[i]", opcion1[i]);
-            //console.log("opcion2[i]", opcion2[i]);
-            //console.log("opcion3[i]", opcion3[i]);
+            console.log("opcion1[i]", opcion1[i]);
+            console.log("opcion2[i]", opcion2[i]);
+            console.log("opcion3[i]", opcion3[i]);
 
             if(opcion1[i] == false || opcion2[i] == false || opcion3[i] == false){
               validarDisponibilidad = false;
             }else{
               validarDisponibilidad = true;
             }
-            //console.log("validarDisponibilidad", validarDisponibilidad);
+            console.log("validarDisponibilidad", validarDisponibilidad);
+            console.log("validarDisponibilidad", respuesta[i]["id_habitacion"]);
             if(!validarDisponibilidad){
 
               totalEventos.push(
@@ -188,6 +192,7 @@ $.ajax({
         } 
     }
 })
+}
 
 }
 

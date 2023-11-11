@@ -6,7 +6,7 @@ Class ControladorReservas{
     static public function ctrMostrarReservas($valor){
       
         $tabla1 = "habitaciones";
-        $tabla2 = "reservas";
+        $tabla2 = "reservas2";
         $tabla3 = "categorias";
 
         
