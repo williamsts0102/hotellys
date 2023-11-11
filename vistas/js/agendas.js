@@ -1,26 +1,46 @@
 /*=============================================
 FECHAS RESERVA
 =============================================*/
-$('.datepicker.entrada').datepicker({
-	startDate: '0d',
-  datesDisabled: '0d',
-	format: 'yyyy-mm-dd',
-	todayHighlight:true
+
+$.datetimepicker.setLocale('es');
+
+$('.datepicker.entrada').datetimepicker({
+	format: 'Y-m-d H:00:00',
+  minDate:0,
+  defaultTime:(new Date().getHours()+1)+":00",
+  allowTimes:[
+    '08:00',
+    '09:00',
+    '10:00',
+    '11:00',
+    '12:00',
+    '13:00',
+    '14:00',
+    '15:00',
+    '16:00',
+    '17:00',
+    '18:00',
+  ],
+  disabledWeekDays: [0, 6],
+  closeOnDateSelect:false	
 });
 
 $('.datepicker.entrada').change(function(){
 
   $('.datepicker.salida').attr("readonly", false);
   
-	var fechaEntrada = $(this).val();
+	var fechaEntrada = $(this).val().split(" ");
 
-	$('.datepicker.salida').datepicker({
-		startDate: fechaEntrada,
-		datesDisabled: fechaEntrada,
-		format: 'yyyy-mm-dd'
-	});
+  console.log("fechaEntrada", fechaEntrada);
 
-})
+  var fechaEscogida = new Date($(this).val());
+
+	$('.datepicker.salida').val(fechaEntrada[0]+" "+(fechaEscogida.getHours()+1)+":00:00");
+
+		
+	})
+
+
 
 /*=============================================
 SELECTS ANIDADOS
