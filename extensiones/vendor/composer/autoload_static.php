@@ -7,6 +7,10 @@ namespace Composer\Autoload;
 class ComposerStaticInit17a2e4148745c70dafbb3bfcd08a6a0a
 {
     public static $prefixLengthsPsr4 = array (
+        'P' => 
+        array (
+            'Psr\\Cache\\' => 10,
+        ),
         'M' => 
         array (
             'MercadoPago\\' => 12,
@@ -20,6 +24,10 @@ class ComposerStaticInit17a2e4148745c70dafbb3bfcd08a6a0a
     );
 
     public static $prefixDirsPsr4 = array (
+        'Psr\\Cache\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/cache/src',
+        ),
         'MercadoPago\\' => 
         array (
             0 => __DIR__ . '/..' . '/mercadopago/dx-php/src/MercadoPago',
@@ -60,12 +68,17 @@ class ComposerStaticInit17a2e4148745c70dafbb3bfcd08a6a0a
         ),
     );
 
+    public static $classMap = array (
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit17a2e4148745c70dafbb3bfcd08a6a0a::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit17a2e4148745c70dafbb3bfcd08a6a0a::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInit17a2e4148745c70dafbb3bfcd08a6a0a::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit17a2e4148745c70dafbb3bfcd08a6a0a::$classMap;
 
         }, null, ClassLoader::class);
     }
