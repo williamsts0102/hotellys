@@ -89,6 +89,8 @@ var idHabitacion = $(".infoReservas").attr("idHabitacion");
 console.log("idHabitacion", idHabitacion);
 var fechaIngreso = $(".infoReservas").attr("fechaIngreso");
 var fechaSalida = $(".infoReservas").attr("fechaSalida");
+var fechaEscogida = new Date(fechaIngreso);
+var nombreHabitacion = "";
 var dias = $(".infoReservas").attr("dias");
 
 
@@ -132,41 +134,31 @@ $.ajax({
         else {
           for (var i=0; i<respuesta.length; i++){
 
+            /* VALIDAR CRUCE DE FECHAS OPCIÓN 1 */
+
             if(fechaIngreso == respuesta[i]["fecha_ingreso"]){
               opcion1[i] = false;
             }else{
               opcion1[i] = true;
             }
 
-            if(fechaIngreso > respuesta[i]["fecha_ingreso"] && fechaIngreso < respuesta[i]["fecha_salida"]){
-              opcion2[i] = false;
-            }else{
-              opcion2[i] = true;
-            }
 
-            if(fechaIngreso < respuesta[i]["fecha_ingreso"] && fechaIngreso > respuesta[i]["fecha_salida"]){
-              opcion3[i] = false;
-            }else{
-              opcion3[i] = true;
-            }
+            /* VALIDAR DISPONIBILIDAD */
 
-            //console.log("opcion1[i]", opcion1[i]);
-            //console.log("opcion2[i]", opcion2[i]);
-            //console.log("opcion3[i]", opcion3[i]);
-
-            if(opcion1[i] == false || opcion2[i] == false || opcion3[i] == false){
+            if(opcion1[i] == false){
               validarDisponibilidad = false;
             }else{
               validarDisponibilidad = true;
             }
-            //console.log("validarDisponibilidad", validarDisponibilidad);
+            
             if(!validarDisponibilidad){
 
               totalEventos.push(
               { 
+                "title": respuesta[i]["estilo"],
                 "start": respuesta[i]["fecha_ingreso"],
                 "end": respuesta[i]["fecha_salida"],
-                "rendering": 'background',
+                //"rendering": 'background',
                 "color": '#847059'
               });
               $(".infoDisponibilidad").html('<h5 class="pb-5 float-left">¡Lo sentimos, no hay disponibilidad para esa fecha!<br><br><strong>¡Vuelve a intentarlo!</strong></h5>');
@@ -177,31 +169,46 @@ $.ajax({
 
               totalEventos.push(
               { 
+                "title": respuesta[i]["estilo"],
                 "start": respuesta[i]["fecha_ingreso"],
                 "end": respuesta[i]["fecha_salida"],
-                "rendering": 'background',
+                //"rendering": 'background',
                 "color": '#847059'
-              });
+              })
+              nombreHabitacion = respuesta[i]["estilo"];
 
               $(".infoDisponibilidad").html('<h1 class="pb-5 float-left">¡Está Disponible!</h1>');
               colDerReservas();
             }
-
+              
             }
+            //FIN CICLO FOR
+
           if(validarDisponibilidad){
             totalEventos.push({
+              "title": nombreHabitacion,
               "start": fechaIngreso,
               "end": fechaSalida,
-              "rendering": 'background',
+             // "rendering": 'background',
               "color": '#FFCC29'
-            },)
+            })
           }
 
           $('#calendar').fullCalendar({
+            defaultDate:fechaIngreso,
+            defaultView: 'agendaFourDay',
+            allDaySlot:false,
+            scrollTime:fechaEscogida.getHours()+":00:00",
             header: {
                 left: 'prev',
                 center: 'title',
                 right: 'next'
+            },
+            views:{
+              agendaFourDay:{
+                type: 'agenda',
+                duration: { days: 4 }
+              }
             },
             events: totalEventos
           });  

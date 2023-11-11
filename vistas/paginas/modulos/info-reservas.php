@@ -220,17 +220,17 @@ idHabitacion="<?php echo $_POST["id-habitacion"]; ?>" fechaIngreso="<?php echo $
 
 				<div class="form-group">
 				  <label>Ingreso 3:00 pm:</label>
-				  <input type="date" class="form-control" value="<?php echo $_POST["fecha-ingreso"];?>" readonly>
+				  <input type="text" class="form-control" value="<?php echo $_POST["fecha-ingreso"];?>" readonly>
 				</div>
 
 				<div class="form-group">
 				  <label>Salida 1:00 pm:</label>
-				  <input type="date" class="form-control" value="<?php echo $_POST["fecha-salida"];?>"  readonly>
+				  <input type="text" class="form-control" value="<?php echo $_POST["fecha-salida"];?>"  readonly>
 				</div>
 
 				<div class="form-group">
 				  <label>Habitación:</label>
-				  <input type="text" class="form-control" value="Habitación <?php echo $reservas[$indice]["tipo"]." ".$reservas[$indice]["estilo"]; ?>" readonly>
+				  <!-- <input type="text" class="form-control" value="Habitación <?php echo $reservas[$indice]["tipo"]." ".$reservas[$indice]["estilo"]; ?>" readonly>
 
 				  <?php
 
@@ -238,10 +238,10 @@ idHabitacion="<?php echo $_POST["id-habitacion"]; ?>" fechaIngreso="<?php echo $
 
 					?>
 
-				  <img src="<?php echo $servidor.$galeria[0]; ?>" class="img-fluid"> 
+				  <img src="<?php echo $servidor.$galeria[0]; ?>" class="img-fluid"> -->
 
 				  <!--ESCENARIO 2 Y 3 DE RESERVAS -->
-				  <!-- <input type="text" class="form-control tituloReserva" value="" readonly> -->
+				  <input type="text" class="form-control tituloReserva" value="" readonly> 
 
 				</div>
 

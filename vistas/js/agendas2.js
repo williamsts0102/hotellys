@@ -1,26 +1,45 @@
 /*=============================================
 FECHAS RESERVA
 =============================================*/
-$('.datepicker.entrada').datepicker({
-	startDate: '0d',
-  datesDisabled: '0d',
-	format: 'yyyy-mm-dd',
-	todayHighlight:true
+
+$.datetimepicker.setLocale('es');
+
+$('.datepicker.entrada').datetimepicker({
+	format: 'Y-m-d H:00:00',
+  minDate:0,
+  defaultTime:(new Date().getHours()+1)+":00",
+  allowTimes:[
+    '08:00',
+    '09:00',
+    '10:00',
+    '11:00',
+    '12:00',
+    '13:00',
+    '14:00',
+    '15:00',
+    '16:00',
+    '17:00',
+    '18:00',
+  ],
+  disabledWeekDays: [0, 6],
+  closeOnDateSelect:false	
 });
 
 $('.datepicker.entrada').change(function(){
 
   $('.datepicker.salida').attr("readonly", false);
   
-	var fechaEntrada = $(this).val();
+	var fechaEntrada = $(this).val().split(" ");
 
-	$('.datepicker.salida').datepicker({
-		startDate: fechaEntrada,
-		datesDisabled: fechaEntrada,
-		format: 'yyyy-mm-dd'
-	});
+  console.log("fechaEntrada", fechaEntrada);
 
-})
+  var fechaEscogida = new Date($(this).val());
+
+	$('.datepicker.salida').val(fechaEntrada[0]+" "+(fechaEscogida.getHours()+1)+":00:00");
+
+		
+	})
+
 
 /*=============================================
 SELECTS ANIDADOS
@@ -67,10 +86,11 @@ if($(".infoReservas").html() != undefined){
 
 var idHabitacion = $(".infoReservas").attr("idHabitacion");
 var arrayHabitacion = JSON.parse("["+idHabitacion +"]");
-console.log("arrayHabitacion", arrayHabitacion);
 var fechaIngreso = $(".infoReservas").attr("fechaIngreso");
 var fechaSalida = $(".infoReservas").attr("fechaSalida");
 var dias = $(".infoReservas").attr("dias");
+
+var fechaEscogida = new Date(fechaIngreso);
 
 for (var i = 0; i < arrayHabitacion.length; i++) {
 
@@ -120,20 +140,30 @@ $.ajax({
         success:function(respuesta){
             
 
-            if(respuesta.length !=0){
+            if(respuesta.length != 0){
                 $(".infoDisponibilidad").html('<h1 class="pb-5 float-left">¡Está Disponible!</h1>');
 
                 $('#calendar').fullCalendar({
                     defaultDate:fechaIngreso,
-                header: {
+                    defaultView: 'agendaFourDay',
+                    allDaySlot:false,
+                    scrollTime:fechaEscogida.getHours()+":00:00",
+                   header: {
                     left: 'prev',
                     center: 'title',
                     right: 'next'
                 },
+                  views: {
+                    agendaFourDay: {
+                      type: 'agenda',
+                      duration: { days: 4 }
+                    }
+                  },
                 events: [{
+                    title: respuesta[0]["estilo"],
                     start: fechaIngreso,
                     end: fechaSalida,
-                    rendering: 'background',
+                    // rendering: 'background',
                     color: '#FFCC29'
                 }]
 
