@@ -230,7 +230,7 @@ idHabitacion="<?php echo $_POST["id-habitacion"]; ?>" fechaIngreso="<?php echo $
 
 				<div class="form-group">
 				  <label>Habitación:</label>
-				  <input type="text" class="form-control" value="Habitación <?php echo $reservas[$indice]["tipo"]." ".$reservas[$indice]["estilo"]; ?>" readonly>
+				  <!-- <input type="text" class="form-control" value="Habitación <?php echo $reservas[$indice]["tipo"]." ".$reservas[$indice]["estilo"]; ?>" readonly>
 
 				  <?php
 
@@ -238,7 +238,10 @@ idHabitacion="<?php echo $_POST["id-habitacion"]; ?>" fechaIngreso="<?php echo $
 
 					?>
 
-				  <img src="<?php echo $servidor.$galeria[$indice]; ?>" class="img-fluid">
+				  <img src="<?php echo $servidor.$galeria[$indice]; ?>" class="img-fluid"> -->
+
+				  <!--ESCENARIO 2 Y 3 DE RESERVAS -->
+				  <input type="text" class="form-control tituloReserva" value="" readonly>
 
 				</div>
 

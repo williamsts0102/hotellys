@@ -83,8 +83,8 @@ var validarDisponibilidad = false;
 
 var datos = new FormData();
 datos.append("idHabitaciones", arrayHabitacion[i]);
-datos.append("fechaIngreso", fechaIngreso[i]);
-datos.append("fechaSalida", fechaSalida[i]);
+datos.append("fechaIngreso", fechaIngreso);
+datos.append("fechaSalida", fechaSalida);
 
 $.ajax({
   url:urlPrincipal+"ajax/reservas.ajax.php",
@@ -96,32 +96,76 @@ $.ajax({
   dataType:"json",
   success:function(respuesta){
 
-    console.log("respuesta", respuesta);
       
+    if(respuesta != ""){
+
+        function quitarHabitaciones(indice){
+            return indice == respuesta;
+        }
+        arrayHabitacion.splice(arrayHabitacion.findIndex(quitarHabitaciones), 1);
+    }
+    
+    var datosHabitacion = new FormData();
+    datosHabitacion.append("idHabitacion", arrayHabitacion[0]);
+
+    $.ajax({
+        
+        url:urlPrincipal+"ajax/reservas.ajax.php",
+        method: "POST",
+        data: datosHabitacion,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType:"json",
+        success:function(respuesta){
+            
+
+            if(respuesta.length !=0){
+                $(".infoDisponibilidad").html('<h1 class="pb-5 float-left">¡Está Disponible!</h1>');
+
+                $('#calendar').fullCalendar({
+                    defaultDate:fechaIngreso,
+                header: {
+                    left: 'prev',
+                    center: 'title',
+                    right: 'next'
+                },
+                events: [{
+                    start: fechaIngreso,
+                    end: fechaSalida,
+                    rendering: 'background',
+                    color: '#FFCC29'
+                }]
+
+                });
+
+                colDerReservas(respuesta[0]["tipo"],respuesta[0]["estilo"]);
+
+            }else{
+
+                $('#calendar').html("");
+                $('#colDerReservas').hide();
+
+                $(".infoDisponibilidad").html('<h5 class="pb-5 float-left">¡Lo sentimos, no hay disponibilidad para esa fecha!<br><br><strong>¡Vuelve a intentarlo!</strong></h5>');
+            }
+        }
+    })
+
     }
 })
 }
 
 }
 
-/*=============================================
-CODIGO ALEATORIO
-=============================================*/
-var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZ";
 
-function codigoAleatorio(chars, length){
-  codigo = "";
-  for(var i = 0; i < length; i++){
-    rand = Math.floor(Math.random() * chars.length);
-    codigo += chars.substr(rand, 1);
-  }
-  return codigo;
-}
 
 /*=============================================
 FUNCION COL.DERECHA RESERVAS
 =============================================*/
-function colDerReservas(){
+function colDerReservas(tipo, estilo){
+
+  $(".tituloReserva").val("Habitación "+tipo+" "+estilo);
+
   $(".colDerReservas").show();
 
   var codigoReserva = codigoAleatorio(chars, 9);
