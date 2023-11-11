@@ -8,19 +8,15 @@ $habitaciones = ControladorHabitaciones::ctrMostrarHabitaciones($valor);
 /*=====================================
 ESCENARIO 2 DE RESERVAS
 ======================================*/
-//$arrayHabitaciones = array();
+$arrayHabitaciones = array();
 
-//foreach ($habitaciones as $key => $value) {
-	//array_push($arrayHabitaciones, $value["id_h"]);
-// }
+foreach ($habitaciones as $key => $value) {
 
-//$nuevoArrayHab = implode("," , $arrayHabitaciones);
+array_push($arrayHabitaciones, $value["id_h"]);
 
+}
 
-
-
-
-
+$nuevoArrayHab = implode("," , $arrayHabitaciones);
 
 ?>
 
@@ -170,8 +166,10 @@ INFO HABITACIÓN
 
 					<form action="<?php echo $ruta; ?>reservas" method="post">
 
-						<input type="hidden" name="id-habitacion" value="<?php echo $habitaciones[0]["id_h"]; ?>"> 
-						<!-- <input type="hidden" name="id-habitacion" value="<?php echo $nuevoArrayHab; ?>"> -->
+						<!-- <input type="hidden" name="id-habitacion" value="<?php echo $habitaciones[0]["id_h"]; ?>"> -->
+						
+						<!-- ESCENARIO 2 DE RESERVAS -->
+						<input type="hidden" name="id-habitacion" value="<?php echo $nuevoArrayHab; ?>"> 
 
 						<input type="hidden" name="ruta" value="<?php echo $habitaciones[0]["ruta"]; ?>">
 					<div class="container">
