@@ -33,6 +33,9 @@ $servidor = ControladorRuta::ctrServidor();
 	<!-- bootstrap datepicker -->
 	<link rel="stylesheet" href="css/plugins/bootstrap-datepicker.standalone.min.css">
 
+	<!-- datetimepicker -->
+	<link rel="stylesheet" href="css/plugins/jquery.datetimepicker.css">
+
 	<!-- jdSlider -->
 	<link rel="stylesheet" href="css/plugins/jquery.jdSlider.css">
 
@@ -64,6 +67,10 @@ $servidor = ControladorRuta::ctrServidor();
 	<!-- bootstrap datepicker -->
 	<!-- https://bootstrap-datepicker.readthedocs.io/en/latest/ -->
 	<script src="js/plugins/bootstrap-datepicker.min.js"></script>
+
+	<!-- datetimepicker -->
+	<!-- https://xdsoft.net/jqplugins/datetimepicker/ -->
+	<script src="js/plugins/jquery.datetimepicker.full.min.js"></script>
 
 	<!-- https://easings.net/es# -->
 	<script src="js/plugins/jquery.easing.js"></script>
@@ -161,7 +168,10 @@ include "paginas/modulos/modal.php";
 <script src="js/menu.js"></script>
 <script src="js/idiomas.js"></script>
 <script src="js/habitaciones.js"></script>
-<script src="js/reservas2.js"></script>
+<!-- <script src="js/reservas.js"></script> -->
+<!-- <script src="js/reservas2.js"></script> -->
+<script src="js/agendas.js"></script>
+<!-- <script src="js/agendas2.js"></script> -->
 
 	
 </body>
