@@ -1,7 +1,8 @@
 <?php
-/**esto sale de ruta.controlador.php en controladores */
+
 $ruta = ControladorRuta::ctrRuta();
 $servidor = ControladorRuta::ctrServidor();
+
 ?>
 
 <!DOCTYPE html>
@@ -9,9 +10,9 @@ $servidor = ControladorRuta::ctrServidor();
 <head>
 	<meta charset="UTF-8">
 
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximun-scale=1.0, user-scalable=no"/>	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>	
 
-	<title>Hotellys</title>
+	<title>Hotel Portobelo</title>
 
 	<base href="vistas/">
 
@@ -96,6 +97,7 @@ $servidor = ControladorRuta::ctrServidor();
 	<!-- https://plugins.jquery.com/df-number-format/ -->
 	<script src="js/plugins/jquerynumber.js"></script>
 
+
 </head>
 <body>
 
@@ -111,22 +113,19 @@ if(isset($_GET["pagina"])){
 
 	$rutasCategorias = ControladorCategorias::ctrMostrarCategorias();
 
-	$validarRuta="";
+	$validarRuta = "";
 
 	foreach ($rutasCategorias as $key => $value) {
+
 		if($_GET["pagina"] == $value["ruta"]){
 
-			$validarRuta = "habitaciones"; 
+			$validarRuta = "habitaciones";
+
 		}
+		
 	}
 
-	if($_GET["pagina"] == "habitaciones"){
-
-		include "paginas/habitaciones.php";
-
-	}
-
-	if($_GET["pagina"] == "reservas" || $_GET["pagina"] == "perfil" ){
+	if($_GET["pagina"] == "reservas" || $_GET["pagina"] == "perfil"){
 
 		include "paginas/".$_GET["pagina"].".php";
 		
@@ -135,11 +134,12 @@ if(isset($_GET["pagina"])){
 		include "paginas/habitaciones.php";
 
 	}else{
-		echo '<script>
-		
-		window.location="'.$ruta.'";
 
-		</script>'; 
+		echo '<script>
+
+		window.location = "'.$ruta.'";
+
+		</script>';
 	}
 
 }else{
@@ -160,19 +160,18 @@ include "paginas/modulos/modal.php";
 
 ?>
 
+
 <input type="hidden" value="<?php echo $ruta; ?>" id="urlPrincipal">
 <input type="hidden" value="<?php echo $servidor; ?>" id="urlServidor">
-
 
 <script src="js/plantilla.js"></script>
 <script src="js/menu.js"></script>
 <script src="js/idiomas.js"></script>
 <script src="js/habitaciones.js"></script>
-<!-- <script src="js/reservas.js"></script> -->
+<script src="js/reservas.js"></script>
 <!-- <script src="js/reservas2.js"></script> -->
 <!-- <script src="js/agendas.js"></script> -->
-<script src="js/agendas2.js"></script> 
-
+<!-- <script src="js/agendas2.js"></script> -->
 	
 </body>
 </html>

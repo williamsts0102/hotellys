@@ -20,8 +20,9 @@ a:visited, a:link, a:focus, a:hover, a:active{
 }
 
 .fc-today{
-	background: rgb(255,255,255,0) !important;
+	background:rgba(255,255,255,0) !important;
 }
+
 
 /*=============================================
 HEADER
@@ -164,11 +165,6 @@ BANNER
 /*=============================================
 PLANES
 =============================================*/
-.textoAgregado{
-	margin-bottom: 1px;
-}
-
-
 .planes .grid-container{
 	display:grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;

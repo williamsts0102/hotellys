@@ -150,7 +150,7 @@ INFO PERFIL
 						
 						<h4 class="float-left">Hola Juan</h4>
 
-					</div>
+					</div>	
 
 					<!--MecadoPago-->
 					<div class="col-12">

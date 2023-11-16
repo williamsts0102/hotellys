@@ -1,11 +1,12 @@
-<!--=====================================
-BANNER que me traiga los banners
-======================================-->
-
 <?php
-    /*esta variable se utiliza en el foreach */
-    $banner = ControladorBanner::mostrarBanner();
+
+$banner = ControladorBanner::ctrMostrarBanner();
+
 ?>
+
+<!--=====================================
+BANNER
+======================================-->
 
 <div class="banner container-fluid p-0">
 	
@@ -14,14 +15,17 @@ BANNER que me traiga los banners
 		<div class="slide-inner">
 			
 			<ul class="slide-area">
-				
-                <!-- Para poder mostrar en los <li></li> -->
-            <?php foreach ($banner as $key => $value): ?>
+
+                <?php foreach ($banner as $key => $value): ?>
+                
+        				
 				 <li>					
-                    <!-- se tiene que mostrar las imagenes q hay en el backend, por eso servidor que viene de plantilla.php -->
                     <img src="<?php echo $servidor.$value["img"]; ?>" width="100%">
                 </li>
-            <?php endforeach ?>
+  
+
+               <?php endforeach ?>
+
 			</ul>
 
 		</div>

@@ -9,7 +9,7 @@ VENTANA MODAL PLANES
 		<div class="modal-content">
 			
 	      	<div class="modal-header">
-	        	<h4 class="modal-title"></h4>
+	        	<h4 class="modal-title text-uppercase"></h4>
 	        	<button type="button" class="close" data-dismiss="modal">&times;</button>
 	      	</div>
 			
@@ -20,7 +20,7 @@ VENTANA MODAL PLANES
     			<p class="py-3"></p>
        			
        			<div class="text-center">
-        			<a href="habitaciones.html" class="btn btn-primary text-center">Separa tu habitación</a>
+        			<a href="#habitaciones" class="btn btn-primary text-center  btnModalPlan" data-dismiss="modal">Separa tu habitación</a>
         		</div>
 
       		</div>

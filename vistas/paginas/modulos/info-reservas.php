@@ -1,9 +1,13 @@
 <?php
+
 if(isset($_POST["id-habitacion"])){
 
 	$valor = $_POST["id-habitacion"];
-	$indice = 0;
+
 	$reservas = ControladorReservas::ctrMostrarReservas($valor);
+
+	$indice = 0;
+
 	if(!$reservas){
 
 		$valor = $_POST["ruta"];
@@ -20,17 +24,20 @@ if(isset($_POST["id-habitacion"])){
 		}
 	}
 
-	
 	$planes = ControladorPlanes::ctrMostrarPlanes();
-	$hoy = getdate();
 
-	/*TEMPORADA ALTA DEL 15 DE DICIEMBRE HASTA EL 15 DE ENERO */
-	/*TEMPORADA ALTA 15 DE JULIO HASTA EL 15 DE AGOSTO */
-	/*TEMPORADA BAJA */
+	/*=============================================
+	DEFINIR PRECIOS DE TEMPORADA
+	=============================================*/
+
+	date_default_timezone_set("America/Bogota");
+
+	$hoy = getdate();
+	
 	if($hoy["mon"] == 12 && $hoy["mday"] >= 15 && $hoy["mday"] <= 31 ||
 	   $hoy["mon"] == 1 && $hoy["mday"] >= 1 && $hoy["mday"] <= 15 ||
-	   $hoy["mon"] == 7 && $hoy["mday"] >= 15 && $hoy["mday"] <= 31 ||
-	   $hoy["mon"] == 8 && $hoy["mday"] >= 1 && $hoy["mday"] <= 15){
+	   $hoy["mon"] == 6 && $hoy["mday"] >= 15 && $hoy["mday"] <= 31 ||
+	   $hoy["mon"] == 7 && $hoy["mday"] >= 1 && $hoy["mday"] <= 15){
 
 		$precioContinental = $reservas[$indice]["continental_alta"];
 		$precioAmericano = $reservas[$indice]["americano_alta"];
@@ -53,6 +60,7 @@ if(isset($_POST["id-habitacion"])){
 	/*=============================================
 	DEFINIR CANTIDAD DE DIAS DE LA RESERVA
 	=============================================*/
+
 	$fechaIngreso = new DateTime($_POST["fecha-ingreso"]);
 	$fechaSalida = new DateTime($_POST["fecha-salida"]);
 	$diff = $fechaIngreso->diff($fechaSalida);
@@ -62,21 +70,21 @@ if(isset($_POST["id-habitacion"])){
 
 		$dias = 1;
 	}
-	
 
 }else{
 
 	echo '<script> window.location="'.$ruta.'"</script>';
+
 }
 
 
 ?>
+
 <!--=====================================
 INFO RESERVAS
 ======================================-->
 
-<div class="infoReservas container-fluid bg-white p-0 pb-5"
-idHabitacion="<?php echo $_POST["id-habitacion"]; ?>" fechaIngreso="<?php echo $_POST["fecha-ingreso"]; ?>" fechaSalida="<?php echo $_POST["fecha-salida"]; ?>" dias="<?php echo $dias; ?>"> >
+<div class="infoReservas container-fluid bg-white p-0 pb-5" idHabitacion="<?php echo $_POST["id-habitacion"]; ?>" fechaIngreso="<?php echo $_POST["fecha-ingreso"]; ?>" fechaSalida="<?php echo $_POST["fecha-salida"]; ?>" dias="<?php echo $dias; ?>">
 	
 	<div class="container">
 		
@@ -94,7 +102,7 @@ idHabitacion="<?php echo $_POST["id-habitacion"]; ?>" fechaIngreso="<?php echo $
 				
 				<div class="pt-4 cabeceraReservas">
 					
-					<a href="<?php echo $ruta;  ?>habitaciones" class="float-left lead text-white pt-1 px-3">
+					<a href="javascript:history.back()" class="float-left lead text-white pt-1 px-3">
 						<h5><i class="fas fa-chevron-left"></i> Regresar</h5>
 					</a>
 
@@ -126,9 +134,8 @@ idHabitacion="<?php echo $_POST["id-habitacion"]; ?>" fechaIngreso="<?php echo $
 				<?php else: ?>
 
 					<div class="infoDisponibilidad"></div>
-
+					
 				<?php endif ?>
-
 
 					<div class="float-right pb-3">
 							
@@ -160,50 +167,46 @@ idHabitacion="<?php echo $_POST["id-habitacion"]; ?>" fechaIngreso="<?php echo $
 
 					<form action="<?php echo $ruta; ?>reservas" method="post">
 
-					<input type="hidden" name="id-habitacion" value="<?php echo $_POST["id-habitacion"]; ?>">
+						<input type="hidden" name="id-habitacion" value="<?php echo $_POST["id-habitacion"]; ?>">
 
-					<input type="hidden" name="ruta" value="<?php echo $_POST["ruta"]; ?>">
+						<input type="hidden" name="ruta" value="<?php echo $_POST["ruta"]; ?>">
 
+						<div class="container mb-3">
 
-					<div class="container mb-3">
+							<div class="row py-2" style="background:#509CC3">
 
-						<div class="row py-2" style="background:#509CC3">
-
-							 <div class="col-6 col-md-3 input-group pr-1">
-							
-							 <input type="text" class="form-control datepicker entrada" autocomplete="off" placeholder="Entrada" name="fecha-ingreso" value="<?php echo $_POST["fecha-ingreso"]; ?>" required>
-
-								<div class="input-group-append">
-									
-									<span class="input-group-text"><i class="far fa-calendar-alt small text-gray-dark"></i></span>
+								 <div class="col-6 col-md-3 input-group pr-1">
 								
+									<input type="text" class="form-control datepicker entrada" autocomplete="off" placeholder="Entrada" name="fecha-ingreso" value="<?php echo $_POST["fecha-ingreso"]; ?>"  required>
+
+									<div class="input-group-append">
+										
+										<span class="input-group-text"><i class="far fa-calendar-alt small text-gray-dark"></i></span>
+									
+									</div>
+
 								</div>
 
-							</div>
-
-						 	<div class="col-6 col-md-3 input-group pl-1">
-							
-							 <input type="text" class="form-control datepicker salida" placeholder="Salida" autocomplete="off" name="fecha-salida" value="<?php echo $_POST["fecha-salida"]; ?>" required>
-
-								<div class="input-group-append">
-									
-									<span class="input-group-text"><i class="far fa-calendar-alt small text-gray-dark"></i></span>
+							 	<div class="col-6 col-md-3 input-group pl-1">
 								
+									<input type="text" class="form-control datepicker salida" autocomplete="off" placeholder="Salida" name="fecha-salida"  value="<?php echo $_POST["fecha-salida"]; ?>" readonly required>
+
+									<div class="input-group-append">
+										
+										<span class="input-group-text"><i class="far fa-calendar-alt small text-gray-dark"></i></span>
+									
+									</div>
+
 								</div>
 
-							</div>
-
-							<div class="col-12 col-md-6 mt-2 mt-lg-0 input-group">
-								
-								
-									<input type="submit" class="btn btn-block btn-md text-white" value="Ver disponibilidad" style="background:black">	
-								
+								<div class="col-12 col-md-6 mt-2 mt-lg-0 input-group">
+																
+									<input type="submit" class="btn btn-block btn-md text-white" value="Ver disponibilidad" style="background:black">										
+								</div>
 
 							</div>
 
 						</div>
-
-					</div>
 
 				</div>
 
@@ -220,41 +223,42 @@ idHabitacion="<?php echo $_POST["id-habitacion"]; ?>" fechaIngreso="<?php echo $
 
 				<div class="form-group">
 				  <label>Ingreso 3:00 pm:</label>
-				  <input type="text" class="form-control" value="<?php echo $_POST["fecha-ingreso"];?>" readonly>
+				  <input type="date" class="form-control" value="<?php echo $_POST["fecha-ingreso"];?>" readonly>
 				</div>
 
 				<div class="form-group">
 				  <label>Salida 1:00 pm:</label>
-				  <input type="text" class="form-control" value="<?php echo $_POST["fecha-salida"];?>"  readonly>
+				  <input type="date" class="form-control" value="<?php echo $_POST["fecha-salida"];?>"  readonly>
 				</div>
 
 				<div class="form-group">
 				  <label>Habitación:</label>
-				  <!-- <input type="text" class="form-control" value="Habitación <?php echo $reservas[$indice]["tipo"]." ".$reservas[$indice]["estilo"]; ?>" readonly>
+				  <input type="text" class="form-control" value="Habitación <?php echo $reservas[$indice]["tipo"]." ".$reservas[$indice]["estilo"]; ?>" readonly>
 
 				  <?php
 
-					$galeria = json_decode($reservas[$indice]["galeria"], true);
+				  	$galeria = json_decode($reservas[$indice]["galeria"], true);
+				  
+				  ?>
 
-					?>
+				  <img src="<?php echo $servidor.$galeria[$indice]; ?>" class="img-fluid">
 
-				  <img src="<?php echo $servidor.$galeria[0]; ?>" class="img-fluid"> -->
-
-				  <!--ESCENARIO 2 Y 3 DE RESERVAS -->
-				  <input type="text" class="form-control tituloReserva" value="" readonly> 
+				   <!-- ESCENARIO 2 Y 3 DE RESERVAS -->
+				   <!-- <input type="text" class="form-control tituloReserva" value="" readonly>   -->
 
 				</div>
 
 				<div class="form-group">
-				<label><a href="#infoPlanes" data-toggle="modal">Escoge tu Plan:</a> <small>(Precio sugerido para 2 personas)</small></label>
+				  <label><a href="#infoPlanes" data-toggle="modal">Escoge tu Plan:</a> <small>(Precio sugerido para 2 personas)</small></label>
 				  <select class="form-control elegirPlan">
 				  	
-				  <option value="<?php echo $precioContinental;?>,Plan Continental">Plan Continental S/.<?php echo number_format($precioContinental); ?> 1 día 1 noche</option>
-					<option value="<?php echo $precioAmericano;?>,Plan Americano">Plan Americano S/.<?php echo number_format($precioAmericano); ?> 1 día 1 noche</option>
-					<option value="<?php echo $precioRomantico;?>,Plan Romantico">Plan Romántico S/.<?php echo number_format($precioRomantico); ?> 1 día 1 noche</option>
-					<option value="<?php echo $precioLunaDeMiel;?>,Plan Luna de Miel">Plan Luna de Miel S/.<?php echo number_format($precioLunaDeMiel); ?> 1 día 1 noche</option>
-					<option value="<?php echo $precioAventura;?>,Plan Aventura">Plan Aventura S/.<?php echo number_format($precioAventura); ?> 1 día 1 noche</option>
-					<option value="<?php echo $precioSPA;?>,Plan SPA">Plan SPA S/.<?php echo number_format($precioSPA); ?> 1 día 1 noche</option>
+					<option value="<?php echo $precioContinental;?>,Plan Continental">Plan Continental $<?php echo number_format($precioContinental); ?> 1 día 1 noche</option>
+					<option value="<?php echo $precioAmericano;?>,Plan Americano">Plan Americano $<?php echo number_format($precioAmericano); ?> 1 día 1 noche</option>
+					<option value="<?php echo $precioRomantico;?>,Plan Romantico">Plan Romántico $<?php echo number_format($precioRomantico); ?> 1 día 1 noche</option>
+					<option value="<?php echo $precioLunaDeMiel;?>,Plan Luna de Miel">Plan Luna de Miel $<?php echo number_format($precioLunaDeMiel); ?> 1 día 1 noche</option>
+					<option value="<?php echo $precioAventura;?>,Plan Aventura">Plan Aventura $<?php echo number_format($precioAventura); ?> 1 día 1 noche</option>
+					<option value="<?php echo $precioSPA;?>,Plan SPA">Plan SPA $<?php echo number_format($precioSPA); ?> 1 día 1 noche</option>
+
 				  </select>
 				</div>
 				
@@ -274,13 +278,13 @@ idHabitacion="<?php echo $_POST["id-habitacion"]; ?>" fechaIngreso="<?php echo $
 
 					<div class="col-12 col-lg-6 col-xl-7 text-center text-lg-left">
 						
-					<h1 class="precioReserva">S/.<span><?php echo number_format($precioContinental*$dias);?></span></h1>
+						<h1 class="precioReserva">$<span><?php echo number_format($precioContinental*$dias);?></span> COP</h1>
 
 					</div>
 					
 					<div class="col-12 col-lg-6 col-xl-5">
 				
-						<a href="<?php echo $ruta;  ?>perfil">
+						<a href="<?php echo $ruta;?>perfil">
 							<button class="btn btn-dark btn-lg w-100">PAGAR <br> RESERVA</button>
 						</a>
 
@@ -295,6 +299,7 @@ idHabitacion="<?php echo $_POST["id-habitacion"]; ?>" fechaIngreso="<?php echo $
 	</div>
 
 </div>
+
 
 <!--=====================================
 VENTANA MODAL PLANES
@@ -341,9 +346,9 @@ VENTANA MODAL PLANES
 
        					<p class="px-2">
 
-	       				Temporada Baja: Plan Americano + S/. <?php echo number_format($value["precio_baja"]); ?><br>
+	       				Temporada Baja: Plan Americano + $ <?php echo number_format($value["precio_baja"]); ?> COP<br>
 
-	       				Temporada Alta: Plan Americano + S/. <?php echo number_format($value["precio_alta"]); ?>
+	       				Temporada Alta: Plan Americano + $ <?php echo number_format($value["precio_alta"]); ?> COP
 
 	       				</p>
 

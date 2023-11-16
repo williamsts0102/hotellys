@@ -1,3 +1,9 @@
+<?php
+
+$planes = ControladorPlanes::ctrMostrarPlanes();
+
+?>
+
 <!--=====================================
 PLANES MÓVIL
 ======================================-->
@@ -9,45 +15,21 @@ PLANES MÓVIL
 	 <div class="slide-inner">
 	 	
 		 <ul class="slide-area">
-		 	
-			<li>
+
+		 <?php foreach ($planes as $key => $value): ?>
+
+		 	<li>
 				
-				<a href="#modalPlanes" data-toggle="modal" descripcion="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas suscipit quis eligendi voluptatibus dolore libero quasi delectus odit impedit optio eius corporis cumque numquam aliquid repudiandae quisquam dolor explicabo, totam.">
+				<a href="#modalPlanes" data-toggle="modal" descripcion="<?php echo $value["descripcion"]; ?>">
 					
-					<img src="img/plan-romantico.png">
-					<h6 class="py-2 text-center">ROMÁNTICO</h6>
+					<img src="<?php echo $servidor.$value["img"]; ?>">
+					<h6 class="py-2 text-center text-uppercase"><?php echo $value["tipo"]; ?></h6>
 
 				</a>
 
 			</li>
-
-			<li>
-				
-				<a href="#modalPlanes" data-toggle="modal" descripcion="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat dicta fugiat nihil amet officiis, atque molestiae velit, quod repudiandae asperiores illum accusantium ullam, necessitatibus excepturi inventore, mollitia est vitae impedit.">
-                	<img src="img/luna-de-miel.png">
-                	<h6 class="py-2 text-center">LUNA DE MIEL</h6>
-                </a>
-
-			</li>
-
-			<li>
-				
-			  	<a href="#modalPlanes" data-toggle="modal" descripcion="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt blanditiis nulla expedita nostrum vero. Laborum repudiandae numquam mollitia earum natus ut delectus quas, iste unde doloribus suscipit qui, voluptate perspiciatis.">
-                	<img src="img/plan-aventura.png">
-                	<h6 class="py-2 text-center">AVENTURA</h6>
-                </a>
-
-			</li>
-
-			<li>
-				
-			  <a href="#modalPlanes" data-toggle="modal" descripcion="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam quibusdam magni atque provident, quaerat libero harum possimus. Illum iure magni voluptate, quos amet! Ipsam, sit, sapiente. Cumque est officiis in!">
-                	<img src="img/plan-spa.png">
-                	<h6 class="py-2 text-center">SPA</h6>
-                </a>
-
-			</li>
-
+		 	
+		 <?php endforeach ?>
 
 		 </ul>
 

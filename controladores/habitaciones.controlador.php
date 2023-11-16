@@ -2,19 +2,21 @@
 
 Class ControladorHabitaciones{
 
-    static public function ctrMostrarHabitaciones($valor){
 
-        $tabla1 = "categorias";
-        $tabla2 = "habitaciones";
+	/*=============================================
+	MOSTRAR CATEGORIAS-HABITACIONES CON INNER JOIN
+	=============================================*/
 
-        $respuesta = ModeloHabitaciones::mdlMostrarHabitaciones($tabla1, $tabla2, $valor);
-        
-        
-        return $respuesta;
+	static public function ctrMostrarHabitaciones($valor){
 
-    }
+		$tabla1 = "categorias";
+		$tabla2 = "habitaciones";
 
+		$respuesta = ModeloHabitaciones::mdlMostrarHabitaciones($tabla1, $tabla2, $valor);
 
+		return $respuesta;
+
+	}
 
 
 }
