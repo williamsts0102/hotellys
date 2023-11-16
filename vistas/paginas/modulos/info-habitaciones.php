@@ -1,25 +1,24 @@
 <?php
-/*la variable pagina viene de plantilla.php */
+
 $valor = $_GET["pagina"];
 
 $habitaciones = ControladorHabitaciones::ctrMostrarHabitaciones($valor);
 // echo '<pre class="bg-white">'; print_r($habitaciones); echo '</pre>';
 
-/*=====================================
-ESCENARIO 2 Y 3 DE RESERVAS
-======================================*/
-$arrayHabitaciones = array();
+/*=============================================
+ESCENARIO 2 DE RESERVAS
+=============================================*/
+// $arrayHabitaciones = array();
 
-foreach ($habitaciones as $key => $value) {
+// foreach ($habitaciones as $key => $value) {
 
-array_push($arrayHabitaciones, $value["id_h"]);
+// 	array_push($arrayHabitaciones, $value["id_h"]);
 
-}
+// }
 
-$nuevoArrayHab = implode("," , $arrayHabitaciones);
+// $nuevoArrayHab = implode("," , $arrayHabitaciones);
 
 ?>
-
 
 
 <!--=====================================
@@ -44,29 +43,30 @@ INFO HABITACIÓN
 				
 				<div class="pt-4 cabeceraHabitacion">
 
-				<!-- php echo $ruta;  ?> significa que cuando le de click regresará al inicio -->
 					<a href="<?php echo $ruta;  ?>" class="float-left lead text-white pt-1 px-3">
 						<h5><i class="fas fa-chevron-left"></i> Regresar</h5>
 					</a>
-					<!-- aparecen los titulos por ejemplo Suite, Standar, Especial-->
-					<h2 class="float-right text-white px-3 categoria text-uppercase">
-						<?php echo $habitaciones[0]["tipo"]; ?>
-					</h2>
+
+					<h2 class="float-right text-white px-3 categoria text-uppercase"><?php echo $habitaciones[0]["tipo"]; ?></h2>
 
 					<div class="clearfix"></div>
 
 					<ul class="nav nav-justified mt-lg-4">	
-					<?php foreach ($habitaciones as $key => $value): ?>
+
+						<?php foreach ($habitaciones as $key => $value): ?>
 
 						<li class="nav-item">
 
 							<a class="nav-link text-white" orden="<?php echo $key; ?>" ruta="<?php echo $_GET["pagina"]; ?>" href="#">
-							<?php echo $value["estilo"]; ?>
+								 <?php echo $value["estilo"]; ?>
 							</a>
 
 						</li>
-					<?php endforeach ?>
+							
+						<?php endforeach ?>
+
 						
+	
 					</ul>
 
 				</div>
@@ -78,25 +78,28 @@ INFO HABITACIÓN
 				<!-- SLIDE  -->
 
 				<section class="jd-slider mb-3 my-lg-3 slideHabitaciones">
-			    <div class="slide-inner">
-			    <ul class="slide-area">
-						
-						<?php
+		      	       
+			        <div class="slide-inner">
+			            
+			            <ul class="slide-area">
 
-						$galeria = json_decode($habitaciones[0]["galeria"], true);
-						
-						?>
+			            <?php
 
-						<?php foreach ($galeria as $key => $value):  ?>
-							
-							<li>	
+			            $galeria = json_decode($habitaciones[0]["galeria"], true);
+			           
+			            ?>
 
-								<img src="<?php echo $servidor.$value ?>" class="img-fluid">
+			            <?php foreach ($galeria as $key => $value): ?>
+			            	
+		            	  	<li>	
+
+								<img src="<?php echo $servidor.$value; ?>" class="img-fluid">
 
 							</li>
 
-						<?php endforeach ?>
-	
+
+			            <?php endforeach ?>
+
 						</ul>
 
 					</div>
@@ -121,7 +124,7 @@ INFO HABITACIÓN
 
 				<section class="mb-3 my-lg-3 videoHabitaciones d-none">
 					
-					<iframe width="100%" height="380" src="https://www.youtube.com/embed/<?php echo $habitaciones[0]["video"]; ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					<iframe width="100%" height="380" src="https://www.youtube.com/embed/<?php  echo $habitaciones[0]["video"]; ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				
 				</section>
 
@@ -129,7 +132,7 @@ INFO HABITACIÓN
 
 				<section class="mb-3 my-lg-3 360Habitaciones d-none">
 
-					<div id="myPano" class="pano" back="<?php echo $servidor.$habitaciones[0]["recorrido_virtual"]; ?>">
+					<div id="myPano" class="pano" back="<?php  echo $servidor.$habitaciones[0]["recorrido_virtual"]; ?>">
 
 						<div class="controls">
 							<a href="#" class="left">&laquo;</a>
@@ -161,56 +164,56 @@ INFO HABITACIÓN
 					<div class="clearfix mb-4"></div>	
 
 					<div class="d-habitacion">
+						
 						<?php echo $habitaciones[0]["descripcion_h"]; ?>
+
 					</div>
 
 					<form action="<?php echo $ruta; ?>reservas" method="post">
 
-						<!-- <input type="hidden" name="id-habitacion" value="<?php echo $habitaciones[0]["id_h"]; ?>"> -->
-						
+						<input type="hidden" name="id-habitacion" value="<?php echo $habitaciones[0]["id_h"]; ?>">
+					
 						<!-- ESCENARIO 2 DE RESERVAS -->
-						<input type="hidden" name="id-habitacion" value="<?php echo $nuevoArrayHab; ?>"> 
+						<!-- <input type="hidden" name="id-habitacion" value="<?php echo $nuevoArrayHab; ?>"> -->
 
 						<input type="hidden" name="ruta" value="<?php echo $habitaciones[0]["ruta"]; ?>">
-					<div class="container">
 
-						<div class="row py-2" style="background:#509CC3">
+						<div class="container">
 
-							 <div class="col-6 col-md-3 input-group pr-1">
-							
-								<input type="text" class="form-control datepicker entrada" placeholder="Entrada" name="fecha-ingreso" required>
+							<div class="row py-2" style="background:#509CC3">
 
-								<div class="input-group-append">
-									
-									<span class="input-group-text"><i class="far fa-calendar-alt small text-gray-dark"></i></span>
+								 <div class="col-6 col-md-3 input-group pr-1">
 								
+									<input type="text" class="form-control datepicker entrada" placeholder="Entrada" autocomplete="off" name="fecha-ingreso"  required>
+
+									<div class="input-group-append">
+										
+										<span class="input-group-text"><i class="far fa-calendar-alt small text-gray-dark"></i></span>
+									
+									</div>
+
 								</div>
 
-							</div>
-
-						 	<div class="col-6 col-md-3 input-group pl-1">
-							
-								<input type="text" class="form-control datepicker salida" placeholder="Salida" name="fecha-salida" required>
-
-								<div class="input-group-append">
-									
-									<span class="input-group-text"><i class="far fa-calendar-alt small text-gray-dark"></i></span>
+							 	<div class="col-6 col-md-3 input-group pl-1">
 								
+									<input type="text" class="form-control datepicker salida" placeholder="Salida" autocomplete="off" name="fecha-salida" readonly required>
+
+									<div class="input-group-append">
+										
+										<span class="input-group-text"><i class="far fa-calendar-alt small text-gray-dark"></i></span>
+									
+									</div>
+
 								</div>
 
-							</div>
-
-							<div class="col-12 col-md-6 mt-2 mt-lg-0 input-group">
-								
-								<input type="submit" class="btn btn-block btn-md text-white" 
-								value="Ver disponibilidad" style="background:black">	
-								</a>
+								<div class="col-12 col-md-6 mt-2 mt-lg-0 input-group">
+											
+									<input type="submit" class="btn btn-block btn-md text-white" value="Ver disponibilidad" style="background:black">									
+								</div>
 
 							</div>
 
 						</div>
-
-					</div>
 
 					</form>
 
@@ -228,23 +231,22 @@ INFO HABITACIÓN
 				
 				<ul>
 
-					<?php
-						//convertir el json a una cadena
-						$incluye = json_decode($habitaciones[0]["incluye"], true);
-						//echo '<pre>'; print_r($incluye); echo '</pre>'
-					?>
+				<?php
 
-					<?php foreach ($incluye as $key => $value): ?>
-				
+					$incluye = json_decode($habitaciones[0]["incluye"], true);
+
+				?>
+
+				<?php foreach ($incluye as $key => $value): ?>
+
 					<li>
 						<h5>
 							<i class="<?php echo $value["icono"]; ?> w-25 colorTitulos"></i> 
 							<span class="text-dark small"><?php echo $value["item"]; ?></span>
 						</h5>
 					</li>
-
-
-					<?php endforeach ?>
+					
+				<?php endforeach ?>
 
 				</ul>
 
@@ -252,57 +254,57 @@ INFO HABITACIÓN
 
 				<div class="habitaciones" id="habitaciones">
 
-<div class="container">
+					<div class="container">
 
-	<div class="row">
+						<div class="row">
 
 
-	<?php
+						<?php
 
-		$categorias = ControladorCategorias::ctrMostrarCategorias();
+							$categorias = ControladorCategorias::ctrMostrarCategorias();
 
-	?>
+						?>
 
-	<?php foreach ($categorias as $key => $value): ?>
+						<?php foreach ($categorias as $key => $value): ?>
 
-		<?php if ($_GET["pagina"] != $value["ruta"]): ?>
+							<?php if ($_GET["pagina"] != $value["ruta"]): ?>
 
-		<div class="col-12 pb-3 px-0 px-lg-3">
+							<div class="col-12 pb-3 px-0 px-lg-3">
 
-				<a href="<?php echo $ruta.$value["ruta"];  ?>">
-
-				<figure class="text-center">
+									<a href="<?php echo $ruta.$value["ruta"];  ?>">
 					
-					<img src="<?php echo $servidor.$value["img"]; ?>" class="img-fluid" width="100%">
+									<figure class="text-center">
+										
+										<img src="<?php echo $servidor.$value["img"]; ?>" class="img-fluid" width="100%">
 
-					<p class="small py-4 mb-0"><?php echo $value["descripcion"]; ?></p>
+										<p class="small py-4 mb-0"><?php echo $value["descripcion"]; ?></p>
 
-					<h3 class="py-2 text-gray-dark mb-0">DESDE $<?php echo number_format($value["continental_baja"]); ?> COP</h3>
+										<h3 class="py-2 text-gray-dark mb-0">DESDE $<?php echo number_format($value["continental_baja"]); ?> COP</h3>
 
-					<h5 class="py-2 text-gray-dark border">Ver detalles <i class="fas fa-chevron-right ml-2"></i></h5>
-					
-					<h1 class="text-white p-3 mx-auto w-50 lead text-uppercase" style="background:<?php echo $value["color"]; ?>"><?php echo $value["tipo"]; ?></h1>
+										<h5 class="py-2 text-gray-dark border">Ver detalles <i class="fas fa-chevron-right ml-2"></i></h5>
+										
+										<h1 class="text-white p-3 mx-auto w-50 lead text-uppercase" style="background:<?php echo $value["color"]; ?>"><?php echo $value["tipo"]; ?></h1>
 
-				</figure>
+									</figure>
 
-			</a>
+								</a>
+
+							</div>
+
+							<?php endif ?>		
+							
+						<?php endforeach ?>						
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
 
 		</div>
 
-		<?php endif ?>		
-		
-	<?php endforeach ?>						
-
 	</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
 
 </div>

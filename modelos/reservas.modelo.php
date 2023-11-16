@@ -24,6 +24,10 @@ Class ModeloReservas{
 
 	}
 
+	/*=============================================
+	Mostrar Codigo Reserva Singular
+	=============================================*/
+
 	static public function mdlMostrarCodigoReserva($tabla, $valor){
 
 		$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE codigo_reserva = :codigo_reserva");
@@ -32,12 +36,13 @@ Class ModeloReservas{
 
 		$stmt -> execute();
 
-		return $stmt -> fetchAll();
+		return $stmt -> fetch();
 
 		$stmt -> close();
 
 		$stmt = null;
-
+	
 	}
+
 
 }

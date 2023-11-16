@@ -150,7 +150,7 @@ INFO PERFIL
 						
 						<h4 class="float-left">Hola Juan</h4>
 
-					</div>
+					</div>	
 
 					<div class="col-6 d-none d-lg-block"></div>
 

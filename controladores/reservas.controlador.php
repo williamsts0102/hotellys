@@ -1,26 +1,37 @@
 <?php
 
 Class ControladorReservas{
-    /*Mostrar Reservas*/
 
-    static public function ctrMostrarReservas($valor){
-      
-        $tabla1 = "habitaciones";
-        $tabla2 = "agenda";
-        $tabla3 = "categorias";
+	/*=============================================
+	Mostrar Reservas
+	=============================================*/
 
-        
-        $respuesta = ModeloReservas::mdlMostrarReservas($tabla1, $tabla2, $tabla3, $valor);
+	static public function ctrMostrarReservas($valor){
 
-        return $respuesta;
-    }
+		$tabla1 = "habitaciones";
+		$tabla2 = "reservas";
+		$tabla3 = "categorias";
 
-    static public function ctrMostrarCodigoReserva($valor){
-      ;
-        $tabla = "reservas";
+		$respuesta = ModeloReservas::mdlMostrarReservas($tabla1, $tabla2, $tabla3, $valor);
 
-        $respuesta = ModeloReservas::mdlMostrarCodigoReserva($tabla, $valor);
+		return $respuesta;
 
-        return $respuesta;
-    }
+	}
+
+
+	/*=============================================
+	Mostrar Código Reserva Singular
+	=============================================*/
+	
+	static public function ctrMostrarCodigoReserva($valor){
+
+		$tabla = "reservas";
+
+		$respuesta = ModeloReservas::mdlMostrarCodigoReserva($tabla, $valor);
+
+		return $respuesta;
+
+	}
+
+
 }

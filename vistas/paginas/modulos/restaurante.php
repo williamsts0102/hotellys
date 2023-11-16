@@ -50,7 +50,7 @@ RESTAURANTE
 				
 				<h1 class="mt-4 my-lg-5">RESTAURANTE</h1>
 
-				<p class="p-4 my-lg-5">Descubre la excelencia de los sabores marinos en nuestro restaurante frente al mar! Sumérgete en una experiencia culinaria única donde la frescura de los ingredientes se combina con la creatividad de nuestro talentoso chef. Nuestro menú está repleto de delicias del océano, desde ceviche fresco hasta platos de pescado a la parrilla y exquisitas preparaciones de mariscos. Disfruta de la brisa marina y las impresionantes vistas mientras deleitas tu paladar con lo mejor que el mar tiene para ofrecer. En nuestro restaurante, cada bocado es un viaje de sabor al corazón del océano.</p>
+				<p class="p-4 my-lg-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo beatae nemo, saepe iusto, voluptas fuga. Nesciunt tempora nobis quia, officia at corporis sint sunt saepe quod labore hic iusto totam.</p>
 
 				<button class="btn btn-warning text-uppercase mb-5 verCarta">Ver la carta</button>
 
