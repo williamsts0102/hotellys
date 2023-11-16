@@ -6,7 +6,7 @@ $habitaciones = ControladorHabitaciones::ctrMostrarHabitaciones($valor);
 // echo '<pre class="bg-white">'; print_r($habitaciones); echo '</pre>';
 
 /*=====================================
-ESCENARIO 2 DE RESERVAS
+ESCENARIO 2 Y 3 DE RESERVAS
 ======================================*/
 $arrayHabitaciones = array();
 
