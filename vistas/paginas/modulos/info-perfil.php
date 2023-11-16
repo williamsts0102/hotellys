@@ -154,6 +154,9 @@ INFO PERFIL
 
 					<!--MecadoPago-->
 					<div class="col-12">
+
+					<?php if (isset($_COOKIE["codigoReserva"])): ?>
+
 						<form action="<?php echo $ruta.'perfil'; ?>" method="POST">
 							<script
 								src="https://www.mercadopago.com.pe/integrations/v1/web-tokenize-checkout.js"
@@ -193,6 +196,8 @@ INFO PERFIL
 								
 							}
 						?>
+					<?php endif ?>
+
 					</div>
 
 					<div class="col-6 d-none d-lg-block"></div>
