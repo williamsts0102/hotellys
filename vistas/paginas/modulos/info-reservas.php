@@ -284,8 +284,18 @@ INFO RESERVAS
 					
 					<div class="col-12 col-lg-6 col-xl-5">
 				
-						<a href="<?php echo $ruta;?>perfil">
-							<button class="btn btn-dark btn-lg w-100">PAGAR <br> RESERVA</button>
+					<a href="<?php echo $ruta;?>perfil" 
+						class="pagarReserva" 
+						idHabitacion="<?php echo $reservas[$indice]["id_h"]; ?>"
+						imgHabitacion="<?php echo $servidor.$galeria[0]; ?>"
+						infoHabitacion="Habitación <?php echo $reservas[$indice]["tipo"]." ".$reservas[$indice]["estilo"]; ?>"
+						pagoReserva="<?php echo ($precioContinental*$dias);?>"
+						codigoReserva=""
+						fechaIngreso="<?php echo $_POST["fecha-ingreso"];?>"
+						fechaSalida="<?php echo $_POST["fecha-salida"];?>"
+						plan="Plan Continental" 
+						personas="2">
+							<button type="button" class="btn btn-dark btn-lg w-100">PAGAR <br> RESERVA</button>
 						</a>
 
 					</div>
