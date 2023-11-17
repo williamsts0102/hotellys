@@ -241,7 +241,7 @@ INFO RESERVAS
 				  
 				  ?>
 
-				  <img src="<?php echo $servidor.$galeria[$indice]; ?>" class="img-fluid">
+				  <img src="<?php echo $servidor.$galeria[0]; ?>" class="img-fluid">
 
 				   <!-- ESCENARIO 2 Y 3 DE RESERVAS -->
 				   <!-- <input type="text" class="form-control tituloReserva" value="" readonly>   -->

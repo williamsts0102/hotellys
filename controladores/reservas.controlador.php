@@ -33,5 +33,19 @@ Class ControladorReservas{
 
 	}
 
+	/*=============================================
+	Guardar Reserva
+	=============================================*/
+	
+	static public function ctrGuardarReserva($valor){
+
+		$tabla = "reservas";
+
+		$respuesta = ModeloReservas::mdlGuardarReserva($tabla, $valor);
+
+		return $respuesta;
+
+	}
+
 
 }

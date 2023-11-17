@@ -157,41 +157,103 @@ INFO PERFIL
 
 					<?php if (isset($_COOKIE["codigoReserva"])): ?>
 
-						<form action="<?php echo $ruta.'perfil'; ?>" method="POST">
-							<script
-								src="https://www.mercadopago.com.pe/integrations/v1/web-tokenize-checkout.js"
-								data-public-key="TEST-738e82f4-4102-4316-a627-0b0b618fcfbd"
-								data-transaction-amount="3000.00">
-							</script>
-						</form>
+							<div class="card">
+								<div class="card-header">
+								<h4>Tienes una reserva pendiente por pagar:</h4> 
+								</div>
+								<div class="card-body text-center">
+									<figure>
+
+							  			<img src="<?php echo $_COOKIE["imgHabitacion"]; ?>" class="img-thumbnail w-50">
+
+							  		</figure>
+
+									  <h5><strong><?php echo $_COOKIE["infoHabitacion"]; ?></strong></h5>
+									  
+									  <h6> Fechas <?php echo $_COOKIE["fechaIngreso"]; ?> - <?php echo $_COOKIE["fechaSalida"]; ?></h6>
+
+									<h4>$<?php echo number_format($_COOKIE["pagoReserva"]); ?></h4>
+
+								</div>
+								<div class="card-footer d-flex bg-white">
+										<figure>
+								 			
+											 <img src="img/mercadopago.png" class="img-fluid w-50">
+											 
+										 </figure>
+
+										 <form action="<?php echo $ruta.'perfil'; ?>" method="POST" class="pt-3">
+											<script
+												src="https://www.mercadopago.com.pe/integrations/v1/web-tokenize-checkout.js"
+												data-public-key="TEST-738e82f4-4102-4316-a627-0b0b618fcfbd"
+												data-transaction-amount="<?php echo $_COOKIE["pagoReserva"]; ?>"
+												data-button-label="Pagar"
+												data-summary-product-label="<?php echo $_COOKIE["infoHabitacion"]; ?>"
+												data-summary-product="<?php echo $_COOKIE["pagoReserva"]; ?>"
+												>
+											</script>
+										</form>
+								</div>
+							</div>
+
+
+						
 
 						<?php 
 							if(isset($_REQUEST['token'])){
 								$token = $_REQUEST['token'];
-								echo '<pre>'; print_r($token); echo '</pre>';
+								// echo '<pre>'; print_r($token); echo '</pre>';
 								$payment_method_id = $_REQUEST['payment_method_id'];
-								echo '<pre>'; print_r($payment_method_id); echo '</pre>';
+								// echo '<pre>'; print_r($payment_method_id); echo '</pre>';
 								$installments = $_REQUEST['installments'];
-								echo '<pre>'; print_r($installments); echo '</pre>';
+								// echo '<pre>'; print_r($installments); echo '</pre>';
 								$issuer_id = $_REQUEST['issuer_id'];
-								echo '<pre>'; print_r($issuer_id); echo '</pre>';
+								// echo '<pre>'; print_r($issuer_id); echo '</pre>';
 
 								MercadoPago\SDK::setAccessToken("TEST-1361260950072766-061703-2e27aa6b74f1996ab07dbdf6b416bf39-1400892339");
 								$payment = new MercadoPago\Payment();
-								$payment->transaction_amount = 3000;
-								$payment->token = $token;
-								$payment->description = "Hotel";
-								$payment->installments = $installments;
-								$payment->payment_method_id = $payment_method_id;
-								$payment->issuer_id = $issuer_id;
-								$payment->payer = array(
+							    $payment->transaction_amount = $_COOKIE["pagoReserva"];
+							    $payment->token = $token;
+							    $payment->description = $_COOKIE["infoHabitacion"];
+							    $payment->installments = $installments;
+							    $payment->payment_method_id = $payment_method_id;
+							    $payment->issuer_id = $issuer_id;
+							    $payment->payer = array(
 									"email" => "correo@ejemplo.com" // Proporciona un correo electrónico válido
 								);
 							
 								$payment->save();
-
+								
 								if($payment->status == "approved"){
 
+									$datos = array( "id_habitacion" => $_COOKIE["idHabitacion"],
+													"id_usuario" => 1,
+													"pago_reserva" => $_COOKIE["pagoReserva"],
+													"numero_transaccion" => $payment->id,
+													"codigo_reserva" => $_COOKIE["codigoReserva"],
+													"descripcion_reserva" => $_COOKIE["infoHabitacion"],
+													"fecha_ingreso" => $_COOKIE["fechaIngreso"],
+													"fecha_salida" => $_COOKIE["fechaSalida"]);	
+									
+									$respuesta = ControladorReservas::ctrGuardarReserva($datos);
+									
+									if($respuesta =="ok"){
+										echo '<script>
+									document.cookie = "idHabitacion=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path='.$ruta.';";
+									document.cookie = "imgHabitacion=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path='.$ruta.';";
+									document.cookie = "infoHabitacion=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path='.$ruta.';";
+									document.cookie = "pagoReserva=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path='.$ruta.';";
+									document.cookie = "codigoReserva=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path='.$ruta.';";
+									document.cookie = "fechaIngreso=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path='.$ruta.';";
+									document.cookie = "fechaSalida=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path='.$ruta.';";
+									</script>
+
+									<div class="alert alert-success">
+										La reserva ha sido exitosa
+									</div>';
+									}
+
+									
 								}
 								
 							}
