@@ -302,9 +302,39 @@ Class ControladorUsuarios{
 
 	}
 
+    static public function ctrRegistroRedesSociales($datos){
 
+        $tabla = "usuarios";
+        $item = "email";
+        $valor = $datos["email"];
+        $emailRepetido = false;
 
+        $verificarExistenciaUsuario = ModeloUsuarios::mdlMostrarUsuario($tabla, $item, $valor);
 
+        if($verificarExistenciaUsuario){
 
+            $emailRepetido = true;
+            
+        }else{
+
+            $registrarUsuario = ModeloUsuarios::mdlRegistroUsuario($tabla, $datos);
+        
+        }
+
+        if($emailRepetido || $registrarUsuario == "ok"){
+
+            $traerUsuario = ModeloUsuarios::mdlMostrarUsuario($tabla, $item, $valor);
+
+            if($traerUsuario["modo"] == "facebook"){
+
+                echo "ok";
+
+            }else{
+
+                echo "";
+
+            }
+        }
+    }
 
 }

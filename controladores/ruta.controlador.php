@@ -4,13 +4,13 @@ class ControladorRuta{
 
 	static public function ctrRuta(){
 
-		return "http://localhost/hotellys/";
+		return "https://localhost/hotellys/";
 
 	}
 
 	static public function ctrServidor(){
 
-		return "http://localhost/hotellys/backend/";
+		return "https://localhost/hotellys/backend/";
 	}
 
 }
