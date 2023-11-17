@@ -239,13 +239,6 @@ Class ControladorUsuarios{
 
                 }
                 else{
-                    $_SESSION["validarSesion"] = "ok";
-    					$_SESSION["id"] = $respuesta["id_u"];
-    					$_SESSION["nombre"] = $respuesta["nombre"];
-    					$_SESSION["foto"] = $respuesta["foto"];
-						$_SESSION["email"] = $respuesta["email"];
-						$_SESSION["modo"] = $respuesta["modo"];	
-
                     $ruta = ControladorRuta::ctrRuta();
 
 						echo '<script>
@@ -333,25 +326,10 @@ Class ControladorUsuarios{
             $traerUsuario = ModeloUsuarios::mdlMostrarUsuario($tabla, $item, $valor);
 
             if($traerUsuario["modo"] == "facebook"){
-                $_SESSION["validarSesion"] = "ok";
-                $_SESSION["id"] = $respuesta["id_u"];
-                $_SESSION["nombre"] = $respuesta["nombre"];
-                $_SESSION["foto"] = $respuesta["foto"];
-                $_SESSION["email"] = $respuesta["email"];
-                $_SESSION["modo"] = $respuesta["modo"];	
+
                 echo "ok";
 
-            }
-            else if($traerUsuario["modo"]=="google"){
-                $_SESSION["validarSesion"] = "ok";
-                $_SESSION["id"] = $respuesta["id_u"];
-                $_SESSION["nombre"] = $respuesta["nombre"];
-                $_SESSION["foto"] = $respuesta["foto"];
-                $_SESSION["email"] = $respuesta["email"];
-                $_SESSION["modo"] = $respuesta["modo"];	
-                return "ok";
-            }
-            else{
+            }else{
 
                 echo "";
 
