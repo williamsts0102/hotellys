@@ -335,7 +335,7 @@ Class ControladorUsuarios{
             $traerUsuario = ModeloUsuarios::mdlMostrarUsuario($tabla, $item, $valor);
 
             if($traerUsuario["modo"] == "facebook"){
-
+                session_start();
 				$_SESSION["validarSesion"] = "ok";
 				$_SESSION["id"] = $traerUsuario["id_u"];
 				$_SESSION["nombre"] = $traerUsuario["nombre"];
@@ -343,7 +343,7 @@ Class ControladorUsuarios{
 				$_SESSION["email"] = $traerUsuario["email"];
 				$_SESSION["modo"] = $traerUsuario["modo"];	
 
-				return "ok";
+                echo "ok";
 
 			}else if($traerUsuario["modo"] == "google"){
 
