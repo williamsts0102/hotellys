@@ -39,7 +39,7 @@ VENTANA MODAL PLANES
 VENTANA MODAL INGRESO
 ======================================-->
 
-<div class="modal" id="modalIngreso">
+<div class="modal formulario" id="modalIngreso">
 
   <div class="modal-dialog">
 
@@ -84,7 +84,7 @@ VENTANA MODAL INGRESO
 
 		<hr class="mt-0">
 
-		<form>
+		<form method="post">
 
 			<div class="input-group mb-3">
 
@@ -98,7 +98,8 @@ VENTANA MODAL INGRESO
 
 			    </div>
 
-			    <input type="email" class="form-control" placeholder="Email">
+			    <input type="email" class="form-control" placeholder="Email"
+				name="ingresoEmail" require>
 
 		  	</div>
 
@@ -114,12 +115,18 @@ VENTANA MODAL INGRESO
 
 			    </div>
 
-			    <input type="password" class="form-control" placeholder="Contraseña">
+			    <input type="password" class="form-control" placeholder="Contraseña" name="ingresoPassword" require>
 
 		  	</div>
 			
 
 			<input type="submit" class="btn btn-dark btn-block" value="Ingresar">
+
+		<?php 
+			$ingresoUsuario = new ControladorUsuarios();
+			$ingresoUsuario -> ctrIngresoUsuario();
+		
+		?>	
 
 		</form>
 
@@ -150,7 +157,7 @@ VENTANA MODAL INGRESO
 VENTANA MODAL REGISTRO
 ======================================-->
 
-<div class="modal" id="modalRegistro">
+<div class="modal formulario" id="modalRegistro">
 
   <div class="modal-dialog">
 
