@@ -334,21 +334,21 @@ Class ControladorUsuarios{
 
             if($traerUsuario["modo"] == "facebook"){
                 $_SESSION["validarSesion"] = "ok";
-                $_SESSION["id"] = $traerUsuario["id_u"];
-                $_SESSION["nombre"] = $traerUsuario["nombre"];
-                $_SESSION["foto"] = $traerUsuario["foto"];
-                $_SESSION["email"] = $traerUsuario["email"];
-                $_SESSION["modo"] = $traerUsuario["modo"];	
+                $_SESSION["id"] = $respuesta["id_u"];
+                $_SESSION["nombre"] = $respuesta["nombre"];
+                $_SESSION["foto"] = $respuesta["foto"];
+                $_SESSION["email"] = $respuesta["email"];
+                $_SESSION["modo"] = $respuesta["modo"];	
                 echo "ok";
 
             }
             else if($traerUsuario["modo"]=="google"){
                 $_SESSION["validarSesion"] = "ok";
-                $_SESSION["id"] = $traerUsuario["id_u"];
-                $_SESSION["nombre"] = $traerUsuario["nombre"];
-                $_SESSION["foto"] = $traerUsuario["foto"];
-                $_SESSION["email"] = $traerUsuario["email"];
-                $_SESSION["modo"] = $traerUsuario["modo"];	
+                $_SESSION["id"] = $respuesta["id_u"];
+                $_SESSION["nombre"] = $respuesta["nombre"];
+                $_SESSION["foto"] = $respuesta["foto"];
+                $_SESSION["email"] = $respuesta["email"];
+                $_SESSION["modo"] = $respuesta["modo"];	
                 return "ok";
             }
             else{

@@ -118,41 +118,7 @@ HEADER
 
 			<div class="grid-item d-none d-lg-block mt-2">
 
-			<?php if (isset($_SESSION["validarSesion"])): ?>
-
-				<?php if ($_SESSION["validarSesion"] == "ok"): ?>
-					<a href="<?php echo $ruta.'perfil'; ?>">
-
-					<?php if ($_SESSION["foto"] == ""): ?>
-					
-						<i class="fas fa-user"></i>
-
-					<?php else: ?>
-
-						<?php if ($_SESSION["modo"] == "directo"): ?>
-
-							<img src="<?php echo $servidor.$_SESSION["foto"]; ?>" class="img-fluid rounded-circle" style="width:30px">
-						
-						<?php else: ?>
-							
-							<img src="<?php echo $_SESSION["foto"]; ?>" class="img-fluid rounded-circle" style="width:30px">
-
-						<?php endif ?>	
-
-					<?php endif ?>	
-
-					</a>
-
-
-					<?php endif ?>		
-
-			<?php else: ?>	
-
 				<a href="#modalIngreso" data-toggle="modal"><i class="fas fa-user"></i></a>
-
-			<?php endif ?>	
-
-				
 
 			</div>
 
