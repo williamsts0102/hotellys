@@ -176,77 +176,77 @@ INFO PERFIL
 							}
 
 
-							// /*=============================================
-						 	// CRUCE DE FECHAS
-							// =============================================*/
+						/*=============================================
+						 	CRUCE DE FECHAS
+							 =============================================*/
 
-							// $valor = $_COOKIE["idHabitacion"];
+							 $valor = $_COOKIE["idHabitacion"];
 
-							// $validarReserva = ControladorReservas::ctrMostrarReservas($valor);
+							 $validarReserva = ControladorReservas::ctrMostrarReservas($valor);
 
-							// $opcion01 = array();
-							// $opcion02 = array();
-							// $opcion03 = array();
+							 $opcion01 = array();
+							 $opcion02 = array();
+							 $opcion03 = array();
 							
-							// if($validarReserva != 0){
+							 if($validarReserva != 0){
 
-							// 	foreach ($validarReserva as $key => $value) {
+							 	foreach ($validarReserva as $key => $value) {
 									
-							// 		/* VALIDAR CRUCE DE FECHAS OPCIÓN 1 */     
+							 		/* VALIDAR CRUCE DE FECHAS OPCIÓN 1 */     
 
-							// 		if($_COOKIE["fechaIngreso"] == $value["fecha_ingreso"]){
+							 		if($_COOKIE["fechaIngreso"] == $value["fecha_ingreso"]){
 
-							// 			array_push($opcion01, false);
+							 			array_push($opcion01, false);
 
-							// 		}else{
+							 		}else{
 
-							// 			array_push($opcion01, true);
+							 			array_push($opcion01, true);
 
-							// 		}
+									}
 
-							// 		 /* VALIDAR CRUCE DE FECHAS OPCIÓN 2 */
+									 /* VALIDAR CRUCE DE FECHAS OPCIÓN 2 */
 
-							// 		 if($_COOKIE["fechaIngreso"] > $value["fecha_ingreso"] && $_COOKIE["fechaIngreso"] < $value["fecha_salida"]){
+									 if($_COOKIE["fechaIngreso"] > $value["fecha_ingreso"] && $_COOKIE["fechaIngreso"] < $value["fecha_salida"]){
 
-							// 			array_push($opcion02, false);
+										array_push($opcion02, false);
 
-							// 		}else{
+							 		}else{
 
-							// 			array_push($opcion02, true);
+							 			array_push($opcion02, true);
 
-							// 		} 
+							 		} 
 
-							// 		 /* VALIDAR CRUCE DE FECHAS OPCIÓN 3 */
+									 /* VALIDAR CRUCE DE FECHAS OPCIÓN 3 */
 
-							// 		 if($_COOKIE["fechaIngreso"] < $value["fecha_ingreso"] && $_COOKIE["fechaSalida"] > $value["fecha_ingreso"]){
+							 		 if($_COOKIE["fechaIngreso"] < $value["fecha_ingreso"] && $_COOKIE["fechaSalida"] > $value["fecha_ingreso"]){
 
-							// 			array_push($opcion03, false);
+							 			array_push($opcion03, false);
 
-							// 		}else{
+							 		}else{
 
-							// 			array_push($opcion03, true);
+										array_push($opcion03, true);
 
-							// 		} 
+							 		} 
 
-							// 		if($opcion01[$key] == false || $opcion02[$key] == false || $opcion03[$key] == false){
+							 		if($opcion01[$key] == false || $opcion02[$key] == false || $opcion03[$key] == false){
 
-							// 			$validarPagoReserva = false;
+							 			$validarPagoReserva = false;
 
-							// 			echo 'Lo sentimos, las fechas de la reserva que habías seleccionado han sido ocupadas  
-							// 				<a href="'.$ruta.'" class="btn btn-danger btn-sm">vuelve a intentarlo </a>';
+							 			echo 'Lo sentimos, las fechas de la reserva que habías seleccionado han sido ocupadas  
+							 				<a href="'.$ruta.'" class="btn btn-danger btn-sm">vuelve a intentarlo </a>';
 
-							// 			break;	
+							 			break;	
 
-							// 		}else{
+									}else{
 
-							// 			$validarPagoReserva = true;
+							 			$validarPagoReserva = true;
 
-							// 		}	        
+									}	        
 
 
-							// 	}
+							 	}
 
-							// }
+							}
 
 						?>
 

@@ -120,10 +120,11 @@ if($(".infoReservas").html() != undefined){
     processData: false,
     dataType:"json",
     success:function(respuesta){
-     
+
         if(respuesta.length == 0){
 
           $('#calendar').fullCalendar({
+            defaultDate:fechaIngreso,
             header: {
                 left: 'prev',
                 center: 'title',
@@ -249,6 +250,7 @@ if($(".infoReservas").html() != undefined){
           }
 
           $('#calendar').fullCalendar({
+            defaultDate:fechaIngreso,
             header: {
                 left: 'prev',
                 center: 'title',
@@ -265,8 +267,6 @@ if($(".infoReservas").html() != undefined){
   })
 
 }
-
-
 
 /*=============================================
 FUNCIÓN COL.DERECHA RESERVAS
@@ -297,11 +297,11 @@ function colDerReservas(){
          $(".codigoReserva").html(codigoReserva);
          $(".pagarReserva").attr("codigoReserva",codigoReserva );
 
-
        }else{
 
           $(".codigoReserva").html(codigoReserva+codigoAleatorio(chars, 3));
           $(".pagarReserva").attr("codigoReserva",codigoReserva+codigoAleatorio(chars, 3));
+
        }
 
         /*=============================================
@@ -341,7 +341,6 @@ function cambioPlanesPersonas(){
 
        $(".precioReserva span").html($(".elegirPlan").val().split(",")[0]*dias);
        $(".precioReserva span").number(true);
-
        $(".pagarReserva").attr("pagoReserva",$(".elegirPlan").val().split(",")[0]*dias)
        $(".pagarReserva").attr("plan",$(".elegirPlan").val().split(",")[1]);
        $(".pagarReserva").attr("personas",$(".cantidadPersonas").val());
@@ -353,8 +352,8 @@ function cambioPlanesPersonas(){
      $(".precioReserva span").html(  Number($(".elegirPlan").val().split(",")[0]*0.25) + Number($(".elegirPlan").val().split(",")[0])*dias);
      $(".precioReserva span").number(true);
      $(".pagarReserva").attr("pagoReserva",Number($(".elegirPlan").val().split(",")[0]*0.25) + Number($(".elegirPlan").val().split(",")[0])*dias);
-     $(".pagarReserva").attr("plan",$(".elegirPlan").val().split(",")[1]);
-     $(".pagarReserva").attr("personas",$(".cantidadPersonas").val());
+      $(".pagarReserva").attr("plan",$(".elegirPlan").val().split(",")[1]);
+      $(".pagarReserva").attr("personas",$(".cantidadPersonas").val());
 
     break;
 
@@ -363,8 +362,8 @@ function cambioPlanesPersonas(){
      $(".precioReserva span").html(  Number($(".elegirPlan").val().split(",")[0]*0.50) + Number($(".elegirPlan").val().split(",")[0])*dias);
      $(".precioReserva span").number(true);
      $(".pagarReserva").attr("pagoReserva",Number($(".elegirPlan").val().split(",")[0]*0.50) + Number($(".elegirPlan").val().split(",")[0])*dias);
-     $(".pagarReserva").attr("plan",$(".elegirPlan").val().split(",")[1]);
-     $(".pagarReserva").attr("personas",$(".cantidadPersonas").val());
+      $(".pagarReserva").attr("plan",$(".elegirPlan").val().split(",")[1]);
+      $(".pagarReserva").attr("personas",$(".cantidadPersonas").val());
 
     break;
 
@@ -373,8 +372,8 @@ function cambioPlanesPersonas(){
      $(".precioReserva span").html(  Number($(".elegirPlan").val().split(",")[0]*0.75) + Number($(".elegirPlan").val().split(",")[0])*dias);
      $(".precioReserva span").number(true);
      $(".pagarReserva").attr("pagoReserva",Number($(".elegirPlan").val().split(",")[0]*0.75) + Number($(".elegirPlan").val().split(",")[0])*dias);
-     $(".pagarReserva").attr("plan",$(".elegirPlan").val().split(",")[1]);
-     $(".pagarReserva").attr("personas",$(".cantidadPersonas").val());
+      $(".pagarReserva").attr("plan",$(".elegirPlan").val().split(",")[1]);
+      $(".pagarReserva").attr("personas",$(".cantidadPersonas").val());
 
     break;
 
@@ -384,47 +383,41 @@ function cambioPlanesPersonas(){
 
 
 /*=============================================
-CAPTURAR DATOS DE LA RESERVA
-=============================================*/
-
-/*=============================================
 FUNCIÓN PARA GENERAR COOKIES
 =============================================*/
 
- function crearCookie(nombre, valor, diasExpedicion){
+function crearCookie(nombre, valor, diasExpedicion){
 
-   var hoy = new Date();
+  var hoy = new Date();
 
- hoy.setTime(hoy.getTime() + (diasExpedicion * 24 * 60 * 60 * 1000));
+  hoy.setTime(hoy.getTime() + (diasExpedicion * 24 * 60 * 60 * 1000));
 
   var fechaExpedicion = "expires=" + hoy.toUTCString();
 
-   document.cookie = nombre + "=" + valor + "; " + fechaExpedicion;
+  document.cookie = nombre + "=" + valor + "; " + fechaExpedicion;
 
 }
 
-$(".pagarReserva").click(function(){
-  var idHabitacion = $(this).attr("idHabitacion");
-  // console.log("idHabitacion", idHabitacion);
-  var imgHabitacion = $(this).attr("imgHabitacion");
-  // console.log("imgHabitacion", imgHabitacion);
-  var infoHabitacion = $(this).attr("infoHabitacion")+" - "+$(this).attr("plan")+" - "+$(this).attr("personas")+" personas";
-  // console.log("infoHabitacion", infoHabitacion);
-  var pagoReserva = $(this).attr("pagoReserva");
-  // console.log("pagoReserva", pagoReserva);
-  var codigoReserva = $(this).attr("codigoReserva");
-  // console.log("codigoReserva", codigoReserva);
-  var fechaIngreso = $(this).attr("fechaIngreso");
-  // console.log("fechaIngreso", fechaIngreso);
-  var fechaSalida = $(this).attr("fechaSalida");
-  // console.log("fechaSalida", fechaSalida);
+/*=============================================
+CAPTURAR DATOS DE LA RESERVA
+=============================================*/
 
-   crearCookie("idHabitacion", idHabitacion, 1);
-   crearCookie("imgHabitacion", imgHabitacion, 1);
-   crearCookie("infoHabitacion", infoHabitacion, 1);
-   crearCookie("pagoReserva", pagoReserva, 1);
-   crearCookie("codigoReserva", codigoReserva, 1);
-   crearCookie("fechaIngreso", fechaIngreso, 1);
-   crearCookie("fechaSalida", fechaSalida, 1);
+$(".pagarReserva").click(function(){
+
+  var idHabitacion = $(this).attr("idHabitacion");
+  var imgHabitacion = $(this).attr("imgHabitacion");
+  var infoHabitacion = $(this).attr("infoHabitacion")+" - "+$(this).attr("plan")+" - "+$(this).attr("personas")+" personas";
+  var pagoReserva = $(this).attr("pagoReserva");
+  var codigoReserva = $(this).attr("codigoReserva");
+  var fechaIngreso = $(this).attr("fechaIngreso");
+  var fechaSalida = $(this).attr("fechaSalida");  
+
+  crearCookie("idHabitacion", idHabitacion, 1);
+  crearCookie("imgHabitacion", imgHabitacion, 1);
+  crearCookie("infoHabitacion", infoHabitacion, 1);
+  crearCookie("pagoReserva", pagoReserva, 1);
+  crearCookie("codigoReserva", codigoReserva, 1);
+  crearCookie("fechaIngreso", fechaIngreso, 1);
+  crearCookie("fechaSalida", fechaSalida, 1);
 
 })
