@@ -343,7 +343,7 @@ Class ControladorUsuarios{
 				$_SESSION["email"] = $traerUsuario["email"];
 				$_SESSION["modo"] = $traerUsuario["modo"];	
 
-				echo "ok";
+				return "ok";
 
 			}else if($traerUsuario["modo"] == "google"){
 
