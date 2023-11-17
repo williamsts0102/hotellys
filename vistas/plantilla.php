@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 $ruta = ControladorRuta::ctrRuta();
 $servidor = ControladorRuta::ctrServidor();

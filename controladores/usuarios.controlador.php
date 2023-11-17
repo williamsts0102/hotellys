@@ -239,6 +239,15 @@ Class ControladorUsuarios{
 
                 }
                 else{
+                    $_SESSION["validarSesion"] = "ok";
+                    $_SESSION["id"] = $respuesta["id_u"];
+                    $_SESSION["nombre"] = $respuesta["nombre"];
+                    $_SESSION["foto"] = $respuesta["foto"];
+                    $_SESSION["email"] = $respuesta["email"];
+                    $_SESSION["modo"] = $respuesta["modo"];	
+
+
+
                     $ruta = ControladorRuta::ctrRuta();
 
 						echo '<script>
@@ -327,13 +336,30 @@ Class ControladorUsuarios{
 
             if($traerUsuario["modo"] == "facebook"){
 
-                echo "ok";
+				$_SESSION["validarSesion"] = "ok";
+				$_SESSION["id"] = $traerUsuario["id_u"];
+				$_SESSION["nombre"] = $traerUsuario["nombre"];
+				$_SESSION["foto"] = $traerUsuario["foto"];
+				$_SESSION["email"] = $traerUsuario["email"];
+				$_SESSION["modo"] = $traerUsuario["modo"];	
 
-            }else{
+				echo "ok";
 
-                echo "";
+			}else if($traerUsuario["modo"] == "google"){
 
-            }
+				$_SESSION["validarSesion"] = "ok";
+				$_SESSION["id"] = $traerUsuario["id_u"];
+				$_SESSION["nombre"] = $traerUsuario["nombre"];
+				$_SESSION["foto"] = $traerUsuario["foto"];
+				$_SESSION["email"] = $traerUsuario["email"];
+				$_SESSION["modo"] = $traerUsuario["modo"];	
+
+				return "ok";
+
+			}else{
+
+				echo "";
+			}
         }
     }
 
