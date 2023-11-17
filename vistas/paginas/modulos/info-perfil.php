@@ -152,11 +152,107 @@ INFO PERFIL
 
 					</div>	
 
-					<!--MecadoPago-->
+					<!--MercadoPago-->
 					<div class="col-12">
 
 					<?php if (isset($_COOKIE["codigoReserva"])): ?>
 
+
+						<?php
+
+							$validarPagoReserva = false;
+
+							$hoy = date("Y-m-d");
+
+							if($hoy >= $_COOKIE["fechaIngreso"] || $hoy >= $_COOKIE["fechaSalida"]){
+
+								echo '<div class="alert alert-danger">Lo sentimos, las fechas de la reserva no pueden ser igual o inferiores al día de hoy, vuelve a intentarlo.</div>';
+
+								$validarPagoReserva = false;
+
+							}else{
+
+								$validarPagoReserva = true;
+							}
+
+
+							// /*=============================================
+						 	// CRUCE DE FECHAS
+							// =============================================*/
+
+							// $valor = $_COOKIE["idHabitacion"];
+
+							// $validarReserva = ControladorReservas::ctrMostrarReservas($valor);
+
+							// $opcion01 = array();
+							// $opcion02 = array();
+							// $opcion03 = array();
+							
+							// if($validarReserva != 0){
+
+							// 	foreach ($validarReserva as $key => $value) {
+									
+							// 		/* VALIDAR CRUCE DE FECHAS OPCIÓN 1 */     
+
+							// 		if($_COOKIE["fechaIngreso"] == $value["fecha_ingreso"]){
+
+							// 			array_push($opcion01, false);
+
+							// 		}else{
+
+							// 			array_push($opcion01, true);
+
+							// 		}
+
+							// 		 /* VALIDAR CRUCE DE FECHAS OPCIÓN 2 */
+
+							// 		 if($_COOKIE["fechaIngreso"] > $value["fecha_ingreso"] && $_COOKIE["fechaIngreso"] < $value["fecha_salida"]){
+
+							// 			array_push($opcion02, false);
+
+							// 		}else{
+
+							// 			array_push($opcion02, true);
+
+							// 		} 
+
+							// 		 /* VALIDAR CRUCE DE FECHAS OPCIÓN 3 */
+
+							// 		 if($_COOKIE["fechaIngreso"] < $value["fecha_ingreso"] && $_COOKIE["fechaSalida"] > $value["fecha_ingreso"]){
+
+							// 			array_push($opcion03, false);
+
+							// 		}else{
+
+							// 			array_push($opcion03, true);
+
+							// 		} 
+
+							// 		if($opcion01[$key] == false || $opcion02[$key] == false || $opcion03[$key] == false){
+
+							// 			$validarPagoReserva = false;
+
+							// 			echo 'Lo sentimos, las fechas de la reserva que habías seleccionado han sido ocupadas  
+							// 				<a href="'.$ruta.'" class="btn btn-danger btn-sm">vuelve a intentarlo </a>';
+
+							// 			break;	
+
+							// 		}else{
+
+							// 			$validarPagoReserva = true;
+
+							// 		}	        
+
+
+							// 	}
+
+							// }
+
+						?>
+
+						<?php if ($validarPagoReserva): ?>
+
+							
 							<div class="card">
 								<div class="card-header">
 								<h4>Tienes una reserva pendiente por pagar:</h4> 
@@ -246,18 +342,38 @@ INFO PERFIL
 									document.cookie = "codigoReserva=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path='.$ruta.';";
 									document.cookie = "fechaIngreso=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path='.$ruta.';";
 									document.cookie = "fechaSalida=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path='.$ruta.';";
-									</script>
 
-									<div class="alert alert-success">
-										La reserva ha sido exitosa
-									</div>';
+									swal({
+										type:"success",
+										  title: "¡CORRECTO!",
+										  text: "¡La reserva ha sido creada con éxito!",
+										  showConfirmButton: true,
+										confirmButtonText: "Cerrar"
+									  
+									}).then(function(result){
+
+											if(result.value){   
+												history.back();
+											  } 
+									});
+
+									</script>';
 									}
 
 									
 								}
+
+								else{
+
+									echo '<h1>¡Algo salió mal!</h1>
+										<p>Ha ocurrido un error con el pago. Por favor vuelve a intentarlo.</p>';
+	
+									}
 								
 							}
 						?>
+					<?php endif ?>
+
 					<?php endif ?>
 
 					</div>
