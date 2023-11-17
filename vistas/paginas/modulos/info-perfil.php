@@ -1,3 +1,32 @@
+<?php
+
+$item = "id_u";
+$valor = $_SESSION["id"];
+
+$usuario = ControladorUsuarios::ctrMostrarUsuario($item, $valor);
+// $reservas = ControladorReservas::ctrMostrarReservasUsuario($valor);
+
+// $hoy = date("Y-m-d");
+// $noVencidas = 0;
+// $vencidas = 0;
+
+// foreach ($reservas as $key => $value) {
+	
+// 	if($hoy >= $value["fecha_ingreso"]){
+
+// 		++$vencidas;		
+	
+// 	}else{
+
+// 		++$noVencidas;
+
+// 	}
+
+// }
+
+?>
+
+
 <!--=====================================
 INFO PERFIL
 ======================================-->
@@ -31,10 +60,26 @@ INFO PERFIL
 
 				<div class="descripcionPerfil">
 					
-					<figure class="text-center imgPerfil">
-							
-						<img src="img/testimonio01.png" class="img-fluid">
+				<figure class="text-center imgPerfil">
 
+					<?php if ($usuario["foto"] == ""): ?>
+
+						<img src="<?php echo $servidor; ?>vistas/img/usuarios/default/default.png" class="img-fluid rounded-circle">
+
+					<?php else: ?>
+
+						<?php if ($usuario["modo"] == "directo"): ?>
+
+							<img src="<?php echo $servidor.$usuario["foto"]; ?>" class="img-fluid rounded-circle">
+						
+						<?php else: ?>	
+
+							<img src="<?php echo $usuario["foto"]; ?>" class="img-fluid rounded-circle">
+							
+						<?php endif ?>
+						
+					<?php endif ?>
+										
 					</figure>
 
 					<div id="accordion">
@@ -115,8 +160,8 @@ INFO PERFIL
 
 									<ul class="list-group">
 										
-										<li class="list-group-item small">Juan Guillermo Osorio</li>
-										<li class="list-group-item small">juangui@correo.com</li>
+										<li class="list-group-item small"><?php echo $usuario["nombre"]; ?></li>
+										<li class="list-group-item small"><?php echo $usuario["email"]; ?></li>
 										<li class="list-group-item small">
 											<button class="btn btn-dark btn-sm">Cambiar Contraseña</button>
 										</li>
