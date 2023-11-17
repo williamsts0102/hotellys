@@ -24,6 +24,9 @@ require_once "modelos/habitaciones.modelo.php";
 require_once "controladores/reservas.controlador.php";
 require_once "modelos/reservas.modelo.php";
 
+require_once "controladores/usuarios.controlador.php";
+require_once "modelos/usuarios.modelo.php";
+
 require_once "extensiones/vendor/autoload.php";
 
 $plantilla = new ControladorPlantilla();

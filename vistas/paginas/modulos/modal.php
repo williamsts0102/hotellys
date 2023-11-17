@@ -195,7 +195,7 @@ VENTANA MODAL REGISTRO
 
 		<hr class="mt-0">
 
-		<form>
+		<form method="post">
 
 			<div class="input-group mb-3">
 
@@ -209,7 +209,7 @@ VENTANA MODAL REGISTRO
 
 			    </div>
 
-			    <input type="text" class="form-control" placeholder="Nombre">
+			    <input type="text" class="form-control" placeholder="Nombre" name="registroNombre" required>
 
 		  	</div>
 
@@ -226,7 +226,7 @@ VENTANA MODAL REGISTRO
 
 			    </div>
 
-			    <input type="email" class="form-control" placeholder="Email">
+			    <input type="email" class="form-control" placeholder="Email" name="registroEmail" required>
 
 		  	</div>
 
@@ -242,13 +242,19 @@ VENTANA MODAL REGISTRO
 
 			    </div>
 
-			    <input type="password" class="form-control" placeholder="Contraseña">
+			    <input type="password" class="form-control" placeholder="Contraseña" name="registroPassword" required>
 
 		  	</div>
 			
 
 			<input type="submit" class="btn btn-dark btn-block" value="Registrarse">
 
+			<?php
+			
+			$registroUsuario = new ControladorUsuarios();
+			$registroUsuario -> ctrRegistroUsuario();
+
+			?>
 		</form>
 
       </div>

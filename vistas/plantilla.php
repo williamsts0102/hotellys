@@ -106,6 +106,7 @@ $servidor = ControladorRuta::ctrServidor();
 <?php
 
 include "paginas/modulos/header.php";
+include "paginas/modulos/modal.php";
 
 /*=============================================
 PÁGINAS
@@ -158,7 +159,6 @@ PÁGINAS
 
 include "paginas/modulos/footer.php";
 
-include "paginas/modulos/modal.php";
 
 ?>
 
@@ -174,6 +174,7 @@ include "paginas/modulos/modal.php";
 <!-- <script src="js/reservas2.js"></script> -->
 <!-- <script src="js/agendas.js"></script> -->
 <!-- <script src="js/agendas2.js"></script> -->
+<script src="js/usuarios.js"></script>
 	
 </body>
 </html>
