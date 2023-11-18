@@ -81,7 +81,7 @@ FOOTER
 
 		<div class="grid-item d-none d-lg-block pt-2">
 			
-			<p>Gracias por su visita, los esperamos pronto.</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat.</p>
 
 		</div>
 
