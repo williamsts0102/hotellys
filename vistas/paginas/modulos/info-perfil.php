@@ -179,8 +179,56 @@ INFO PERFIL
 
 
 										<li class="list-group-item small">
-											<button class="btn btn-primary btn-lg">Cambiar Imagen</button>
+											<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#cambiarFotoPerfil">Cambiar Imagen</button>
 										</li>
+
+										<!--=====================================
+										MODAL PARA CAMBIAR FOTO DE PERFIL
+										======================================-->
+
+										<div class="modal formulario" id="cambiarFotoPerfil">
+											<div class="modal-dialog">
+												<div class="modal-content">
+													<form method="post" enctype="multipart/form-data">
+														<div class="modal-header">
+															<h4 class="modal-title">Cambiar Imagen</h4>
+
+															<button type="button" class="close" data-dismiss="modal">&times;</button>
+														</div>
+														<div class="modal-body">	
+														<input type="hidden" name="idUsuario" value="<?php echo $usuario["id_u"]; ?>">
+															<div class="form-group">
+																<input type="file" class="form-control-file border" name="cambiarImagen" required>
+																<input type="hidden" name="fotoActual" value="<?php echo $usuario["foto"]; ?>">
+															</div>	
+														</div>		
+														<div class="modal-footer d-flex justify-content-between">  
+
+														 	<div>
+
+												        		<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+
+												        	</div>
+
+												        	<div>
+         
+													         	<button type="submit" class="btn btn-primary">Enviar</button>
+
+													         </div> 
+
+														</div>	
+														<?php
+
+															$cambiarImagen = new ControladorUsuarios();
+															$cambiarImagen -> ctrCambiarFotoPerfil();
+
+
+														?>								
+													</form>
+												</div>
+											</div>
+										</div>
+										
 
 									</ul>
 
