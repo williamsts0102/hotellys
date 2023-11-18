@@ -4,7 +4,7 @@ $item = "id_u";
 $valor = $_SESSION["id"];
 
 $usuario = ControladorUsuarios::ctrMostrarUsuario($item, $valor);
-// $reservas = ControladorReservas::ctrMostrarReservasUsuario($valor);
+//$reservas = ControladorReservas::ctrMostrarReservasUsuario($valor);
 
 // $hoy = date("Y-m-d");
 // $noVencidas = 0;
