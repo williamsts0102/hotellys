@@ -6,23 +6,23 @@ $valor = $_SESSION["id"];
 $usuario = ControladorUsuarios::ctrMostrarUsuario($item, $valor);
 $reservas = ControladorReservas::ctrMostrarReservasUsuario($valor);
 
- $hoy = date("Y-m-d");
- $noVencidas = 0;
- $vencidas = 0;
+// $hoy = date("Y-m-d");
+// $noVencidas = 0;
+// $vencidas = 0;
 
- foreach ($reservas as $key => $value) {
+// foreach ($reservas as $key => $value) {
 	
- 	if($hoy >= $value["fecha_ingreso"]){
+// 	if($hoy >= $value["fecha_ingreso"]){
 
-		++$vencidas;		
+// 		++$vencidas;		
 	
-	}else{
+// 	}else{
 
- 		++$noVencidas;
+// 		++$noVencidas;
 
- 	}
+// 	}
 
- }
+// }
 
 ?>
 
@@ -106,8 +106,8 @@ INFO PERFIL
 
 								<ul class="card-body p-0">
 
-									<li class="px-2 misReservas" style="background:#FFFDF4"> <?php echo $noVencidas; ?> Por vencerse</li>
-									<li class="px-2 text-white misReservas" style="background:#CEC5B6"> <?php echo $vencidas; ?> vencidas</li>
+									<li class="px-2 misReservas" style="background:#FFFDF4"> 1 Por vencerse</li>
+									<li class="px-2 text-white misReservas" style="background:#CEC5B6"> 5 vencidas</li>
 
 								</ul>
 
@@ -168,16 +168,9 @@ INFO PERFIL
 										
 										<li class="list-group-item small"><?php echo $usuario["nombre"]; ?></li>
 										<li class="list-group-item small"><?php echo $usuario["email"]; ?></li>
-
-										<?php if ($usuario["modo"] == "directo"): ?>
-
 										<li class="list-group-item small">
 											<button class="btn btn-dark btn-sm">Cambiar Contraseña</button>
 										</li>
-
-										<?php endif ?>
-
-
 										<li class="list-group-item small">
 											<button class="btn btn-primary btn-lg">Cambiar Imagen</button>
 										</li>
