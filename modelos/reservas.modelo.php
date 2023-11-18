@@ -76,6 +76,25 @@ Class ModeloReservas{
 
 	}
 
+	/*=============================================
+	Mostrar Reservas por Usuario
+	=============================================*/
+
+	static public function mdlMostrarReservasUsuario($tabla, $valor){
+
+		$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE id_usuario = :id_usuario ORDER BY id_reserva DESC LIMIT 5");
+
+		$stmt -> bindParam(":id_usuario", $valor, PDO::PARAM_INT);
+
+		$stmt -> execute();
+
+		return $stmt -> fetchAll();
+
+		$stmt -> close();
+
+		$stmt = null;
+		
+	}
 
 
 }

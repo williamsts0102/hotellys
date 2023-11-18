@@ -48,4 +48,19 @@ Class ControladorReservas{
 	}
 
 
+	/*=============================================
+	Mostrar Reservas por usuario
+	=============================================*/
+
+	static public function ctrMostrarReservasUsuario($valor){
+
+		$tabla = "reservas";
+
+		$respuesta = ModeloReservas::mdlMostrarReservasUsuario($tabla, $valor);
+
+		return $respuesta;
+		
+	}
+
+
 }

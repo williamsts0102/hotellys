@@ -22,4 +22,24 @@ Class ModeloCategorias{
 
 	}
 
+	/*=============================================
+	Mostrar Categoria Singular
+	=============================================*/
+
+	static public function mdlMostrarCategoria($tabla, $valor){
+
+		$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE id= :id");
+
+		$stmt -> bindParam(":id", $valor, PDO::PARAM_INT);
+
+		$stmt -> execute();
+
+		return $stmt -> fetch();
+
+		$stmt -> close();
+
+		$stmt = null;
+	
+	}
+
 }
