@@ -378,7 +378,7 @@ INFO PERFIL
 								if($payment->status == "approved"){
 
 									$datos = array( "id_habitacion" => $_COOKIE["idHabitacion"],
-													"id_usuario" => $usuario["id_u"],
+													"id_usuario" => 1,
 													"pago_reserva" => $_COOKIE["pagoReserva"],
 													"numero_transaccion" => $payment->id,
 													"codigo_reserva" => $_COOKIE["codigoReserva"],
