@@ -178,7 +178,7 @@ if(isset($_GET["pagina"])){
 	LISTA BLANCA DE PÁGINAS INTERNAS
 	=============================================*/
 
-	if($_GET["pagina"] == "reservas" || $_GET["pagina"] == "perfil" || $_GET["pagina"] == "salir"){
+	if($_GET["pagina"] == "reservas" || $_GET["pagina"] == "perfil"){
 
 		include "paginas/".$_GET["pagina"].".php";
 		
