@@ -43,22 +43,10 @@ Class ControladorReservas{
 
 		$respuesta = ModeloReservas::mdlGuardarReserva($tabla, $valor);
 
-		if($respuesta != ""){
-
-			$tablaTestimonios = "testimonios";
-
-			$datos = array("id_res" => $respuesta,
-						   "id_us" => $valor["id_usuario"],
-						   "id_hab" => $valor["id_habitacion"],
-						   "testimonio" => "",
-						   "aprobado" => 0);
-
-			$crearTestimonio = ModeloReservas::mdlCrearTestimonio($tablaTestimonios, $datos);
-
-			return $crearTestimonio;
-		}
+		return $respuesta;
 
 	}
+
 
 	/*=============================================
 	Mostrar Reservas por usuario
@@ -74,86 +62,5 @@ Class ControladorReservas{
 		
 	}
 
-	/*=============================================
-	Mostrar Testimonios
-	=============================================*/
-
-	static public function ctrMostrarTestimonios($item, $valor){
-
-		$tabla1 = "testimonios";
-		$tabla2 = "habitaciones";
-		$tabla3 = "reservas";
-		$tabla4 = "usuarios";
-
-		$respuesta = ModeloReservas::mdlMostrarTestimonios($tabla1, $tabla2, $tabla3, $tabla4, $item, $valor);
-
-		return $respuesta;
-
-	}
-
-	/*=============================================
-	Actualizar Testimonio
-	=============================================*/
-
-	public function ctrActualizarTestimonio(){
-
-		if(isset($_POST["actualizarTestimonio"])){
-
-			if(preg_match('/^[?\\¿\\!\\¡\\:\\,\\.\\a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["actualizarTestimonio"])){
-
-				$tabla = "testimonios";
-
-				$datos = array("id_testimonio"=>$_POST["idTestimonio"],
-							   "testimonio"=>$_POST["actualizarTestimonio"]);
-
-				$respuesta = ModeloReservas::mdlActualizarTestimonio($tabla, $datos);
-
-				if($respuesta == "ok"){
-
-					echo'<script>
-
-							swal({
-									type:"success",
-								  	title: "¡CORRECTO!",
-								  	text: "El testimonio ha sido actualizado correctamente",
-								  	showConfirmButton: true,
-									confirmButtonText: "Cerrar"
-								  
-							}).then(function(result){
-
-									if(result.value){   
-									    history.back();
-									  } 
-							});
-
-						</script>';
-
-				}
-
-			}else{
-
-				echo'<script>
-
-					swal({
-							type:"error",
-						  	title: "¡CORREGIR!",
-						  	text: "¡No se permiten caracteres especiales!",
-						  	showConfirmButton: true,
-							confirmButtonText: "Cerrar"
-						  
-					}).then(function(result){
-
-							if(result.value){   
-							    history.back();
-							  } 
-					});
-
-				</script>';	
-
-			}
-		
-		}
-
-	}
 
 }

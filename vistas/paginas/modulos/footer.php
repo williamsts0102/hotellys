@@ -8,34 +8,27 @@ CONTÁCTENOS
 		
 		<h1 class="py-sm-4">CONTÁCTENOS</h1>
 
-		<form method="post">
+		<form>
 
 			<div class="input-group input-group-lg">
 				
-				<input type="text" class="form-control mb-3 mr-2 form-control-lg" placeholder="Nombre" name="nombreContactenos" required>
+				<input type="text" class="form-control mb-3 mr-2 form-control-lg" placeholder="Nombre">
 
-				<input type="text" class="form-control mb-3 ml-2 form-control-lg" placeholder="Apellido" name="apellidoContactenos" required>
+				<input type="text" class="form-control mb-3 ml-2 form-control-lg" placeholder="Apellido">
 
 			</div>
 
 			<div class="input-group input-group-lg">
 				
-				<input type="text" class="form-control mb-3 mr-2 form-control-lg" placeholder="Móvil" name="movilContactenos" required>
+				<input type="text" class="form-control mb-3 mr-2 form-control-lg" placeholder="Móvil">
 
-				<input type="text" class="form-control mb-3 ml-2 form-control-lg" placeholder="Correo Electrónico" name="emailContactenos" required>
+				<input type="text" class="form-control mb-3 ml-2 form-control-lg" placeholder="Correo Electrónico">
 
 			</div>
 
-			<textarea class="form-control" rows="6" placeholder="Escribe aquí tu mensaje" name="mensajeContactenos" required></textarea>
+			<textarea class="form-control" rows="6" placeholder="Escribe aquí tu mensaje"></textarea>
 
-			<button type="submit" class="btn btn-dark my-4 btn-lg py-3 text-uppercase w-50">Enviar</button>
-			
-			<?php
-
-				$contactenos = new ControladorUsuarios();
-				$contactenos -> ctrFormularioContactenos();
-			
-			?>
+			<input class="btn btn-dark my-4 btn-lg py-3 text-uppercase" value="Enviar">
 
 		</form>
 
@@ -81,7 +74,7 @@ FOOTER
 
 		<div class="grid-item d-none d-lg-block pt-2">
 			
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat.</p>
+			<p>Gracias por venir, espero verlos pronto.</p>
 
 		</div>
 

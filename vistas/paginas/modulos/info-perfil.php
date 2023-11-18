@@ -559,7 +559,7 @@ INFO PERFIL
 					        <th>Habitación</th>
 					        <th>Fecha de Ingreso</th>
 					        <th>Fecha de Salida</th>
-					        <th>Testimonio</th> 
+					        <!-- <th>Testimonio</th> -->
 					      </tr>
 					    </thead>
 					    <tbody>
@@ -577,33 +577,14 @@ INFO PERFIL
 
 									$habitacion = ControladorHabitaciones::ctrMostrarHabitacion($value["id_habitacion"]);
 									$categoria = ControladorCategorias::ctrMostrarCategoria($habitacion["tipo_h"]);
-									$testimonio = ControladorReservas::ctrMostrarTestimonios("id_res", $value["id_reserva"]);
-									
+									//$testimonio = ControladorReservas::ctrMostrarTestimonios("id_res", $value["id_reserva"]);
+												
 								echo '<tr>
 
 										<td>'.($key+1).'</td>
 										<td class="text-uppercase">'.$categoria["tipo"]." ".$habitacion["estilo"].'</td>
 										<td>'.$value["fecha_ingreso"].'</td>
 										<td>'.$value["fecha_salida"].'</td>
-
-										<td>
-					        
-										<button type="button" class="btn btn-dark text-white actualizarTestimonio" data-toggle="modal" data-target="#actualizarTestimonio" idTestimonio="'.$testimonio[0]["id_testimonio"].'"
-										verTestimonio="'.$testimonio[0]["testimonio"].'">
-   
-										 <i class="fas fa-pencil-alt"></i>
-   
-									 </button>
-	  
-										<button type="button" class="btn btn-warning text-white verTestimonio" 
-										data-toggle="modal" data-target="#verTestimonio"
-										verTestimonio="'.$testimonio[0]["testimonio"].'">
-	  
-											<i class="fas fa-eye"></i>
-	  
-										</button>
-									  
-									  </td>
 										
 									
 								
@@ -628,124 +609,3 @@ INFO PERFIL
 	</div>
 
 </div>
-
-<!--=====================================
-MODAL PARA VER TESTIMONIO
-======================================-->
-
-<div class="modal" id="verTestimonio">
-	
-	<div class="modal-dialog">
-
-		<div class="modal-content">
-
-			<div class="modal-header">
-
-				<h4 class="modal-title">Testimonio</h4>
-
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-
-			</div>
-
-			<div class="modal-body visorTestimonios">
-
-			<script>
-					
-					$(".verTestimonio").click(function(){
-	
-						var testimonio = $(this).attr("verTestimonio");
-	
-						if(testimonio != ""){
-	
-							$(".modal-body.visorTestimonios").html('<p>'+testimonio+'</p>')
-	
-						}else{
-	
-							$(".modal-body.visorTestimonios").html('<p>Aún no tiene testimonios de esta reserva</p>');
-	
-						}
-	
-	
-					})
-	
-					</script>			
-
-			</div>
-
-		</div>
-
-	</div>
-
-</div>
-
-
-
-<!--=====================================
-MODAL PARA EDITAR TESTIMONIO
-======================================-->
-<div class="modal" id="actualizarTestimonio">
-	
-	<div class="modal-dialog">
-
-		<div class="modal-content">
-
-			<div class="modal-header">
-
-				<h4 class="modal-title">Testimonio</h4>
-
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-
-			</div>
-
-			<div class="modal-body">
-			<script>
-
-				$(".actualizarTestimonio").click(function(){
-
-					var testimonio = $(this).attr("verTestimonio");
-					var idTestimonio = $(this).attr("idTestimonio");
-
-					if(testimonio != ""){
-
-						$(".modal-body textarea").val(testimonio);
-
-					}else{
-
-						$(".modal-body textarea").val("");
-
-					}
-
-					$("input[name='idTestimonio']").val(idTestimonio);
-
-
-				})
-
-
-		</script>
-
-			<form method="post">
-					<input type="hidden" value="" name="idTestimonio">
-
-					<textarea class="form-control" rows="3" name="actualizarTestimonio" required></textarea>
-
-					<input class="btn btn-primary my-3 float-right" type="submit" value="Guardar testimonio">
-					<?php
-
-						$actualizarTestimonio = new ControladorReservas();
-						$actualizarTestimonio -> ctrActualizarTestimonio();
-
-					?>
-
-
-			</form>
-
-			</div>
-
-		</div>
-
-	</div>
-
-</div>
-
-
-

@@ -266,12 +266,12 @@ INFO RESERVAS
 				  <label><a href="#infoPlanes" data-toggle="modal">Escoge tu Plan:</a> <small>(Precio sugerido para 2 personas)</small></label>
 				  <select class="form-control elegirPlan">
 				  	
-					<option value="<?php echo $precioContinental;?>,Plan Continental">Plan Continental S/.<?php echo number_format($precioContinental); ?> 1 día 1 noche</option>
-					<option value="<?php echo $precioAmericano;?>,Plan Americano">Plan Americano S/.<?php echo number_format($precioAmericano); ?> 1 día 1 noche</option>
-					<option value="<?php echo $precioRomantico;?>,Plan Romantico">Plan Romántico S/.<?php echo number_format($precioRomantico); ?> 1 día 1 noche</option>
-					<option value="<?php echo $precioLunaDeMiel;?>,Plan Luna de Miel">Plan Luna de Miel S/.<?php echo number_format($precioLunaDeMiel); ?> 1 día 1 noche</option>
-					<option value="<?php echo $precioAventura;?>,Plan Aventura">Plan Aventura S/.<?php echo number_format($precioAventura); ?> 1 día 1 noche</option>
-					<option value="<?php echo $precioSPA;?>,Plan SPA">Plan SPA S/.<?php echo number_format($precioSPA); ?> 1 día 1 noche</option>
+					<option value="<?php echo $precioContinental;?>,Plan Continental">Plan Continental $<?php echo number_format($precioContinental); ?> 1 día 1 noche</option>
+					<option value="<?php echo $precioAmericano;?>,Plan Americano">Plan Americano $<?php echo number_format($precioAmericano); ?> 1 día 1 noche</option>
+					<option value="<?php echo $precioRomantico;?>,Plan Romantico">Plan Romántico $<?php echo number_format($precioRomantico); ?> 1 día 1 noche</option>
+					<option value="<?php echo $precioLunaDeMiel;?>,Plan Luna de Miel">Plan Luna de Miel $<?php echo number_format($precioLunaDeMiel); ?> 1 día 1 noche</option>
+					<option value="<?php echo $precioAventura;?>,Plan Aventura">Plan Aventura $<?php echo number_format($precioAventura); ?> 1 día 1 noche</option>
+					<option value="<?php echo $precioSPA;?>,Plan SPA">Plan SPA $<?php echo number_format($precioSPA); ?> 1 día 1 noche</option>
 
 				  </select>
 				</div>
