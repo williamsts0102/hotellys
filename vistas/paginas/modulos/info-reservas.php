@@ -112,8 +112,22 @@ INFO RESERVAS
 
 					<h6 class="float-right px-3">
 
-						<br>
-						<a href="<?php echo $ruta;  ?>perfil" style="color:#FFCC29">Ver tus reservas</a>
+						
+					<?php if (isset($_SESSION["validarSesion"])): ?>
+
+							<?php if ($_SESSION["validarSesion"] == "ok"): ?>
+
+								<br>
+								<a href="<?php echo $ruta;  ?>perfil" style="color:#FFCC29">Ver tus reservas</a>
+
+							<?php endif ?>
+
+							<?php else: ?>
+
+							<br>
+							<a href="#modalIngreso" data-toggle="modal" style="color:#FFCC29">Ver tus reservas</a>
+
+							<?php endif ?>			
 
 					</h6>
 
