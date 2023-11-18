@@ -369,7 +369,7 @@ Class ControladorUsuarios{
 
 	public function ctrCambiarFotoPerfil(){
 
-		if(isset($_POST["idUsuarioFoto"])){
+		if(isset($_POST["idUsuario"])){
             $ruta = "backend/".$_POST["fotoActual"];
 
 			if(isset($_FILES["cambiarImagen"]["tmp_name"]) && !empty($_FILES["cambiarImagen"]["tmp_name"])){
@@ -383,7 +383,7 @@ Class ControladorUsuarios{
 				CREAMOS EL DIRECTORIO DONDE VAMOS A GUARDAR LA FOTO DEL USUARIO
 				=============================================*/
 
-				$directorio = "backend/vistas/img/usuarios/".$_POST["idUsuarioFoto"];
+				$directorio = "backend/vistas/img/usuarios/".$_POST["idUsuario"];
 
                 /*=============================================
 				PRIMERO PREGUNTAMOS SI EXISTE OTRA IMAGEN EN LA BD
@@ -465,7 +465,7 @@ Class ControladorUsuarios{
             }
 
             $tabla = "usuarios";
-			$id = $_POST["idUsuarioFoto"];
+			$id = $_POST["idUsuario"];
 			$item = "foto";
 			$valor = $ruta;
 
@@ -495,75 +495,6 @@ Class ControladorUsuarios{
 
     }
 }
-
-/*=============================================
-	CAMBIAR PASSWORD
-	=============================================*/
-
-	public function ctrCambiarPassword(){
-
-		if(isset($_POST["editarPassword"])){
-
-			if(preg_match('/^[a-zA-Z0-9]+$/', $_POST["editarPassword"])){
-
-				$encriptar = crypt($_POST["editarPassword"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
-
-				$tabla = "usuarios";
-				$id = $_POST["idUsuarioPassword"];
-				$item = "password";
-				$valor = $encriptar;
-
-				$actualizarPassword = ModeloUsuarios::mdlActualizarUsuario($tabla, $id, $item, $valor);
-
-				if($actualizarPassword == "ok"){
-
-					echo '<script>
-
-						swal({
-							type:"success",
-						  	title: "¡CORRECTO!",
-						  	text: "¡Sus datos han sido actualizados!",
-						  	showConfirmButton: true,
-							confirmButtonText: "Cerrar"
-						  
-						}).then(function(result){
-
-								if(result.value){   
-								    history.back();
-								  } 
-						});
-
-					</script>';
-
-				}
-
-			}else{
-
-				echo'<script>
-
-					swal({
-						type:"error",
-					  	title: "¡CORREGIR!",
-					  	text: "¡No se permiten caracteres especiales!",
-					  	showConfirmButton: true,
-						confirmButtonText: "Cerrar"
-					  
-					}).then(function(result){
-
-							if(result.value){   
-							    history.back();
-							  } 
-					});
-
-				</script>';
-
-		 	}
-
-
-		}
-
-
-	}
 
 
 
