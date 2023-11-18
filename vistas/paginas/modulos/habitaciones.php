@@ -29,7 +29,7 @@ HABITACIONES
 
 						<p class="small py-4 mb-0"><?php echo $value["descripcion"]; ?></p>
 
-						<h3 class="py-2 text-gray-dark mb-0">DESDE S/.<?php echo number_format($value["continental_baja"]); ?> </h3>
+						<h3 class="py-2 text-gray-dark mb-0">DESDE $<?php echo number_format($value["continental_baja"]); ?> COP</h3>
 
 						<h5 class="py-2 text-gray-dark border">Ver detalles <i class="fas fa-chevron-right ml-2"></i></h5>
 						
