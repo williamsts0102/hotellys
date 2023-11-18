@@ -559,7 +559,7 @@ INFO PERFIL
 					        <th>Habitación</th>
 					        <th>Fecha de Ingreso</th>
 					        <th>Fecha de Salida</th>
-					        <!-- <th>Testimonio</th> -->
+					        <th>Comentarios</th>
 					      </tr>
 					    </thead>
 					    <tbody>
