@@ -45,9 +45,19 @@ INFO PERFIL
 				
 				<div class="cabeceraPerfil pt-4">
 					
-					<a href="<?php echo $ruta;  ?>reservas" class="float-left lead text-white pt-1 px-3 mb-4">
+					<?php if ($usuario["modo"] == "facebook"): ?>
+
+					<a href="#" class="float-left lead text-white pt-1 px-3 mb-4 salir">
 						<h5><i class="fas fa-chevron-left"></i> Salir</h5>
 					</a>
+
+					<?php else: ?>
+
+					<a href="<?php echo $ruta;  ?>salir" class="float-left lead text-white pt-1 px-3 mb-4">
+						<h5><i class="fas fa-chevron-left"></i> Salir</h5>
+					</a>
+
+					<?php endif ?>
 
 					<div class="clearfix"></div>
 
@@ -96,8 +106,8 @@ INFO PERFIL
 
 								<ul class="card-body p-0">
 
-									<li class="px-2" style="background:#FFFDF4"> 1 Por vencerse</li>
-									<li class="px-2 text-white" style="background:#CEC5B6"> 5 vencidas</li>
+									<li class="px-2 misReservas" style="background:#FFFDF4"> 1 Por vencerse</li>
+									<li class="px-2 text-white misReservas" style="background:#CEC5B6"> 5 vencidas</li>
 
 								</ul>
 
@@ -193,7 +203,7 @@ INFO PERFIL
 
 					<div class="col-6 d-none d-lg-block">
 						
-						<h4 class="float-left">Hola Juan</h4>
+					<h4 class="float-left">Hola <?php echo $usuario["nombre"]; ?></h4>
 
 					</div>	
 

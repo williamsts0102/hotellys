@@ -185,8 +185,14 @@ function testAPI(){
 										FB.logout(function(response){
 
 											deleteCookie("fblo_862078772117527");
-										});
 
+											setTimeout(function(){
+
+												window.location=urlPrincipal+"salir";
+				   
+											},500)
+										});
+										
 										function deleteCookie(name) {
 											document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 										}
@@ -209,3 +215,49 @@ function testAPI(){
 	})
 
 }
+
+/*=============================================
+SALIR DE FACEBOOK
+=============================================*/
+
+$(".salir").click(function(e){
+
+
+
+	e.preventDefault();
+
+	FB.getLoginStatus(function(response){	
+
+	 	 if(response.status === 'connected'){     
+
+	 	 		FB.logout(function(response){
+
+	 	 			deleteCookie("fblo_2180677115313399");
+
+	 	 			setTimeout(function(){
+
+   		 	 			window.location=urlPrincipal+"salir";
+
+   		 	 		},500)
+
+	 	 		});
+
+	 	 		function deleteCookie(name){
+
+			 	 		 document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+		 	 	}
+
+	 	  }
+		  else{
+
+	 	 	setTimeout(function(){
+
+ 	 	 		window.location=urlPrincipal+"salir";
+
+ 	 		},500)
+
+	 	 }
+
+	 })
+
+})
