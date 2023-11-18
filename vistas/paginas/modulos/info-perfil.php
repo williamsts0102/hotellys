@@ -171,9 +171,73 @@ INFO PERFIL
 
 										<?php if ($usuario["modo"] == "directo"): ?>
 
-										<li class="list-group-item small">
-											<button class="btn btn-dark btn-sm">Cambiar Contraseña</button>
-										</li>
+											<li class="list-group-item small">
+
+											<button class="btn btn-dark btn-sm" data-toggle="modal" data-target="#cambiarPassword">Cambiar Contraseña</button>
+
+											</li>
+										<!--=====================================
+										MODAL PARA CAMBIAR CONTRASEÑA
+										======================================-->
+
+										<div class="modal formulario" id="cambiarPassword">
+											
+											<div class="modal-dialog">
+
+										 		<div class="modal-content">
+
+										 			<form method="post">
+
+										 				<div class="modal-header">
+
+									 				 		<h4 class="modal-title">Cambiar Contraseña</h4>
+
+        													<button type="button" class="close" data-dismiss="modal">&times;</button>
+
+										 				</div>
+
+										 				<div class="modal-body">
+										 					
+															<input type="hidden" name="idUsuarioPassword" value="<?php echo $usuario["id_u"]; ?>">
+
+															<div class="form-group">
+
+																<input type="password" class="form-control" placeholder="Nueva contraseña" name="editarPassword" required>
+
+															</div>
+
+										 				</div>
+
+										 				<div class="modal-footer d-flex justify-content-between"> 
+
+														 	<div>
+
+													        	<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+
+													        </div>
+
+												         	<div>
+         
+												         		<button type="submit" class="btn btn-primary">Enviar</button>
+
+											        	 	</div>
+
+										 				</div>
+
+									 				 	<?php
+
+															$cambiarPassword = new ControladorUsuarios();
+															$cambiarPassword -> ctrCambiarPassword();
+
+														?>
+
+										 			</form>
+
+										 		</div>
+
+											</div>
+
+										</div>
 
 										<?php endif ?>
 
@@ -196,7 +260,7 @@ INFO PERFIL
 															<button type="button" class="close" data-dismiss="modal">&times;</button>
 														</div>
 														<div class="modal-body">	
-														<input type="hidden" name="idUsuario" value="<?php echo $usuario["id_u"]; ?>">
+														<input type="hidden" name="idUsuarioFoto" value="<?php echo $usuario["id_u"]; ?>">
 															<div class="form-group">
 																<input type="file" class="form-control-file border" name="cambiarImagen" required>
 																<input type="hidden" name="fotoActual" value="<?php echo $usuario["foto"]; ?>">

@@ -2,6 +2,20 @@
 
 $categorias = ControladorCategorias::ctrMostrarCategorias();
 
+if(isset($_SESSION["validarSesion"])){
+
+	if($_SESSION["validarSesion"] == "ok"){
+
+		$item = "id_u";
+		$valor = $_SESSION["id"];
+
+		$usuario = ControladorUsuarios::ctrMostrarUsuario($item, $valor);
+
+	}
+
+}
+
+
 ?>
 
 <!--=====================================
@@ -123,19 +137,19 @@ HEADER
 
 					<a href="<?php echo $ruta.'perfil'; ?>">
 					
-					<?php if ($_SESSION["foto"] == ""): ?>
+					<?php if ($usuario["foto"] == ""): ?>
 					
 					<i class="fas fa-user"></i>
 
 					<?php else: ?>
 
-					<?php if ($_SESSION["modo"] == "directo"): ?>
+					<?php if ($usuario["modo"] == "directo"): ?>
 
-						<img src="<?php echo $servidor.$_SESSION["foto"]; ?>" class="img-fluid rounded-circle" style="width:30px">
+						<img src="<?php echo $servidor.$usuario["foto"]; ?>" class="img-fluid rounded-circle" style="width:30px">
 					
 					<?php else: ?>
 						
-						<img src="<?php echo $_SESSION["foto"]; ?>" class="img-fluid rounded-circle" style="width:30px">
+						<img src="<?php echo $usuario["foto"]; ?>" class="img-fluid rounded-circle" style="width:30px">
 
 					<?php endif ?>	
 
