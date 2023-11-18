@@ -4,7 +4,7 @@ $item = "id_u";
 $valor = $_SESSION["id"];
 
 $usuario = ControladorUsuarios::ctrMostrarUsuario($item, $valor);
-$reservas = ControladorReservas::ctrMostrarReservasUsuario($valor);
+//$reservas = ControladorReservas::ctrMostrarReservasUsuario($valor);
 
 // $hoy = date("Y-m-d");
 // $noVencidas = 0;
@@ -115,39 +115,43 @@ INFO PERFIL
 								TABLA RESERVAS MÓVIL
 								======================================-->	
 
-								<?php
-
-									if(!$reservas){
-
-										echo ' <div class="d-lg-none d-flex py-2">Aún no tiene reservas realizadas</div>';
-
-									}
-								    foreach ($reservas as $key => $value) {
-								    	
-								    	$habitacion = ControladorHabitaciones::ctrMostrarHabitacion($value["id_habitacion"]);
-						    			$categoria = ControladorCategorias::ctrMostrarCategoria($habitacion["tipo_h"]);	
-
-										echo '<div class="d-lg-none d-flex py-2">
+								<div class="d-lg-none d-flex py-2">
 									
-												<div class="p-2 flex-grow-1">
+									<div class="p-2 flex-grow-1">
 
-													<h5>'.$categoria["tipo"]." ".$habitacion["estilo"].'</h5>
-													<h5 class="small text-gray-dark">Del '.$value["fecha_ingreso"].' al '.$value["fecha_salida"].'</h5>
+										<h5>Suite Contemporánea</h5>
+										<h5 class="small text-gray-dark">Del 30.08.2018 al 03.09.2018</h5>
 
-												</div>
-	
-										<div class="p-2">
-	
-											<button type="button" class="btn btn-dark btn-sm text-white"><i class="fas fa-pencil-alt"></i></button>
-											<button type="button" class="btn btn-warning btn-sm text-white"><i class="fas fa-eye"></i></button>
-	
-										</div>
-	
 									</div>
+
+									<div class="p-2">
+
+										<button type="button" class="btn btn-dark btn-sm text-white"><i class="fas fa-pencil-alt"></i></button>
+										<button type="button" class="btn btn-warning btn-sm text-white"><i class="fas fa-eye"></i></button>
+
+									</div>
+
+								</div>
+
+								<hr class="my-0">
+
+								<div class="d-lg-none d-flex py-2">
 									
-									<hr class="my-0">';
-									}
-								?>	
+									<div class="p-2 flex-grow-1">
+
+										<h5>Suite Contemporánea</h5>
+										<h5 class="small text-gray-dark">Del 30.08.2018 al 03.09.2018</h5>
+
+									</div>
+
+									<div class="p-2">
+
+										<button type="button" class="btn btn-dark btn-sm text-white"><i class="fas fa-pencil-alt"></i></button>
+										<button type="button" class="btn btn-warning btn-sm text-white"><i class="fas fa-eye"></i></button>
+
+									</div>
+
+								</div>
 
 							</div>
 
@@ -444,37 +448,43 @@ INFO PERFIL
 					      </tr>
 					    </thead>
 					    <tbody>
-						<?php
-
-								if(!$reservas){
-
-									echo ' <tr><td colspan="5">Aún no tiene reservas realizadas</td></tr>';
-
-									return;
-
-								}
-
-								foreach ($reservas as $key => $value) {
-
-									$habitacion = ControladorHabitaciones::ctrMostrarHabitacion($value["id_habitacion"]);
-									$categoria = ControladorCategorias::ctrMostrarCategoria($habitacion["tipo_h"]);
-									//$testimonio = ControladorReservas::ctrMostrarTestimonios("id_res", $value["id_reserva"]);
-												
-								echo '<tr>
-
-										<td>'.($key+1).'</td>
-										<td class="text-uppercase">'.$categoria["tipo"]." ".$habitacion["estilo"].'</td>
-										<td>'.$value["fecha_ingreso"].'</td>
-										<td>'.$value["fecha_salida"].'</td>
-										
-									
+					      <tr>
+					        <td>1</td>
+					        <td>Suite Contemporánea</td>
+					        <td>30.08.2018</td>
+					        <td>03.09.2018</td>
+					        <td>
+					        
+								  <button type="button" class="btn btn-dark text-white"><i class="fas fa-pencil-alt"></i></button>
+								  <button type="button" class="btn btn-warning text-white"><i class="fas fa-eye"></i></button>
 								
-								</tr>';
+					        </td>
+					      </tr>
+					       <tr>
+					        <td>2</td>
+					        <td>Especial Caribeña</td>
+					        <td>30.08.2018</td>
+					        <td>03.09.2018</td>
+					        <td>
+					        	
+								  <button type="button" class="btn btn-dark text-white"><i class="fas fa-pencil-alt"></i></button>
+								  <button type="button" class="btn btn-warning text-white"><i class="fas fa-eye"></i></button>
+								
+					        </td>
+					      </tr>
 
-								}
-
-								?>
-
+					       <tr>
+					        <td>3</td>
+					        <td>Suite Clásica</td>
+					        <td>30.08.2018</td>
+					        <td>03.09.2018</td>
+					        <td>
+					        	
+								  <button type="button" class="btn btn-dark text-white"><i class="fas fa-pencil-alt"></i></button>
+								  <button type="button" class="btn btn-warning text-white"><i class="fas fa-eye"></i></button>
+								
+					        </td>
+					      </tr>
 					    </tbody>
 					  </table>
 

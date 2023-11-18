@@ -24,26 +24,6 @@ Class ModeloHabitaciones{
 
 	}
 
-	/*=============================================
-	Mostrar Habitacion Singular
-	=============================================*/
-
-	static public function mdlMostrarHabitacion($tabla, $valor){
-
-		$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE id_h = :id_h");
-
-		$stmt -> bindParam(":id_h", $valor, PDO::PARAM_INT);
-
-		$stmt -> execute();
-
-		return $stmt -> fetch();
-
-		$stmt -> close();
-
-		$stmt = null;
-	
-	}
-
 
 
 }
