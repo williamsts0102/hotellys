@@ -569,7 +569,6 @@ INFO PERFIL
 
 									echo ' <tr><td colspan="5">Aún no tiene reservas realizadas</td></tr>';
 
-									return;
 
 								}
 
