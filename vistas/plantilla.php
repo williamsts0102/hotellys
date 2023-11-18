@@ -244,6 +244,20 @@ include "paginas/modulos/footer.php";
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
 </script>
+
+<script>
+  window.watsonAssistantChatOptions = {
+    integrationID: "67a04c78-da7a-4806-810e-3957494ea6e0", // The ID of this integration.
+    region: "us-south", // The region your integration is hosted in.
+    serviceInstanceID: "47a12fc1-3573-49dc-a665-8f5337aa5e51", // The ID of your service instance.
+    onLoad: async (instance) => { await instance.render(); }
+  };
+  setTimeout(function(){
+    const t=document.createElement('script');
+    t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+    document.head.appendChild(t);
+  });
+</script>
 	
 </body>
 </html>
