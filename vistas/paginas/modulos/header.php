@@ -34,7 +34,7 @@ HEADER
 
 				<a href="<?php echo $ruta;  ?>">
 				
-					<img src="img/logoPortobelo.png" class="img-fluid">
+					<img src="img/logo.jpg" class="img-fluid">
 
 				</a>
 
@@ -60,7 +60,7 @@ HEADER
 
 				<form action="<?php echo $ruta; ?>reservas" method="post">
 
-					<div class="formReservas py-1 py-lg-2 px-4">
+					<div class="formReservas py-1 py-lg-2 px-4" style="background-color: #808080">
 						
 						<div class="form-group my-4">
 

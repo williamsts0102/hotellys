@@ -50,7 +50,7 @@ RESTAURANTE
 				
 				<h1 class="mt-4 my-lg-5">RESTAURANTE</h1>
 
-				<p class="p-4 my-lg-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo beatae nemo, saepe iusto, voluptas fuga. Nesciunt tempora nobis quia, officia at corporis sint sunt saepe quod labore hic iusto totam.</p>
+				<p class="p-4 my-lg-5">Sumérgete en una experiencia culinaria única con nuestro menú de sabores marinos frescos y auténticos. Desde exquisitas entradas hasta platos principales irresistibles, cada bocado es una celebración del mar. Nuestros mariscos frescos, pescados de temporada y combinaciones creativas reflejan la pasión por los ingredientes locales.</p>
 
 				<button class="btn btn-warning text-uppercase mb-5 verCarta">Ver la carta</button>
 

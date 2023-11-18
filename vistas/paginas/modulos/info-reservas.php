@@ -292,7 +292,7 @@ INFO RESERVAS
 
 					<div class="col-12 col-lg-6 col-xl-7 text-center text-lg-left">
 						
-						<h1 class="precioReserva">$<span><?php echo number_format($precioContinental*$dias);?></span> COP</h1>
+						<h1 class="precioReserva">S/.<span><?php echo number_format($precioContinental*$dias);?></span></h1>
 
 					</div>
 					
@@ -388,9 +388,9 @@ VENTANA MODAL PLANES
 
        					<p class="px-2">
 
-	       				Temporada Baja: Plan Americano + $ <?php echo number_format($value["precio_baja"]); ?> COP<br>
+	       				Temporada Baja: Plan Americano + S/. <?php echo number_format($value["precio_baja"]); ?> <br>
 
-	       				Temporada Alta: Plan Americano + $ <?php echo number_format($value["precio_alta"]); ?> COP
+	       				Temporada Alta: Plan Americano + S/. <?php echo number_format($value["precio_alta"]); ?> 
 
 	       				</p>
 

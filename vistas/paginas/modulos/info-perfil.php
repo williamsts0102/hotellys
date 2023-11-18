@@ -98,7 +98,7 @@ INFO PERFIL
 
 							<div class="card-header">
 								<a class="card-link" data-toggle="collapse" href="#collapseOne">
-									MIS RESERVAS
+									Mis Reservas
 								</a>
 							</div>
 
@@ -157,7 +157,7 @@ INFO PERFIL
 
 							<div class="card-header">
 								<a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
-									MIS DATOS
+									Mis Datos
 								</a>
 							</div>
 
@@ -438,7 +438,7 @@ INFO PERFIL
 									  
 									  <h6> Fechas <?php echo $_COOKIE["fechaIngreso"]; ?> - <?php echo $_COOKIE["fechaSalida"]; ?></h6>
 
-									<h4>$<?php echo number_format($_COOKIE["pagoReserva"]); ?></h4>
+									<h4>S/.<?php echo number_format($_COOKIE["pagoReserva"]); ?></h4>
 
 								</div>
 								<div class="card-footer d-flex bg-white">
