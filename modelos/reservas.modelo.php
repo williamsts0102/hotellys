@@ -50,7 +50,8 @@ Class ModeloReservas{
 
 	static public function mdlGuardarReserva($tabla, $datos){
 
-		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(id_habitacion, id_usuario, pago_reserva, numero_transaccion, codigo_reserva, descripcion_reserva, fecha_ingreso, fecha_salida) VALUES (:id_habitacion, :id_usuario, :pago_reserva, :numero_transaccion, :codigo_reserva, :descripcion_reserva, :fecha_ingreso, :fecha_salida)");
+		$connection = Conexion::conectar();
+		$stmt = $connection->prepare("INSERT INTO $tabla(id_habitacion, id_usuario, pago_reserva, numero_transaccion, codigo_reserva, descripcion_reserva, fecha_ingreso, fecha_salida) VALUES (:id_habitacion, :id_usuario, :pago_reserva, :numero_transaccion, :codigo_reserva, :descripcion_reserva, :fecha_ingreso, :fecha_salida)");
 
 		$stmt->bindParam(":id_habitacion", $datos["id_habitacion"], PDO::PARAM_STR);
 		$stmt->bindParam(":id_usuario", $datos["id_usuario"], PDO::PARAM_STR);
@@ -63,7 +64,9 @@ Class ModeloReservas{
 
 		if($stmt->execute()){
 
-			return "ok";
+			$id = $connection->lastInsertId();
+
+			return $id;
 
 		}else{
 
@@ -94,6 +97,80 @@ Class ModeloReservas{
 
 		$stmt = null;
 		
+	}
+
+	/*=============================================
+	Crear testimonio Vacío
+	=============================================*/
+	static public function mdlCrearTestimonio($tabla, $datos){
+
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(id_res, id_us, id_hab, testimonio, aprobado) VALUES (:id_res, :id_us, :id_hab, :testimonio, :aprobado)");
+
+		$stmt->bindParam(":id_res", $datos["id_res"], PDO::PARAM_STR);
+		$stmt->bindParam(":id_us", $datos["id_us"], PDO::PARAM_STR);
+		$stmt->bindParam(":id_hab", $datos["id_hab"], PDO::PARAM_STR);
+		$stmt->bindParam(":testimonio", $datos["testimonio"], PDO::PARAM_STR);
+		$stmt->bindParam(":aprobado", $datos["aprobado"], PDO::PARAM_STR);
+
+		if($stmt->execute()){
+
+			return "ok"; 
+
+		}else{
+
+			return "error";
+		
+		}
+
+		$stmt->close();
+		$stmt = null;
+
+	}
+
+	/*=============================================
+	Mostrar testimonios
+	=============================================*/
+
+	static public function mdlMostrarTestimonios($tabla1, $tabla2, $tabla3, $tabla4, $item, $valor){
+
+		$stmt = Conexion::conectar()->prepare("SELECT $tabla1.*, $tabla2.*, $tabla3.*,  $tabla4.* FROM $tabla1 INNER JOIN $tabla2 ON $tabla1.id_hab = $tabla2.id_h INNER JOIN $tabla3 ON $tabla1.id_res = $tabla3.id_reserva INNER JOIN $tabla4 ON $tabla1.id_us = $tabla4.id_u WHERE $item = :$item ORDER BY id_testimonio DESC");
+
+		$stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR);
+
+		$stmt -> execute();
+
+		return $stmt -> fetchAll();
+
+		$stmt -> close();
+
+		$stmt = null;
+	}
+
+	/*=============================================
+	Actualizar testimonio
+	=============================================*/
+
+	static public function mdlActualizarTestimonio($tabla, $datos){
+
+		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET testimonio = :testimonio WHERE id_testimonio = :id_testimonio");
+
+		$stmt -> bindParam(":testimonio", $datos["testimonio"], PDO::PARAM_STR);
+		$stmt -> bindParam(":id_testimonio", $datos["id_testimonio"], PDO::PARAM_INT);
+
+		if($stmt -> execute()){
+
+			return "ok";
+
+		}else{
+
+			return "error";
+
+		}
+
+		$stmt-> close();
+
+		$stmt = null;
+
 	}
 
 

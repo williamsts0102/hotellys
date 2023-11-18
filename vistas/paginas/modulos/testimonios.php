@@ -1,3 +1,12 @@
+<?php
+
+$valor = $_GET["pagina"];
+
+$habitaciones = ControladorHabitaciones::ctrMostrarHabitaciones($valor);
+
+$testimonios = ControladorReservas::ctrMostrarTestimonios("id_hab", $habitaciones[0]["id_h"]);
+?>
+
 <!--=====================================
 TESTIMONIOS
 ======================================-->
@@ -8,52 +17,72 @@ TESTIMONIOS
 		<h1 class="text-center py-5">TESTIMONIOS</h1>
 
 		<div class="row">
-			
-			<div class="col-12 col-lg-3 text-center p-4">
+
+		<?php
+
+		$cantidadTestimonios = 0;
+		$idTestimonios = array();
+	
+
+		foreach ($testimonios as $key => $value) {
+
+			if($value["aprobado"] != 0){
+
+				++$cantidadTestimonios;
+				array_push($idTestimonios, $value["id_testimonio"]);
+
+			}
+
+		}
+
+		if($cantidadTestimonios >= 4){	
+
+			for($i = 0; $i < count($idTestimonios); $i++){
 				
-				<img src="img/testimonio01.png" class="img-fluid rounded-circle">
+				echo '<div class="col-12 col-lg-3 text-center p-4">';
 
-				<h4 class="py-4">Lorem ipsum dolor</h4>
+					if($testimonios[$i]["foto"] == ""){
 
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita eveniet veniam, ut praesentium alias aut suscipit sed cupiditate quam ab totam autem, doloremque quasi. Temporibus, dicta. Odit labore dolore deleniti.</p>
+						echo '<img src="'.$servidor.'vistas/img/usuarios/default/default.png" class="img-fluid rounded-circle w-50">';
 
-			</div>
+					}else{
 
-			<div class="col-12 col-lg-3 text-center p-4">
-				
-				<img src="img/testimonio02.png" class="img-fluid rounded-circle">
+						if($testimonios[$i]["modo"] == "directo"){
 
-				<h4 class="py-4">Lorem ipsum dolor</h4>
+							echo '<img src="'.$servidor.$testimonios[$i]["foto"].'" class="img-fluid rounded-circle w-50">';
 
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita eveniet veniam, ut praesentium alias aut suscipit sed cupiditate quam ab totam autem, doloremque quasi. Temporibus, dicta. Odit labore dolore deleniti.</p>
+						}else{
 
-				
-			</div>
+							echo '<img src="'.$testimonios[$i]["foto"].'" class="img-fluid rounded-circle w-50">';
+						}
 
-			<div class="col-12 col-lg-3 text-center p-4">
-				
-				<img src="img/testimonio03.png" class="img-fluid rounded-circle">
+					}					
 
-				<h4 class="py-4">Lorem ipsum dolor</h4>
+					echo '<h4 class="py-4">'.$testimonios[$i]["nombre"].'</h4>
 
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita eveniet veniam, ut praesentium alias aut suscipit sed cupiditate quam ab totam autem, doloremque quasi. Temporibus, dicta. Odit labore dolore deleniti.</p>
-				
-			</div>
+					<p>'.$testimonios[$i]["testimonio"].'</p>
 
-			<div class="col-12 col-lg-3 text-center p-4">
-				
-				<img src="img/testimonio04.png" class="img-fluid rounded-circle">
+				</div>';
 
-				<h4 class="py-4">Lorem ipsum dolor</h4>
+			}			
 
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita eveniet veniam, ut praesentium alias aut suscipit sed cupiditate quam ab totam autem, doloremque quasi. Temporibus, dicta. Odit labore dolore deleniti.</p>
-				
-			</div>
+		}else{
 
+			echo '<div class="col-12 text-white text-center">¡Esta habitación aún no tiene testimonios!</div>';
 
-		</div>
+		}	
 
-		<button class="btn btn-default float-right px-4">VER MÁS</button>
+		
+					
+		echo '</div>';
+
+		if($cantidadTestimonios > 4){
+
+		echo '<button class="btn btn-default float-right px-4 verMasTestimonios">VER MÁS</button>';
+
+		}
+
+		?>
 
 	</div>
 
