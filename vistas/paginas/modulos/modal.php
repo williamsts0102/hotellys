@@ -1,3 +1,51 @@
+<?php
+
+	$cliente = new Google_Client();
+	$cliente->setAuthConfig('modelos/client_secret.json');
+	$cliente->setAccessType("offline");
+	$cliente->setScopes(['profile', 'email']);
+
+	$rutaGoogle = $cliente->createAuthUrl();
+
+	if(isset($_GET["code"])){
+
+		$token = $cliente->authenticate($_GET["code"]);
+
+		$_SESSION["id_token_google"] = $token;
+
+		$cliente->setAccessToken($token);
+
+		// $item = $cliente->verifyIdToken();
+		// echo '<pre class="bg-white">'; print_r($item); echo '</pre>';
+	}
+
+	if($cliente->getAccessToken()){
+		
+		$item = $cliente->verifyIdToken();
+
+		$datos = array("nombre"=>$item["name"],
+					   "email"=>$item["email"],
+					   "foto"=>$item["picture"],
+					   "password"=>"null",
+					   "modo"=>"google",
+					   "verificacion"=>"1",
+					   "email_encriptado"=>"null");
+
+		$respuesta = ControladorUsuarios::ctrRegistroRedesSociales($datos);
+
+		if($respuesta == "ok"){
+
+			echo '<script>
+				setTimeout(function(){
+					window.location = "'.$ruta.'perfil";
+				},1000);
+				</script>';
+
+		}
+	}
+
+?>
+
 <!--=====================================
 VENTANA MODAL PLANES
 ======================================-->
@@ -60,7 +108,7 @@ VENTANA MODAL INGRESO
       		
 			<div class="px-2 flex-fill">
 
-				<p class="p-2 bg-primary text-center text-white facebook">
+				<p class="p-2 bg-primary text-center text-white facebook" style="cursor:pointer">
 					<i class="fab fa-facebook"></i>
 					Ingreso con Facebook
 				</p>
@@ -69,11 +117,12 @@ VENTANA MODAL INGRESO
 
 			<div class="px-2 flex-fill">
 
-				<p class="p-2 bg-danger text-center text-white">
-					<i class="fab fa-google"></i>
-					Ingreso con Google
-				</p>
-
+				<a href="<?php echo $rutaGoogle; ?> ">
+					<p class="p-2 bg-danger text-center text-white" style="cursor:pointer">
+						<i class="fab fa-google"></i>
+						Ingreso con Google
+					</p>
+				</a>
 			</div>
 
       	</div>
@@ -178,7 +227,7 @@ VENTANA MODAL REGISTRO
       		
 			<div class="px-2 flex-fill">
 
-				<p class="p-2 bg-primary text-center text-white facebook">
+				<p class="p-2 bg-primary text-center text-white facebook" style="cursor:pointer">
 					<i class="fab fa-facebook"></i>
 					Ingreso con Facebook
 				</p>
@@ -186,12 +235,12 @@ VENTANA MODAL REGISTRO
 			</div>
 
 			<div class="px-2 flex-fill">
-
-				<p class="p-2 bg-danger text-center text-white">
-					<i class="fab fa-google"></i>
-					Ingreso con Google
-				</p>
-
+				<a href="<?php echo $rutaGoogle; ?> ">
+					<p class="p-2 bg-danger text-center text-white" style="cursor:pointer">
+						<i class="fab fa-google"></i>
+						Ingreso con Google
+					</p>
+				</a>
 			</div>
 
       	</div>
