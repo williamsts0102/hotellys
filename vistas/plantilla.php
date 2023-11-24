@@ -160,7 +160,7 @@ if(isset($_GET["pagina"])){
 					}).then(function(result){
 
 							if(result.value){   
-							    history.back();
+							    window.location.href = "https://hotellys.wendyhuaman.com/";
 							  } 
 					});
 

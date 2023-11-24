@@ -44,11 +44,19 @@ Class ControladorUsuarios{
 
 					$mail->CharSet = 'UTF-8';
 
-					$mail->isMail();
+					//$mail->isMail();
 
-					$mail->setFrom('dolly@hotmail.com', 'Dolly Sotelo');
+					$mail->isSMTP();
+					$mail->Host = 'hotellys.wendyhuaman.com';
+					$mail->SMTPAuth = true;
+					$mail->Username = 'check@hotellys.wendyhuaman.com';
+					$mail->Password = 'O7WT#9z4wXk{';
+					$mail->SMTPSecure = 'ssl'; 
+					$mail->Port = 465; 
 
-					$mail->addReplyTo('dolly@hotmail.com', 'Dolly Sotelo');
+					$mail->setFrom('check@hotellys.com', 'Hotellys');
+
+					$mail->addReplyTo('check@hotellys.com', 'Hotellys');
 
 					$mail->Subject = "Por favor verifique su dirección de correo electrónico";
 
@@ -58,7 +66,7 @@ Class ControladorUsuarios{
 
 							<center>
 								
-								<img style="padding:20px; width:10%" src="https://tutorialesatualcance.com/tienda/logo.png">
+								<img style="padding:20px; width:10%" src="https://hotellys.wendyhuaman.com/vistas/img/icono.jpg">
 
 							</center>
 
@@ -66,7 +74,7 @@ Class ControladorUsuarios{
 								
 								<center>
 
-									<img style="padding:20px; width:15%" src="https://tutorialesatualcance.com/tienda/icon-email.png">
+									<img style="padding:20px; width:15%" src="https://hotellys.wendyhuaman.com/vistas/img/icono.jpg">
 
 									<h3 style="font-weight:100; color:#999">VERIFIQUE SU DIRECCIÓN DE CORREO ELECTRÓNICO</h3>
 
@@ -586,7 +594,7 @@ Class ControladorUsuarios{
 				VERIFICACIÓN CORREO ELECTRÓNICO
 				=============================================*/
 
-				date_default_timezone_set("America/Bogota");
+				date_default_timezone_set("America/Lima");
 
 				$ruta = ControladorRuta::ctrRuta();
 
@@ -594,21 +602,29 @@ Class ControladorUsuarios{
 
 				$mail->CharSet = 'UTF-8';
 
-				$mail->isMail();
+				//$mail->isMail();
 
-				$mail->setFrom('cursos@tutorialesatualcance.com', 'Tutoriales a tu Alcance');
+				$mail->isSMTP();
+				$mail->Host = 'hotellys.wendyhuaman.com';
+				$mail->SMTPAuth = true;
+				$mail->Username = 'check@hotellys.wendyhuaman.com';
+				$mail->Password = 'O7WT#9z4wXk{';
+				$mail->SMTPSecure = 'ssl'; 
+				$mail->Port = 465; 
 
-				$mail->addReplyTo('cursos@tutorialesatualcance.com', 'Tutoriales a tu Alcance');
+				$mail->setFrom('contact@hotellys.com', 'Hotellys');
+
+				$mail->addReplyTo('contact@hotellys.com', 'Hotellys');
 
 				$mail->Subject = "Por favor verifique su dirección de correo electrónico";
 
-				$mail->addAddress("tucorreo@tudominio.com");
+				$mail->addAddress("i201924431@cibertec.edu.pe");
 
 				$mail->msgHTML('<div style="width:100%; background:#eee; position:relative; font-family:sans-serif; padding-bottom:40px">
 	
 						<center>
 
-							<img style="padding:20px; width:10%" src="https://tutorialesatualcance.com/tienda/logo.png">
+							<img style="padding:20px; width:10%" src="https://hotellys.wendyhuaman.com/vistas/img/icono.jpg">
 
 						</center>
 
@@ -616,7 +632,7 @@ Class ControladorUsuarios{
 
 							<center>
 								
-								<img style="padding:20px; width:15%" src="https://tutorialesatualcance.com/tienda/icon-email.png">
+								<img style="padding:20px; width:15%" src="https://hotellys.wendyhuaman.com/vistas/img/icono.jpg">
 
 								<h3 style="font-weight:100; color:#999;">HA RECIBIDO UNA CONSULTA</h3>
 
@@ -673,7 +689,7 @@ Class ControladorUsuarios{
 								}).then(function(result){
 
 									if(result.value){
-										history.back();
+										window.location.href = "https://hotellys.wendyhuaman.com/";
 									}
 							});
 
